@@ -19,6 +19,9 @@
                     <li {{if eq .ControllerName "ItemsetsController"}}class="active"{{end}}>
                         <a href="{{urlfor "ItemsetsController.Index" }}" title={{i18n .Lang "common.project_space"}}>{{i18n .Lang "common.project_space"}}</a>
                     </li>
+                    <li {{if eq .ControllerName "LabelController"}}class="active"{{end}}>
+                        <a href="/tags" title="标签">标签</a>
+                    </li>
                 </ul>
                 <div class="searchbar pull-left visible-lg-inline-block visible-md-inline-block">
                     <form class="form-inline" action="{{urlfor "SearchController.Index"}}" method="get">
