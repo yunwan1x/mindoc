@@ -147,12 +147,6 @@
                     </div>
                 </div>
             </div>
-            <div class="m-copyright">
-                <p>
-                    <div id="view_count">{{i18n .Lang "doc.view_count"}}：{{.ViewCount}}</div>
-                    {{i18n $.Lang "doc.doc_publish_by"}} <a href="https://www.iminho.me" target="_blank">MinDoc</a> {{i18n $.Lang "doc.doc_publish"}}
-                </p>
-            </div>
         </div>
         <div class="manual-right">
             <div class="manual-article">
