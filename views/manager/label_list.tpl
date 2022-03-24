@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{i18n .Lang "mgr.label_mgr"}} - Powered by MinDoc</title>
+    <title>标签管理 - Powered by MinDoc</title>
 
     <!-- Bootstrap -->
     <link href="{{cdncss "/static/bootstrap/css/bootstrap.min.css"}}" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
             <div class="page-right">
                 <div class="m-box">
                     <div class="box-head">
-                        <strong class="box-title">{{i18n .Lang "mgr.label_mgr"}}</strong>
+                        <strong class="box-title">标签管理</strong>
                     </div>
                 </div>
                 <div class="box-body">
@@ -37,9 +37,9 @@
                             <thead>
                             <tr>
                                 <th width="10%">#</th>
-                                <th width="55%">{{i18n .Lang "mgr.label_name"}}</th>
-                                <th width="20%">{{i18n .Lang "mgr.used_quantity"}}</th>
-                                <th>{{i18n .Lang "common.operate"}}</th>
+                                <th width="55%">标签名称</th>
+                                <th width="20%">使用数量</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,13 +49,13 @@
                                 <td>{{$item.LabelName}}</td>
                                 <td>{{$item.BookNumber}}</td>
                                 <td>
-                                    <button type="button" data-method="delete" class="btn btn-danger btn-sm" data-id="{{$item.LabelId}}" data-loading-text="{{i18n .Lang "message.processing"}}">{{i18n .Lang "common.delete"}}</button>
-                                    <a href="{{urlfor "LabelController.Index" ":key" $item.LabelName}}" class="btn btn-success btn-sm" target="_blank">{{i18n .Lang "common.detail"}}</a>
+                                    <button type="button" data-method="delete" class="btn btn-danger btn-sm" data-id="{{$item.LabelId}}" data-loading-text="删除中...">删除</button>
+                                    <a href="{{urlfor "LabelController.Index" ":key" $item.LabelName}}" class="btn btn-success btn-sm" target="_blank">详情</a>
 
                                 </td>
                             </tr>
                             {{else}}
-                            <tr><td class="text-center" colspan="6">{{i18n .Lang "message.no_data"}}</td></tr>
+                            <tr><td class="text-center" colspan="6">暂无数据</td></tr>
                             {{end}}
                             </tbody>
                         </table>
@@ -92,7 +92,7 @@
                     }
                 },
                 error : function () {
-                    layer.msg({{i18n .Lang "message.system_error"}});
+                    layer.msg("服务器异常");
                 },
                 complete : function () {
                     $this.button("reset");
