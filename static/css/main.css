@@ -1048,7 +1048,7 @@ textarea{
     padding-right: 5px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 450px) {
     .navbar-mobile {
         display: none !important;
     }
