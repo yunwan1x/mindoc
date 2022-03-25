@@ -1179,7 +1179,7 @@ table>tbody>tr:hover{
         z-index: 3000
     }
 
-    @media screen and (min-width:450px) {
+    @media screen and (min-width: 200px) and (max-width: 768px) {
         .m-manual:not(.manual-mobile) ::-webkit-scrollbar {
             width: 0;
         }
