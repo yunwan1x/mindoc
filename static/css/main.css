@@ -1053,8 +1053,8 @@ textarea{
         display: none !important;
     }
     .row{
-        margin-left: 0px;
-        margin-left: 0px;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
     .login .login-body{
         width: 100%;
