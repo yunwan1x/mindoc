@@ -1059,8 +1059,8 @@ textarea{
         padding-right: 15px;
     }
     .blog-footer{
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
     .manual-search-reader .search-item {
         /* margin: 0 15px; */
