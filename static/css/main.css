@@ -1052,6 +1052,23 @@ textarea{
     .navbar-mobile {
         display: none !important;
     }
+    .row{
+        margin-left: 0px;
+        margin-left: 0px;
+    }
+    .login .login-body{
+        width: 100%;
+    }
+    .manual-body .page-right{
+        min-width: 100%;
+    }
+    .container>.navbar-header{
+        margin-right: -30px;
+        margin-left: -30px;
+    }
+    .manual-body{
+        padding: 0;
+    }
 }
 
 
