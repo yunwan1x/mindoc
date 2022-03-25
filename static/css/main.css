@@ -1050,6 +1050,25 @@ textarea{
 
 @media screen and (min-width: 200px) and (max-width: 768px)  {
 
+    .manual-search-reader .search-head{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .editormd-preview-container, .editormd-html-preview{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .blog-footer{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .manual-search-reader .search-item {
+        /* margin: 0 15px; */
+        margin: 0;
+        padding: 10px 15px;
+        line-height: 25px;
+        word-break: break-word;
+    }
     .row{
         margin-left: 0px !important;
         margin-right: 0px !important;
