@@ -38,7 +38,7 @@
                         <div class="list-item">
                                 <div class="book-title">
                                     <div class="pull-left">
-                                        <a href="{{urlfor "ManagerController.EditBook" ":key" $item.Identify}}" title="{{i18n .Lang "mgr.edit_proj"}}" data-toggle="tooltip">
+                                        <a  title="{{i18n .Lang "mgr.edit_proj"}}" data-toggle="tooltip">
                                             {{if eq $item.PrivatelyOwned 0}}
                                             <i class="fa fa-unlock" aria-hidden="true"></i>
                                             {{else}}
