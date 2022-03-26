@@ -1200,6 +1200,11 @@ table>tbody>tr:hover{
         .m-manual.manual-reader .manual-left {
             width: 50% !important;
         }
+        .manual-article .article-content{
+            max-width: 100% !important;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     }
 }
 
