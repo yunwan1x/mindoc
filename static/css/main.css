@@ -1121,6 +1121,11 @@ textarea{
     padding-left: 1em !important;
 }
 
+a.navbar-brand::first-letter {
+    font-size: 3em;
+    vertical-align: bottom;
+}
+
 
 
 
