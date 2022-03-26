@@ -1114,6 +1114,9 @@ textarea{
         height: 210px !important
 
     }
+    a.navbar-brand::first-letter {
+        display: none;
+    }
 }
 
 
