@@ -463,9 +463,9 @@ table>tbody>tr:hover{
     color: #AAA !important;
 }
 .manual-article .article-content{
-    min-width: 980px;
-    /*max-width: 90%;*/
-    padding: 10px 10px;
+    /*min-width: 980px;*/
+    max-width: 80%;
+    padding: 10px 0px;
     margin-left: auto!important;
     margin-right: auto!important
 }
@@ -1206,3 +1206,4 @@ table>tbody>tr:hover{
 .markdown-body ul, .markdown-body ol{
     padding-left: 1em !important;
 }
+
