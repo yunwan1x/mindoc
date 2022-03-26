@@ -1183,5 +1183,15 @@ table>tbody>tr:hover{
         .m-manual:not(.manual-mobile) ::-webkit-scrollbar {
             width: 0;
         }
+        .m-manual .manual-head{
+            padding-right: 10px !important;
+            padding-left: 10px;
+        }
+        .manual-article .article-content .article-body{
+            padding: 0px !important;
+        }
+        .markdown-body ul, .markdown-body ol{
+            padding-left: 1em !important;
+        }
     }
 }

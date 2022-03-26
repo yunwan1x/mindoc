@@ -1095,6 +1095,10 @@ textarea{
     .markdown-body ul, .markdown-body ol{
         padding-left: 1em !important;
     }
+    .manual-list .list-item{
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
 }
 
 
