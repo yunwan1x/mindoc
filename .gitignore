@@ -28,3 +28,4 @@ database
 .vscode
 /vendor
 /runtime
+app.conf
