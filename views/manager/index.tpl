@@ -37,11 +37,11 @@
                         <span class="fa-class">{{i18n .Lang "mgr.proj_amount"}}</span>
                         <span class="fa-class">{{.Model.BookNumber}}</span>
                     </a>
-                    <div class="dashboard-item">
+                    <a href="{{urlfor "ManagerController.Books"}}" class="dashboard-item">
                         <span class="fa fa-file-text-o" aria-hidden="true"></span>
                         <span class="fa-class">{{i18n .Lang "mgr.blog_amount"}}</span>
                         <span class="fa-class">{{.Model.DocumentNumber}}</span>
-                    </div>
+                    </a>
                     <a href="{{urlfor "ManagerController.Users"}}" class="dashboard-item">
                             <span class="fa fa-users" aria-hidden="true"></span>
                             <span class="fa-class">{{i18n .Lang "mgr.member_amount"}}</span>
