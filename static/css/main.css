@@ -1102,9 +1102,9 @@ textarea{
     .navbar-brand{
         padding-left: 10px !important;
     }
-    .markdown-body ul, .markdown-body ol{
-        padding-left: 1em !important;
-    }
+    /*.markdown-body ul, .markdown-body ol{*/
+    /*    padding-left: 1em !important;*/
+    /*}*/
     .manual-list .list-item{
         padding-left: 10px !important;
         padding-right: 0px !important;

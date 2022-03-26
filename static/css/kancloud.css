@@ -1193,9 +1193,9 @@ table>tbody>tr:hover{
             padding: 0px !important;
         }
 
-        .markdown-body ul, .markdown-body ol {
-            padding-left: 1em !important;
-        }
+        /*.markdown-body ul, .markdown-body ol {*/
+        /*    padding-left: 1em !important;*/
+        /*}*/
 
 
         .manual-article .article-content{
