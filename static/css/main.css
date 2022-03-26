@@ -1036,6 +1036,10 @@ textarea{
     .footer .container .row{
         margin-left: 0;
     }
+    .navbar-mobile {
+        display: none !important;
+    }
+
 }
 .navbar-mobile {
     display: inline-block;
@@ -1044,6 +1048,7 @@ textarea{
     line-height: 30px;
     color: #563d7c;
 }
+
 .navbar-mobile a {
     padding-right: 5px;
 }
