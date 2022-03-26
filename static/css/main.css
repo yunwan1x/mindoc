@@ -1122,7 +1122,7 @@ textarea{
 }
 
 a.navbar-brand::first-letter {
-    font-size: 3em;
+    font-size: 2em;
     vertical-align: bottom;
 }
 
