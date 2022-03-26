@@ -1051,23 +1051,26 @@ textarea{
 @media screen and (min-width: 200px) and (max-width: 768px)  {
 
     .manual-search-reader .search-head{
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .editormd-preview-container, .editormd-html-preview{
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .blog-footer{
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
     }
     .manual-search-reader .search-item {
         /* margin: 0 15px; */
         margin: 0;
-        padding: 10px 15px;
+        padding: 10px 10px;
         line-height: 25px;
         word-break: break-word;
+    }
+    .pagination-container{
+        padding: 0 10px !important;
     }
     .row{
         margin-left: 0px !important;
@@ -1085,6 +1088,12 @@ textarea{
     }
     .manual-body{
         padding: 0;
+    }
+    .navbar-brand{
+        padding-left: 10px !important;
+    }
+    .markdown-body ul, .markdown-body ol{
+        padding-left: 1em !important;
     }
 }
 
