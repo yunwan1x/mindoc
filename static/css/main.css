@@ -1116,9 +1116,7 @@ textarea{
     }
 
 }
-.markdown-body .highlight pre, .markdown-body pre{
-    max-height: initial! important;
-}
+
 
 
 /*.markdown-body ul, .markdown-body ol{*/
