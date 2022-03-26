@@ -212,7 +212,7 @@ $(function () {
         loadDocument(selected.node.a_attr.href, selected.node.id,selected.node.a_attr['data-version']);
     });
 
-    $("#slidebar,.book-title").on("click", function () {
+    $("#slidebar,#book-title").on("click", function () {
         $(".m-manual").addClass('manual-mobile-show-left');
     });
     $(".manual-mask").on("click", function () {
