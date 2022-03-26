@@ -1115,7 +1115,7 @@ textarea{
 
     }
     a.navbar-brand::first-letter {
-        display: none !important;
+        font-size: 0 !important;
     }
 }
 
