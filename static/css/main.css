@@ -1097,7 +1097,12 @@ textarea{
     }
     .manual-list .list-item{
         padding-left: 10px !important;
-        padding-right: 10px !important;
+        padding-right: 0px !important;
+    }
+    .manual-list .list-item .manual-item-standard .cover{
+        width: 150px !important;
+        height: 210px !important
+
     }
 }
 
