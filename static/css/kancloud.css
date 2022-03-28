@@ -1203,6 +1203,27 @@ table>tbody>tr:hover{
             padding-left: 10px;
             padding-right: 10px;
         }
+        /**设置toc*/
+        .markdown-body ul, .markdown-body ol{
+            padding-left: 0em !important;
+        }
+        .article-body .markdown-toc{
+
+        }
+        .article-body .markdown-toc{
+            display: initial !important;
+            position: initial !important;
+            right: initial !important;
+            width: initial !important;
+            font-size: 12px !important;
+            margin-top: initial !important;
+            overflow: auto !important;
+            margin-right: initial !important;
+        }
+
+
+
+
     }
 }
 
