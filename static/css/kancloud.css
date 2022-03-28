@@ -1204,7 +1204,9 @@ table>tbody>tr:hover{
             padding-right: 10px;
         }
         /**设置toc*/
-
+        .markdown-body ul, .markdown-body ol{
+            padding-left: 1em !important;
+        }
 
         .article-body .markdown-toc{
             display: initial !important;
