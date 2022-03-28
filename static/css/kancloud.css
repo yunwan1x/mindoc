@@ -1207,6 +1207,9 @@ table>tbody>tr:hover{
         .markdown-body ul, .markdown-body ol{
             padding-left: 1em !important;
         }
+        .markdown-toc .markdown-toc-list{
+            padding-left: 0em !important;
+        }
 
         .article-body .markdown-toc{
             display: initial !important;
