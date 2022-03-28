@@ -57,6 +57,8 @@
                 <span style="font-size: 12px;font-weight: 100;"></span>
             </div>
             <a href="{{urlfor "HomeController.Index"}}" class="btn btn-default btn-mobile"> <i class="fa fa-home" aria-hidden="true"></i> {{i18n .Lang "common.home"}}</a>
+            <a href="{{urlfor "DocumentController.Edit" ":key" .Model.Identify ":id" ""}}" class="btn btn-primary btn-mobile" style="right: 90px;position: absolute;top: 10px;"><i class="fa fa-edit" aria-hidden="true"></i> {{i18n .Lang "blog.edit"}}</a>
+
             <div class="navbar-header pull-right manual-menu">
                 <div class="dropdown pull-left" style="margin-right: 10px;">
                     <a href="{{urlfor "HomeController.Index"}}" class="btn btn-default"><i class="fa fa-home" aria-hidden="true"></i> {{i18n .Lang "common.home"}}</a>
