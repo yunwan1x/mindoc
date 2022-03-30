@@ -186,6 +186,8 @@ func (c *DocumentController) Read() {
 func (c *DocumentController) Edit() {
 	c.Prepare()
 
+	userAgent := c.Ctx.Request.Header.Get("User-Agent")
+
 	identify := c.Ctx.Input.Param(":key")
 	if identify == "" {
 		c.ShowErrorPage(404, i18n.Tr(c.Lang, "message.project_id_error"))
@@ -222,6 +224,9 @@ func (c *DocumentController) Edit() {
 	// 根据不同编辑器类型加载编辑器
 	if bookResult.Editor == "markdown" {
 		c.TplName = "document/markdown_edit_template.tpl"
+		if strings.Contains(userAgent, "Mobile") {
+			c.TplName = "document/mobile_markdown_edit_template.tpl"
+		}
 	} else if bookResult.Editor == "html" {
 		c.TplName = "document/html_edit_template.tpl"
 	} else if bookResult.Editor == "new_html" {
