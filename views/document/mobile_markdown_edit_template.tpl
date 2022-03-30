@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=2"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Gitalk description"/>
     <script  src="https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.min.js"></script>
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.css"/>
