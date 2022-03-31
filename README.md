@@ -86,9 +86,9 @@ export GOOS=linux
 export CC=/usr/local/musl/bin/musl-gcc
 # 设置版本
 export TRAVIS_TAG=temp-musl-v`date +%y%m%d`
-go build -o mindoc_linux_musl_amd64 --ldflags="-linkmode external -extldflags '-static' -w -X 'github.com/mindoc-org/mindoc/conf.VERSION=$TRAVIS_TAG' -X 'github.com/mindoc-org/mindoc/conf.BUILD_TIME=`date`' -X 'github.com/mindoc-org/mindoc/conf.GO_VERSION=`go version`'"
+go build -o mindoc --ldflags="-linkmode external -extldflags '-static' -w -X 'github.com/mindoc-org/mindoc/conf.VERSION=$TRAVIS_TAG' -X 'github.com/mindoc-org/mindoc/conf.BUILD_TIME=`date`' -X 'github.com/mindoc-org/mindoc/conf.GO_VERSION=`go version`'"
 # 验证
-./mindoc_linux_amd64 version
+./mindoc version
 ```
 
 
