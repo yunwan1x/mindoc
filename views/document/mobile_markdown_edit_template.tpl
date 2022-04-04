@@ -63,6 +63,9 @@
         .vditor {
             --toolbar-background-color: white !important;
         }
+        ::-webkit-scrollbar{
+            width: 0 !important;
+        }
 
         .vditor-tip {
             top: 4em;
