@@ -2,7 +2,9 @@
 function vditorEditor ({
                            openLastSelectedNode
                        }) {
-    if(window.vditor)return window.vditor
+    if(window.editor){
+        return window.editor
+    }
     const options = Object.assign({}, {
         proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
         sha: "",
@@ -1838,7 +1840,6 @@ function vditorEditor ({
         toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
     }
     const vditor = new Vditor('vditor', config)
-    window.vditor = vditor
 
     $(window).resize(function () {
         vditor.vditor.element.style.height = window.innerHeight + "px";
