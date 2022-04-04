@@ -63,6 +63,9 @@
         .vditor {
             --toolbar-background-color: white !important;
         }
+        .vditor-ir pre{
+            border: none;
+        }
         ::-webkit-scrollbar{
             width: 0 !important;
         }
