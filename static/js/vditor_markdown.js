@@ -1801,13 +1801,13 @@ function vditorEditor ({
                 "zipper_mouth_face":                    "🤐",
                 "zzz":                                  "💤", }
         },
-        input: (value)=>{
-            if(value.trim()!=options.content.trim()){
-                saveContentToCache(options,value.trim())
-            }else {
-                clearContentFromCache()
-            }
-        },
+        // input: (value)=>{
+        //     if(value.trim()!=options.content.trim()){
+        //         saveContentToCache(options,value.trim())
+        //     }else {
+        //         clearContentFromCache()
+        //     }
+        // },
         preview: {
             markdown: {
                 codeBlockPreview: false,
