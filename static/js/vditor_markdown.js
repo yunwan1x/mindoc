@@ -1837,9 +1837,9 @@ function vditorEditor ({
         toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
     }
     var vditor = new Vditor('vditor', config)
-    // $(window).resize(function () {
-    //     vditor.vditor.element.style.height = window.innerHeight + "px";
-    // });
+    $(window).resize(function () {
+        vditor.vditor.element.style.height = window.innerHeight + "px";
+    });
 
 
     async function saveContentToCache(options,textValue){
