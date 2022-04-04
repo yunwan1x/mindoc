@@ -69,10 +69,11 @@
         }
         .vditor-ir pre{
             border: none;
-            max-height: 36em;
+
         }
         .vditor-ir__marker--pre{
             padding: 0 !important;
+            max-height: 36em;
         }
         ::-webkit-scrollbar{
             width: 0 !important;
