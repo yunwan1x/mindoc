@@ -238,14 +238,15 @@ $(function () {
                 pushVueLists(res.data.attach);
                 setLastSelectNode($node);
             } else {
-                layer.msg(editormdLocales[lang].loadDocFailed);
+                // layer.msg(editormdLocales[lang].loadDocFailed);
                 layer.msg(JSON.stringify(res));
 
             }
         }).fail(function () {
             layer.close(index);
-            layer.msg(editormdLocales[lang].loadDocFailed);
-            layer.msg(res)
+            // layer.msg(editormdLocales[lang].loadDocFailed);
+            layer.msg(JSON.stringify(res));
+
         });
     };
 
