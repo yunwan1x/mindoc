@@ -1801,13 +1801,13 @@ function vditorEditor ({
                 "zipper_mouth_face":                    "🤐",
                 "zzz":                                  "💤", }
         },
-        // input: (value)=>{
-        //     if(value.trim()!=options.content.trim()){
-        //         saveContentToCache(options,value.trim())
-        //     }else {
-        //         clearContentFromCache()
-        //     }
-        // },
+        input: (value)=>{
+            if(value.trim()!=options.content.trim()){
+                saveContentToCache(options,value.trim())
+            }else {
+                clearContentFromCache()
+            }
+        },
         preview: {
             markdown: {
                 codeBlockPreview: false,
@@ -1836,7 +1836,8 @@ function vditorEditor ({
         },
         toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
     }
-    var vditor = new Vditor('vditor', config)
+    const vditor = new Vditor('vditor', config)
+
     $(window).resize(function () {
         vditor.vditor.element.style.height = window.innerHeight + "px";
     });
