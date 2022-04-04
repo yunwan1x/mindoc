@@ -1802,11 +1802,11 @@ function vditorEditor ({
                 "zzz":                                  "💤", }
         },
         input: (value)=>{
-            if(value.trim()!=options.content.trim()){
-                saveContentToCache(options,value.trim())
-            }else {
-                clearContentFromCache()
-            }
+            // if(value.trim()!=options.content.trim()){
+            //     saveContentToCache(options,value.trim())
+            // }else {
+            //     clearContentFromCache()
+            // }
         },
         preview: {
             markdown: {
