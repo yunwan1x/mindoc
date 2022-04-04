@@ -69,6 +69,7 @@
         }
         .vditor-ir pre{
             border: none;
+            padding: 0 !important;
         }
         ::-webkit-scrollbar{
             width: 0 !important;
