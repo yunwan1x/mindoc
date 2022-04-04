@@ -243,6 +243,7 @@ $(function () {
         }).fail(function () {
             layer.close(index);
             layer.msg(editormdLocales[lang].loadDocFailed);
+            layer.msg(res)
         });
     };
 
