@@ -8,7 +8,7 @@
     <title>{{i18n .Lang "doc.edit_doc"}} - Powered by MinDoc</title>
     <script  src="https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
-    <script src="{{cdnjs "/static/js/vditor_markdown.js"}}" type="text/javascript"></script>
+    <script src="{{cdnjs "/static/js/vditor_markdown.js?time=2022040401"}}" type="text/javascript"></script>
     <script type="text/javascript">
         window.IS_ENABLE_IFRAME = '{{conf "enable_iframe" }}' === 'true';
         window.BASE_URL = '{{urlfor "HomeController.Index" }}';
