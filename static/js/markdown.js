@@ -239,13 +239,13 @@ $(function () {
                 setLastSelectNode($node);
             } else {
                 // layer.msg(editormdLocales[lang].loadDocFailed);
-                layer.msg(JSON.stringify(res));
+                layer.msg(res.message);
 
             }
         }).fail(function () {
             layer.close(index);
             // layer.msg(editormdLocales[lang].loadDocFailed);
-            layer.msg(JSON.stringify(res));
+            layer.msg(res.message);
 
         });
     };
