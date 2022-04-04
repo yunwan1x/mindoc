@@ -222,6 +222,7 @@ $(function () {
         $.get(window.editURL + $node.node.id ).done(function (res) {
             layer.close(index);
 
+            console.log(res)
             if (res.errcode === 0) {
                 window.isLoad = true;
                 if(window.mobile){
@@ -239,13 +240,13 @@ $(function () {
                 setLastSelectNode($node);
             } else {
                 // layer.msg(editormdLocales[lang].loadDocFailed);
-                layer.msg(res.message+"");
+                layer.msg(JSON.stringify(res));
 
             }
         }).fail(function () {
             layer.close(index);
             // layer.msg(editormdLocales[lang].loadDocFailed);
-            layer.msg(res.message+"");
+            layer.msg(JSON.stringify(res));
         });
     };
 
