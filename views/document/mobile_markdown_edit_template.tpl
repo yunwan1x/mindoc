@@ -37,7 +37,6 @@
     <link href="{{cdncss "/static/font-awesome/css/font-awesome.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/jstree/3.3.4/themes/default/style.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/editor.md/css/editormd.css" "version"}}" rel="stylesheet">
-
     <link href="{{cdncss "/static/css/jstree.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/webuploader/webuploader.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/markdown.css" "version"}}" rel="stylesheet">
@@ -87,6 +86,18 @@
         .vditor-tip__content {
             padding: 0px;
         }
+        #manual-mask {
+            position: fixed;
+            display: none;
+            top: 36px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000;
+            opacity: 0.3;
+            left: 0;
+            z-index: 86
+        }
 
         #spinner-border {
             color: #0d6efd;
@@ -120,7 +131,7 @@
 <div class="m-manual manual-editor">
 
     <div class="manual-body">
-        <div class="manual-category" id="manualCategory" style="position:absolute;top: 36px;width: 70%">
+        <div class="manual-category" id="manualCategory" style="position:absolute;top: 36px;width: 70%;display: none">
             <div class="manual-nav">
                 <div class="nav-item active"><i class="fa fa-bars" aria-hidden="true"></i> {{i18n .Lang "doc.document"}}</div>
                 <div class="nav-plus pull-right" id="btnAddDocument" data-toggle="tooltip" data-title="{{i18n .Lang "doc.create_doc"}}" data-direction="right"><i class="fa fa-plus" aria-hidden="true"></i></div>
@@ -137,7 +148,7 @@
                 </div>
             </div>
         </div>
-
+        <div id="manual-mask"></div>
     </div>
 </div>
 <!-- 创建文档 -->
