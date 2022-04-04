@@ -264,7 +264,11 @@ $(document).ready(function () {
         icon:'<svg t="1648995784294" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3645" width="32" height="32"><path d="M888 462.4L544 142.4c-19.2-17.6-48-17.6-65.6 0l-344 320c-9.6 9.6-16 22.4-16 35.2v355.2c0 27.2 22.4 49.6 49.6 49.6h683.2c27.2 0 49.6-22.4 49.6-49.6V497.6c3.2-12.8-3.2-25.6-12.8-35.2z m-32 392c0 1.6-1.6 1.6-1.6 1.6h-240V657.6c0-56-46.4-102.4-102.4-102.4-56 0-102.4 46.4-102.4 102.4v198.4h-240c-1.6 0-1.6-1.6-1.6-1.6V497.6l344-320 344 320v356.8z" p-id="3646" fill="#586069"></path></svg>',
         hotkey: '⌘b',
         async click(element, vditor) {
-            window.location=document.referrer;
+            if(document.referrer){
+                window.location=document.referrer;
+            }else {
+                window.location=window.baseUrl
+            }
         },
     }
     const pasterButton={
