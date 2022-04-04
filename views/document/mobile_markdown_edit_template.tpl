@@ -155,7 +155,6 @@
             <div class="manual-tree" id="sidebar"> </div>
         </div>
         <div id="vditor"></div>
-        <div id="spinner-border"></div>
         <div class="vditor-tip vditor-tip--show" style="display:none;">
             <div class="vditor-tip__content">
                 <div class="vditor-tip__content">

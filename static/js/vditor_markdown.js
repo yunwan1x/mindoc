@@ -17,13 +17,7 @@ function vditorEditor ({
         content: ""
     })
 
-    const loading = (loading) => {
-        if (!loading) {
-            $('#spinner-border').hide();
-        } else {
-            $('#spinner-border').show();
-        }
-    }
+
 
     const queryParse = (search = window.location.search) => {
         if (!search) return {}
@@ -81,38 +75,8 @@ function vditorEditor ({
     }
 
 
-    const axiosJSON = axios.create({
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    const axiosGithub = axios.create({
-        baseURL: 'https://api.github.com',
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
 
-    axiosGithub.interceptors.request.use(function (config) {
-        loading(true)
-        return config;
-    }, function (error) {
-        // 对请求错误做些什么
 
-        loading(false)
-        return Promise.reject(error);
-    });
-
-// 添加响应拦截器
-    axiosGithub.interceptors.response.use(function (response) {
-        // 对响应数据做点什么
-        loading(false)
-        return response;
-    }, function (error) {
-        // 对响应错误做点什么
-        loading(false)
-        return Promise.reject(error);
-    });
 
 
     const Base64 = {
@@ -212,8 +176,7 @@ function vditorEditor ({
     }
 
 
-    const GT_ACCESS_TOKEN = 'GT_ACCESS_TOKEN'
-    const GT_COMMENT = 'GT_COMMENT'
+
 
 
     const isPhone = window.innerWidth < 500
@@ -1824,18 +1787,8 @@ function vditorEditor ({
             enable: false
         },
         async after() {
-            // $('#login').on('click', function () {
-            //     login(options)
-            // })
-
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
             openLastSelectedNode()
-            loading(false)
-            try {
-                await init(options)
-            } catch (e) {
-                showGitHubErrorInfo(e)
-            }
         },
         toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
     }
@@ -1877,84 +1830,11 @@ function vditorEditor ({
 
 
 
-    async function init(options) {
-        const query = queryParse()
-        const hash = queryHash();
-        const {path, posturl} = hash
-        options.path = path
-        options.posturl = posturl
-        options.editMode = path ? true : false
-        if (query.code) {
-            const code = query.code
-            delete query.code
-            const replacedUrl = `${window.location.origin}${window.location.pathname}${queryStringify(query)}${window.location.hash}`
-            history.replaceState(null, null, replacedUrl)
-            const res = await axiosJSON.post(options.proxy, {
-                code,
-                client_id: options.clientID,
-                client_secret: options.clientSecret,
-            });
-            if (res.data && res.data.access_token) {
-                setAccessToken(res.data.access_token, options)
-                await initUserPost(options)
-            } else {
-                throw new Error("no access_token")
-            }
-        } else {
-            await initUserPost(options)
-        }
-    }
 
-    async function getPostContent(options) {
-        const {owner, repo} = options
-        const {path, editMode, type} = options;
-        const  auth=getAccessToken(options)
-        let  res = await getContentFromCache(options);
 
-        if (editMode) {
-            const cached=res?true:false
-            options.cache=cached
-            !cached&&(res = await axiosGithub.get(`/repos/${owner}/${repo}/contents/${path}`,{
-                headers: {
-                    Authorization: `token ${auth}`
-                }
-            }))
-            const {content, sha} = cached?res:res.data
-            return {content: cached?content:Base64.decode(content), sha}
 
-        } else {
-            return res||{content: "", sha: ""}
-        }
-    }
 
-    function userLogin(user) {
-        const {avatar_url, login} = user;
-        const avatar = `<img src="${avatar_url}" width="16" height="16" />`;
-        $('#imageLogo').html(avatar)
-        $('#login').text("登出 github").click(function () {
-            logout(options)
-        });
-    }
 
-    async function getUserInfo(options) {
-        if (!getAccessToken(options)) {
-            return null
-        }
-        const user = getUser(options);
-        if (user.login) {
-            userLogin(user);
-            return user
-        } else {
-            const res = await axiosGithub.get('/user', {
-                headers: {
-                    Authorization: `token ${getAccessToken(options)}`
-                }
-            });
-            setUser(options, res.data)
-            userLogin(getUser(options))
-            return getUser(options)
-        }
-    }
 
     function error(msg, timeout, fn) {
         console.error(msg)
@@ -1989,196 +1869,34 @@ function vditorEditor ({
         }, timeout)
     }
 
-    //changhui
-    async function savePost(options) {
-        const {owner, repo} = options
-        var {path, editMode, sha, content,cache} = options
-        const comment = vditor.getValue();
-        const auth = getAccessToken(options)
-        if (comment.trim() == content.trim()&&!cache) {
-            throw new Error("内容无变更！")
-        }
-        let res = ""
-        //代表新增
-        if (!editMode) {
-            var title = ""
-
-            if (/title:\s*(|[^-\s.]+)\s*$/m.test(comment)) {
-                title = RegExp.$1
-            }
-            if (!title) {
-                throw new Error("title 不合法！");
-            }
-            var category = "";
-            if (/layout:\s*(\S+)\s*$/m.test(comment)) {
-                if (RegExp.$1 == "post") {
-                    category = "_posts"
-                    path = `${category}/${dateFormat(new Date(), "yyyy-MM-dd")}-${title}.md`
-                } else if (RegExp.$1 == "wiki") {
-                    category = "_wiki"
-                    path = `${category}/${title}.md`
-                }
-            }
-            if (!category) {
-                throw new Error("layout: wiki | post");
-            }
-
-            if (await getFile(owner, repo, path)) {
-                throw new Error(`${path} 已经存在`)
-            }
-            res = await createFile(owner, repo, path, comment, auth)
-            location.replace(`${location.href}#path=${path}`)
-            options.editMode = true
 
 
-        } else {
-            if (!sha) throw new Error("文件正在创建中...稍后")
-            try {
-                res = await saveFile(owner, repo, path, comment, auth, sha)
-            } catch (e) {
-                const {content = '', sha = ''} = await getFile(owner, repo, path)
-                if (sha) {
-                    res = await saveFile(owner, repo, path, comment, auth, sha)
-                } else {
-                    throw e
-                }
-            }
-        }
-        if(res.data.content.sha){
-            success("保存成功！")
-            options.content = comment
-            options.sha=res.data.content.sha
-            clearContentFromCache()
-        }else {
-            throw new Error("文件sha没获取到")
-        }
-
-    }
-
-    function showGitHubErrorInfo(fail) {
-        if (fail.response) {
-            error(fail.response.data && fail.response.data.message || fail.response.data)
-        } else {
-            error(fail)
-        }
-    }
 
 
-    async function createFile(owner, repo, path, comment, auth) {
-        const dateStr = dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss");
-        const res = await axiosGithub.put(`/repos/${owner}/${repo}/contents/${path}`, {
-            message: "create by gitpost " + dateStr,
-            content: Base64.encode(comment),
-        }, {
-            headers: {
-                Authorization: `token ${auth}`
-            }
-        });
-        return res;
-    }
-
-    async function saveFile(owner, repo, path, comment, auth, sha) {
-        const dateStr = dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss");
-        const res = await axiosGithub.put(`/repos/${owner}/${repo}/contents/${path}`, {
-            message: "update by gitpost " + dateStr,
-            content: Base64.encode(comment),
-            sha: sha
-        }, {
-            headers: {
-                Authorization: `token ${auth}`
-            }
-        });
-        return res;
-    }
-
-    async function getFile(owner, repo, path) {
-        const  auth=getAccessToken(options)
-        try {
-            let fileInfo = await axiosGithub.get(`/repos/${owner}/${repo}/contents/${path}`,{
-                headers: {
-                    Authorization: `token ${auth}`
-                }
-            })
-            const {data: {content, sha}} = fileInfo;
-            return {content: Base64.decode(content), sha: sha}
-        } catch (e) {
-        }
-        return null;
-    }
 
 
-    function logout(options) {
-        options.user = null;
-        options._accessToken = null;
-        window.localStorage.removeItem(GT_ACCESS_TOKEN)
-        window.localStorage.removeItem("GT_USER")
-        location.reload()
-    }
 
 
-    function login(options) {
-        const {comment} = options
-        window.localStorage.setItem(GT_COMMENT, encodeURIComponent(comment))
-        window.location.href = getLoginLink(options)
-    }
 
 
-    function getUser(options) {
-        const str = options.user || window.localStorage.getItem("GT_USER")
-        let user={}
-        if(str){
-            user=JSON.parse(str);
-            const  timeElapsed=new Date().getTime()-(user.loginTime||0)
-            //有效期一天
-            if(timeElapsed>24*3600*1000){
-                return {}
-            }
-        }
-        return user
-    }
-
-    function setUser(options, user) {
-        user.loginTime=new Date().getTime()
-        var str = JSON.stringify(user);
-        window.localStorage.setItem("GT_USER", str)
-        options.user = str
-    }
 
 
-    function getAccessToken(options) {
-        return options._accessToke || window.localStorage.getItem(GT_ACCESS_TOKEN)
-    }
 
-    function setAccessToken(token, options) {
-        window.localStorage.setItem(GT_ACCESS_TOKEN, token)
-        options._accessToken = token
-    }
 
-    function getLoginLink(options) {
-        const githubOauthUrl = 'https://github.com/login/oauth/authorize'
-        const {clientID} = options
-        const query = {
-            client_id: clientID,
-            redirect_uri: window.location.href,
-            scope: 'public_repo',
 
-        }
-        return `${githubOauthUrl}?${queryStringify(query)}`
-    }
 
-    function isAdmin(options) {
-        const {admin} = options
-        const user = getUser(options)
-        return user.login && admin && admin.toLowerCase().includes(user.login.toLowerCase())
-    }
 
-    async function initUserPost(options) {
-        const user = await getUserInfo(options);
-        const {content, sha} = await getPostContent(options);
-        vditor.setValue(content)
-        options.content = content
-        options.sha = sha
-    }
+
+
+
+
+
+
+
+
+
+
+
 
     return vditor
 }
