@@ -1,4 +1,7 @@
-$(document).ready(function () {
+
+function vditorEditor ({
+                           openLastSelectedNode
+                       }) {
     const options = Object.assign({}, {
         proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
         sha: "",
@@ -1818,12 +1821,12 @@ $(document).ready(function () {
             enable: false
         },
         async after() {
-            $('#login').on('click', function () {
-                login(options)
-            })
+            // $('#login').on('click', function () {
+            //     login(options)
+            // })
 
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-
+            openLastSelectedNode()
             loading(false)
             try {
                 await init(options)
@@ -1833,8 +1836,7 @@ $(document).ready(function () {
         },
         toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
     }
-    const vditor = new Vditor('vditor', config)
-
+    var vditor = new Vditor('vditor', config)
     $(window).resize(function () {
         vditor.vditor.element.style.height = window.innerHeight + "px";
     });
@@ -2173,5 +2175,7 @@ $(document).ready(function () {
         options.content = content
         options.sha = sha
     }
-})
+
+    return vditor
+}
 

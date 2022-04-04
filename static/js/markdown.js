@@ -58,66 +58,73 @@ $(function () {
     if (!window.IS_ENABLE_IFRAME) {
         htmlDecodeList.unshift("iframe");
     }
-    window.editor = editormd("docEditor", {
-        width: "100%",
-        height: "100%",
-        path: window.editormdLib,
-        toolbar: true,
-        placeholder: window.editormdLocales[window.lang].placeholder,
-        imageUpload: true,
-        imageFormats: ["jpg", "jpeg", "gif", "png","svg", "JPG", "JPEG", "GIF", "PNG","SVG"],
-        imageUploadURL: window.imageUploadURL,
-        toolbarModes: "full",
-        fileUpload: true,
-        fileUploadURL: window.fileUploadURL,
-        taskList: true,
-        flowChart: true,
-        htmlDecode: htmlDecodeList.join(','),
-        lineNumbers: true,
-        sequenceDiagram: true,
-        tocStartLevel: 1,
-        tocm: true,
-        previewCodeHighlight: 1,
-        highlightStyle: window.highlightStyle ? window.highlightStyle : "github",
-        tex:true,
-        saveHTMLToTextarea: true,
+    if(window.mobile){
 
-        onload: function() {
-            this.hideToolbar();
-            var keyMap = {
-                "Ctrl-S": function(cm) {
-                    saveDocument(false);
-                },
-                "Cmd-S": function(cm){
-                    saveDocument(false);
-                },
-                "Ctrl-A": function(cm) {
-                    cm.execCommand("selectAll");
-                }
-            };
-            this.addKeyMap(keyMap);
+        window.editor = vditorEditor({openLastSelectedNode})
 
-            //如果没有选中节点则选中默认节点
-            openLastSelectedNode();
-            uploadImage("docEditor", function ($state, $res) {
-                if ($state === "before") {
-                    return layer.load(1, {
-                        shade: [0.1, '#fff'] // 0.1 透明度的白色背景
-                    });
-                } else if ($state === "success") {
-                    if ($res.errcode === 0) {
-                        var value = '![](' + $res.url + ')';
-                        window.editor.insertValue(value);
+    }else {
+        window.editor = editormd("docEditor", {
+            width: "100%",
+            height: "100%",
+            path: window.editormdLib,
+            toolbar: true,
+            placeholder: window.editormdLocales[window.lang].placeholder,
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png","svg", "JPG", "JPEG", "GIF", "PNG","SVG"],
+            imageUploadURL: window.imageUploadURL,
+            toolbarModes: "full",
+            fileUpload: true,
+            fileUploadURL: window.fileUploadURL,
+            taskList: true,
+            flowChart: true,
+            htmlDecode: htmlDecodeList.join(','),
+            lineNumbers: true,
+            sequenceDiagram: true,
+            tocStartLevel: 1,
+            tocm: true,
+            previewCodeHighlight: 1,
+            highlightStyle: window.highlightStyle ? window.highlightStyle : "github",
+            tex:true,
+            saveHTMLToTextarea: true,
+
+            onload: function() {
+                this.hideToolbar();
+                var keyMap = {
+                    "Ctrl-S": function(cm) {
+                        saveDocument(false);
+                    },
+                    "Cmd-S": function(cm){
+                        saveDocument(false);
+                    },
+                    "Ctrl-A": function(cm) {
+                        cm.execCommand("selectAll");
                     }
-                }
-            });
-            
-            window.isLoad = true;
-        },
-        onchange: function () {
-            resetEditorChanged(true);
-        }
-    });
+                };
+                this.addKeyMap(keyMap);
+
+                //如果没有选中节点则选中默认节点
+                openLastSelectedNode();
+                uploadImage("docEditor", function ($state, $res) {
+                    if ($state === "before") {
+                        return layer.load(1, {
+                            shade: [0.1, '#fff'] // 0.1 透明度的白色背景
+                        });
+                    } else if ($state === "success") {
+                        if ($res.errcode === 0) {
+                            var value = '![](' + $res.url + ')';
+                            window.editor.insertValue(value);
+                        }
+                    }
+                });
+
+                window.isLoad = true;
+            },
+            onchange: function () {
+                resetEditorChanged(true);
+            }
+        });
+
+    }
 
     function insertToMarkdown(body) {
         window.isLoad = true;
@@ -217,13 +224,14 @@ $(function () {
 
             if (res.errcode === 0) {
                 window.isLoad = true;
-                try {
+                if(window.mobile){
+                    window.editor.setValue(res.data.markdown)
+                }else {
                     window.editor.clear();
                     window.editor.insertValue(res.data.markdown);
                     window.editor.setCursor({line: 0, ch: 0});
-                }catch(e){
-                    console.log(e);
                 }
+
                 var node = { "id": res.data.doc_id, 'parent': res.data.parent_id === 0 ? '#' : res.data.parent_id, "text": res.data.doc_name, "identify": res.data.identify, "version": res.data.version };
                 pushDocumentCategory(node);
                 window.selectNode = node;
