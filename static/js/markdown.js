@@ -239,7 +239,7 @@ $(function () {
                 setLastSelectNode($node);
             } else {
                 // layer.msg(editormdLocales[lang].loadDocFailed);
-                layer.msg(JSON.stringify(res));
+                layer.msg(res);
 
             }
         }).fail(function () {
