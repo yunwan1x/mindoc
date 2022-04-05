@@ -132,7 +132,7 @@ function vditorEditor ({
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
             setTimeout(()=>{
                 openLastSelectedNode&&openLastSelectedNode()
-            },1000)
+            },2000)
 
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
