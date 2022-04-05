@@ -110,7 +110,7 @@ $(function () {
      * 保存文章
      * @param $is_cover
      */
-    function saveBlog($is_cover) {
+    function saveBlog($is_cover,fn) {
         var content = window.editor.getMarkdown();
         var html = window.editor.getPreviewedHTML();
 
@@ -138,6 +138,7 @@ $(function () {
                 } else {
                     layer.msg(res.message);
                 }
+                fn && fn()
             },
             error : function (XMLHttpRequest, textStatus, errorThrown) {
                 layer.close(index);

@@ -5,17 +5,7 @@ function vditorEditor ({
     if(window.editor){
         return window.editor
     }
-    const options = Object.assign({}, {
-        proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
-        sha: "",
-        saving: false,
-        path: "",
-        posturl: "",
-        editMode: true,
-        _accessToke: "",
-        user: "",
-        content: ""
-    })
+
 
 
 
@@ -47,143 +37,9 @@ function vditorEditor ({
 
         return query
     }
-    const dateFormat = function (date, fmt) {
-        var o = {
-            "M+": date.getMonth() + 1,                 //月份
-            "d+": date.getDate(),                    //日
-            "h+": date.getHours(),                   //小时
-            "m+": date.getMinutes(),                 //分
-            "s+": date.getSeconds(),                 //秒
-            "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-            "S": date.getMilliseconds()             //毫秒
-        };
-        if (/(y+)/.test(fmt)) {
-            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-        }
-        for (var k in o) {
-            if (new RegExp("(" + k + ")").test(fmt)) {
-                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-            }
-        }
-        return fmt;
-    }
-    const queryStringify = query => {
-        const queryString = Object.keys(query)
-            .map(key => `${key}=${encodeURIComponent(query[key] || '')}`)
-            .join('&')
-        return queryString
-    }
-
-
-
-
-
-
-    const Base64 = {
-        _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-        encode: function (input) {
-            var output = "";
-            var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-            var i = 0;
-            input = Base64._utf8_encode(input);
-            while (i < input.length) {
-                chr1 = input.charCodeAt(i++);
-                chr2 = input.charCodeAt(i++);
-                chr3 = input.charCodeAt(i++);
-                enc1 = chr1 >> 2;
-                enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-                enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-                enc4 = chr3 & 63;
-                if (isNaN(chr2)) {
-                    enc3 = enc4 = 64;
-                } else if (isNaN(chr3)) {
-                    enc4 = 64;
-                }
-                output = output +
-                    this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
-                    this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
-            }
-            return output;
-        },
-        decode: function (input) {
-            var output = "";
-            var chr1, chr2, chr3;
-            var enc1, enc2, enc3, enc4;
-            var i = 0;
-            input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-            while (i < input.length) {
-                enc1 = this._keyStr.indexOf(input.charAt(i++));
-                enc2 = this._keyStr.indexOf(input.charAt(i++));
-                enc3 = this._keyStr.indexOf(input.charAt(i++));
-                enc4 = this._keyStr.indexOf(input.charAt(i++));
-                chr1 = (enc1 << 2) | (enc2 >> 4);
-                chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-                chr3 = ((enc3 & 3) << 6) | enc4;
-                output = output + String.fromCharCode(chr1);
-                if (enc3 != 64) {
-                    output = output + String.fromCharCode(chr2);
-                }
-                if (enc4 != 64) {
-                    output = output + String.fromCharCode(chr3);
-                }
-            }
-            output = Base64._utf8_decode(output);
-            return output;
-        },
-        // private method for UTF-8 encoding
-        _utf8_encode: function (string) {
-            string = string.replace(/\r\n/g, "\n");
-            var utftext = "";
-            for (var n = 0; n < string.length; n++) {
-                var c = string.charCodeAt(n);
-                if (c < 128) {
-                    utftext += String.fromCharCode(c);
-                } else if ((c > 127) && (c < 2048)) {
-                    utftext += String.fromCharCode((c >> 6) | 192);
-                    utftext += String.fromCharCode((c & 63) | 128);
-                } else {
-                    utftext += String.fromCharCode((c >> 12) | 224);
-                    utftext += String.fromCharCode(((c >> 6) & 63) | 128);
-                    utftext += String.fromCharCode((c & 63) | 128);
-                }
-            }
-            return utftext;
-        },
-        // private method for UTF-8 decoding
-        _utf8_decode: function (utftext) {
-            var string = "";
-            var i = 0;
-            let c2 = 0, c = 0, c1 = 0, c3 = 0;
-            while (i < utftext.length) {
-                c = utftext.charCodeAt(i);
-                if (c < 128) {
-                    string += String.fromCharCode(c);
-                    i++;
-                } else if ((c > 191) && (c < 224)) {
-                    c2 = utftext.charCodeAt(i + 1);
-                    string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
-                    i += 2;
-                } else {
-                    c2 = utftext.charCodeAt(i + 1);
-                    c3 = utftext.charCodeAt(i + 2);
-                    string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
-                    i += 3;
-                }
-            }
-            return string;
-        },
-
-    }
-
-
-
-
-
-    const isPhone = window.innerWidth < 500
-
     const cacheState={
         none:"#586069",
-        cached:"#d81e06",
+        cached:"#39c911",
     }
     const clearCache = {
         name: "clear",
@@ -191,19 +47,18 @@ function vditorEditor ({
         hotkey: '⌘D',
         icon:'<svg t="1630746420909" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6134" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M871.9104 240.64v648.1152c0 59.776-54.784 108.0576-122.3424 108.0576H260.5824c-67.584 0-122.3424-48.384-122.3424-108.0576V240.64h733.6704zM390.144 422.912h-61.44v417.92h61.44V422.912z m294.912 0h-61.44v417.92h61.44V422.912zM660.48 25.6l61.4656 58.8032H906.24a30.72 30.72 0 0 1 30.72 30.72v56.192a30.72 30.72 0 0 1-30.72 30.72H107.52a30.72 30.72 0 0 1-30.72-30.72V115.1232a30.72 30.72 0 0 1 30.72-30.72h184.2944L353.2544 25.6H660.48z" p-id="6135" id="wy_cache" fill="#586069"></path></svg>',
         async click(element, vditor) {
-            const success=await clearContentFromCache()
-            if(success){
-                window.location.reload()
-            }
+
         },
     }
     const saveButton = {
         name: "save",
         tip: "保存",
-        icon:'<svg t="1629634645921" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12174" width="32" height="32" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M959.937 903.937c0 30.913-25.081 55.996-55.996 55.996L119.996 959.933C89.081 959.933 64 934.85 64 903.937l0-783.94C64 89.082 89.081 64 119.996 64l541.293 0c30.915 0 73.49 17.495 95.659 39.662l163.323 163.323c22.169 22.168 39.665 64.744 39.665 95.658L959.936 903.937zM885.273 885.27 885.273 362.644c0-11.079-9.916-34.998-17.494-42.583L703.874 156.157c-8.168-8.167-30.916-17.496-42.585-17.496l0 242.65c0 30.914-25.081 55.996-55.996 55.996L269.318 437.307c-30.915 0-55.996-25.082-55.996-55.996l0-242.65-74.662 0L138.66 885.27l74.662 0L213.322 642.626c0-30.917 25.081-55.996 55.996-55.996l485.3 0c30.913 0 55.996 25.079 55.996 55.996L810.614 885.27 885.273 885.27zM735.951 885.27 735.951 661.29 287.984 661.29 287.984 885.27 735.951 885.27zM586.629 157.328c0-9.918-8.748-18.667-18.666-18.667L455.971 138.661c-9.917 0-18.665 8.748-18.665 18.667l0 186.652c0 9.919 8.748 18.665 18.665 18.665l111.992 0c9.918 0 18.666-8.746 18.666-18.665L586.629 157.328z" p-id="12175" fill="#586069"></path></svg>',
+        icon:'<svg  t="1629634645921" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12174" width="32" height="32" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M959.937 903.937c0 30.913-25.081 55.996-55.996 55.996L119.996 959.933C89.081 959.933 64 934.85 64 903.937l0-783.94C64 89.082 89.081 64 119.996 64l541.293 0c30.915 0 73.49 17.495 95.659 39.662l163.323 163.323c22.169 22.168 39.665 64.744 39.665 95.658L959.936 903.937zM885.273 885.27 885.273 362.644c0-11.079-9.916-34.998-17.494-42.583L703.874 156.157c-8.168-8.167-30.916-17.496-42.585-17.496l0 242.65c0 30.914-25.081 55.996-55.996 55.996L269.318 437.307c-30.915 0-55.996-25.082-55.996-55.996l0-242.65-74.662 0L138.66 885.27l74.662 0L213.322 642.626c0-30.917 25.081-55.996 55.996-55.996l485.3 0c30.913 0 55.996 25.079 55.996 55.996L810.614 885.27 885.273 885.27zM735.951 885.27 735.951 661.29 287.984 661.29 287.984 885.27 735.951 885.27zM586.629 157.328c0-9.918-8.748-18.667-18.666-18.667L455.971 138.661c-9.917 0-18.665 8.748-18.665 18.667l0 186.652c0 9.919 8.748 18.665 18.665 18.665l111.992 0c9.918 0 18.666-8.746 18.666-18.665L586.629 157.328z" p-id="12175" id="wy_save" fill="#586069"></path></svg>',
         hotkey: '⌘S',
         async click(element, vditor) {
-            saveDocument(false)
+            saveDocument(false,()=>{
+                $('#wy_save').attr('fill',cacheState.none)
+            })
         },
     }
     const bookmark = {
@@ -1757,11 +1612,7 @@ function vditorEditor ({
                 "zzz":                                  "💤", }
         },
         input: (value)=>{
-            // if(value.trim()!=options.content.trim()){
-            //     saveContentToCache(options,value.trim())
-            // }else {
-            //     clearContentFromCache()
-            // }
+            $('#wy_save').attr('fill',cacheState.cached)
         },
         preview: {
             markdown: {
@@ -1788,75 +1639,7 @@ function vditorEditor ({
     });
 
 
-    async function saveContentToCache(options,textValue){
-        const key= `${window.location.href}`
-        window.localStorage.setItem(key,JSON.stringify({sha:options.sha,content:textValue}))
-        options.cache=true
-        $('#wy_cache').attr('fill',cacheState.cached)
-    }
 
-    async function getContentFromCache(options){
-        const key= `${window.location.href}`
-        let res=null
-        try {
-            res = JSON.parse(window.localStorage.getItem(key))
-        } catch (e) {
-        }
-        if(res){
-            $('#wy_cache').attr('fill',cacheState.cached)
-        }
-        return res;
-    }
-
-    async function clearContentFromCache(){
-        const key= `${window.location.href}`
-        if(!window.localStorage.getItem(key))return false
-        window.localStorage.removeItem(key)
-        options.cache=false
-        $('#wy_cache').attr('fill',cacheState.none)
-        return true
-    }
-
-
-
-
-
-
-
-
-
-    function error(msg, timeout, fn) {
-        console.error(msg)
-        const html = `<div style="background: #dc3545;color: white;padding: 0.5em 1em;border-radius: 3px">${msg.message && msg.message || msg}</div>`
-        $('.vditor-tip__content').html(html)
-        const parent = $('.vditor-tip__content').parent();
-        parent.show()
-        // parent.addClass('vditor-tip--show')
-        if (!timeout) {
-            timeout = 3000
-        }
-        setTimeout(() => {
-            parent.hide()
-            options.saving = false
-            fn && fn()
-        }, timeout)
-    }
-
-    function success(msg, timeout, fn) {
-        const html = `<div style="color: white;background: #198754;padding: 0.5em 1em;border-radius: 3px">${msg}</div>`
-        $('.vditor-tip__content').html(html)
-        const parent = $('.vditor-tip__content').parent();
-        parent.show()
-        // parent.addClass('vditor-tip--show')
-        if (!timeout) {
-            timeout = 3000
-        }
-        setTimeout(() => {
-            parent.hide()
-            options.saving = false
-            fn && fn()
-        }, timeout)
-    }
 
 
     vditor.getPreviewedHTML = ()=>{
