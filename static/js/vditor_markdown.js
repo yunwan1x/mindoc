@@ -119,7 +119,7 @@ function vditorEditor ({
 
         input: (value)=>{
 
-            // $('#wy_save').attr('fill',cacheState.cached)
+            $('#wy_save').attr('fill',cacheState.cached)
         },
 
         mode: "sv",
@@ -130,9 +130,7 @@ function vditorEditor ({
         },
         async after() {
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-            setTimeout(()=>{
-                openLastSelectedNode&&openLastSelectedNode()
-            },2000)
+            openLastSelectedNode&&openLastSelectedNode()
 
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
