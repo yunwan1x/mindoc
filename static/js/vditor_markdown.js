@@ -122,7 +122,7 @@ function vditorEditor ({
             // $('#wy_save').attr('fill',cacheState.cached)
         },
 
-        mode: "ir",
+        mode: "sv",
 
         cache: {
 

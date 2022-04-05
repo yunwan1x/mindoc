@@ -107,6 +107,9 @@
             -webkit-animation: .75s linear infinite spinner-border;
             animation: .75s linear infinite spinner-border;
         }
+        .vditor-preview,.vditor-preview__action{
+            display: none !important;
+        }
 
         @keyframes spinner-border {
             to {
