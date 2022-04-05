@@ -62,6 +62,9 @@
         body {
             margin: 0
         }
+        .vditor-preview,.vditor-preview__action{
+            display: none !important;
+        }
 
         .vditor {
             --toolbar-background-color: white !important;
