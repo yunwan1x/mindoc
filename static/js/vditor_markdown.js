@@ -118,25 +118,24 @@ function vditorEditor ({
         },
 
         input: (value)=>{
-            $('#wy_save').attr('fill',cacheState.cached)
+            // $('#wy_save').attr('fill',cacheState.cached)
         },
 
         mode: "ir",
 
         cache: {
+
             enable: false
         },
         async after() {
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-            openLastSelectedNode&&openLastSelectedNode()
+            // openLastSelectedNode&&openLastSelectedNode()
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
     }
     const vditor = new Vditor('vditor', config)
 
-    $(window).resize(function () {
-        vditor.vditor.element.style.height = window.innerHeight + "px";
-    });
+
 
 
 
