@@ -129,7 +129,7 @@ function vditorEditor ({
         },
         async after() {
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-            // openLastSelectedNode&&openLastSelectedNode()
+            openLastSelectedNode&&openLastSelectedNode()
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
     }
