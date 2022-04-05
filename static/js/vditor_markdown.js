@@ -1,6 +1,6 @@
 
 function vditorEditor ({
-                           openLastSelectedNode,saveDocument
+                           openLastSelectedNode,saveDocument,isBook
                        }) {
     if(window.editor){
         return window.editor
@@ -1630,7 +1630,7 @@ function vditorEditor ({
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
             openLastSelectedNode&&openLastSelectedNode()
         },
-        toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
+        toolbar: isBook?[bookmark, back, saveButton,pasterButton, "emoji",clearCache]:[back, saveButton,pasterButton, "emoji",clearCache]
     }
     const vditor = new Vditor('vditor', config)
 

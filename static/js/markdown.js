@@ -390,7 +390,7 @@ $(function () {
         // openLastSelectedNode();
         if(window.mobile){
 
-            window.editor = vditorEditor({openLastSelectedNode,saveDocument})
+            window.editor = vditorEditor({openLastSelectedNode,saveDocument,true})
 
         }else {
             window.editor = editormd("docEditor", {
