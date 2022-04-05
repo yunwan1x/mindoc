@@ -118,6 +118,7 @@ function vditorEditor ({
         },
 
         input: (value)=>{
+
             // $('#wy_save').attr('fill',cacheState.cached)
         },
 
@@ -129,7 +130,10 @@ function vditorEditor ({
         },
         async after() {
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-            openLastSelectedNode&&openLastSelectedNode()
+            setTimeout(()=>{
+                openLastSelectedNode&&openLastSelectedNode()
+            },1000)
+
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
     }
