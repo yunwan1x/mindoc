@@ -282,8 +282,12 @@ func (c *BlogController) ManageSetting() {
 //文章创建或编辑
 func (c *BlogController) ManageEdit() {
 	c.Prepare()
-	c.TplName = "blog/manage_edit.tpl"
-
+	userAgent := c.Ctx.Request.Header.Get("User-Agent")
+	if strings.Contains(userAgent, "Mobile") {
+		c.TplName = "blog/mobile_manage_edit.tpl"
+	} else {
+		c.TplName = "blog/manage_edit.tpl"
+	}
 	if c.Ctx.Input.IsPost() {
 		blogId, _ := c.GetInt("blogId", 0)
 

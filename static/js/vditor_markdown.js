@@ -1777,7 +1777,7 @@ function vditorEditor ({
         },
         async after() {
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-            openLastSelectedNode()
+            openLastSelectedNode&&openLastSelectedNode()
         },
         toolbar: [bookmark, back, saveButton,pasterButton, "emoji",clearCache]
     }

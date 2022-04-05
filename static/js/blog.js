@@ -7,63 +7,69 @@ $(function () {
     if (!window.IS_ENABLE_IFRAME) {
         htmlDecodeList.unshift("iframe");
     }
-    window.editor = editormd("docEditor", {
-        width: "100%",
-        height: "100%",
-        path: window.editormdLib,
-        toolbar: true,
-        placeholder: "本编辑器支持 Markdown 编辑，左边编写，右边预览。",
-        imageUpload: true,
-        imageFormats: ["jpg", "jpeg", "gif", "png", "JPG", "JPEG", "GIF", "PNG"],
-        imageUploadURL: window.imageUploadURL,
-        toolbarModes: "full",
-        fileUpload: true,
-        fileUploadURL: window.fileUploadURL,
-        taskList: true,
-        flowChart: true,
-        mermaid: true,
-        htmlDecode: htmlDecodeList.join(','),
-        lineNumbers: true,
-        sequenceDiagram: true,
-        highlightStyle: window.highlightStyle ? window.highlightStyle : "github",
-        tocStartLevel: 1,
-        tocm: true,
-        tex:true,
-        saveHTMLToTextarea: true,
+    if(window.mobile){
+        window.editor = vditorEditor({openLastSelectedNode:()=>{
+                window.editor.setValue($('#docEditor').val())
+            },saveDocument:saveBlog})
+    }else {
+        window.editor = editormd("docEditor", {
+            width: "100%",
+            height: "100%",
+            path: window.editormdLib,
+            toolbar: true,
+            placeholder: "本编辑器支持 Markdown 编辑，左边编写，右边预览。",
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "JPG", "JPEG", "GIF", "PNG"],
+            imageUploadURL: window.imageUploadURL,
+            toolbarModes: "full",
+            fileUpload: true,
+            fileUploadURL: window.fileUploadURL,
+            taskList: true,
+            flowChart: true,
+            mermaid: true,
+            htmlDecode: htmlDecodeList.join(','),
+            lineNumbers: true,
+            sequenceDiagram: true,
+            highlightStyle: window.highlightStyle ? window.highlightStyle : "github",
+            tocStartLevel: 1,
+            tocm: true,
+            tex:true,
+            saveHTMLToTextarea: true,
 
-        onload: function() {
-            this.hideToolbar();
-            var keyMap = {
-                "Ctrl-S": function(cm) {
-                    saveBlog(false);
-                },
-                "Cmd-S": function(cm){
-                    saveBlog(false);
-                },
-                "Ctrl-A": function(cm) {
-                    cm.execCommand("selectAll");
-                }
-            };
-            this.addKeyMap(keyMap);
-
-            uploadImage("docEditor", function ($state, $res) {
-                console.log("注册上传图片")
-                if ($state === "before") {
-                    return layer.load(1, {
-                        shade: [0.1, '#fff'] // 0.1 透明度的白色背景
-                    });
-                } else if ($state === "success") {
-                    if ($res.errcode === 0) {
-                        var value = '![](' + $res.url + ')';
-                        window.editor.insertValue(value);
+            onload: function() {
+                this.hideToolbar();
+                var keyMap = {
+                    "Ctrl-S": function(cm) {
+                        saveBlog(false);
+                    },
+                    "Cmd-S": function(cm){
+                        saveBlog(false);
+                    },
+                    "Ctrl-A": function(cm) {
+                        cm.execCommand("selectAll");
                     }
-                }
-            });
-        },
-        onchange: function () {
-            resetEditorChanged(true);
-        }
-    });
+                };
+                this.addKeyMap(keyMap);
+
+                uploadImage("docEditor", function ($state, $res) {
+                    console.log("注册上传图片")
+                    if ($state === "before") {
+                        return layer.load(1, {
+                            shade: [0.1, '#fff'] // 0.1 透明度的白色背景
+                        });
+                    } else if ($state === "success") {
+                        if ($res.errcode === 0) {
+                            var value = '![](' + $res.url + ')';
+                            window.editor.insertValue(value);
+                        }
+                    }
+                });
+            },
+            onchange: function () {
+                resetEditorChanged(true);
+            }
+        });
+    }
     /**
      * 实现标题栏操作
      */
