@@ -119,10 +119,10 @@ function vditorEditor ({
 
         input: (value)=>{
 
-            // $('#wy_save').attr('fill',cacheState.cached)
+            $('#wy_save').attr('fill',cacheState.cached)
         },
 
-        mode: "sv",
+        mode: "ir",
 
         cache: {
 
@@ -136,6 +136,14 @@ function vditorEditor ({
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
     }
     const vditor = new Vditor('vditor', config)
+
+    $(window).resize(function () {
+        vditor.vditor.element.style.height = window.innerHeight + "px";
+    });
+
+
+
+
 
 
 
