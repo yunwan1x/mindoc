@@ -110,10 +110,7 @@ function vditorEditor ({
         toolbarConfig: {
             pin: true,
         },
-        counter: {
-            enable: false,
-            type: "text"
-        },
+
 
         height: window.innerHeight,
         outline: {
@@ -123,15 +120,9 @@ function vditorEditor ({
         input: (value)=>{
             $('#wy_save').attr('fill',cacheState.cached)
         },
-        preview: {
-            markdown: {
-                codeBlockPreview: false,
-                autoSpace: false
-            },
-            mode: "editor",
-        },
+
         mode: "ir",
-        typewriterMode: true,
+
         cache: {
             enable: false
         },
