@@ -119,7 +119,7 @@ function vditorEditor ({
 
         input: (value)=>{
 
-            $('#wy_save').attr('fill',cacheState.cached)
+            // $('#wy_save').attr('fill',cacheState.cached)
         },
 
         mode: "sv",
