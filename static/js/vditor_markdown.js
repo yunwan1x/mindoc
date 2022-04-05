@@ -1,6 +1,6 @@
 
 function vditorEditor ({
-                           openLastSelectedNode
+                           openLastSelectedNode,saveDocument
                        }) {
     if(window.editor){
         return window.editor
@@ -203,18 +203,7 @@ function vditorEditor ({
         icon:'<svg t="1629634645921" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12174" width="32" height="32" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M959.937 903.937c0 30.913-25.081 55.996-55.996 55.996L119.996 959.933C89.081 959.933 64 934.85 64 903.937l0-783.94C64 89.082 89.081 64 119.996 64l541.293 0c30.915 0 73.49 17.495 95.659 39.662l163.323 163.323c22.169 22.168 39.665 64.744 39.665 95.658L959.936 903.937zM885.273 885.27 885.273 362.644c0-11.079-9.916-34.998-17.494-42.583L703.874 156.157c-8.168-8.167-30.916-17.496-42.585-17.496l0 242.65c0 30.914-25.081 55.996-55.996 55.996L269.318 437.307c-30.915 0-55.996-25.082-55.996-55.996l0-242.65-74.662 0L138.66 885.27l74.662 0L213.322 642.626c0-30.917 25.081-55.996 55.996-55.996l485.3 0c30.913 0 55.996 25.079 55.996 55.996L810.614 885.27 885.273 885.27zM735.951 885.27 735.951 661.29 287.984 661.29 287.984 885.27 735.951 885.27zM586.629 157.328c0-9.918-8.748-18.667-18.666-18.667L455.971 138.661c-9.917 0-18.665 8.748-18.665 18.667l0 186.652c0 9.919 8.748 18.665 18.665 18.665l111.992 0c9.918 0 18.666-8.746 18.666-18.665L586.629 157.328z" p-id="12175" fill="#586069"></path></svg>',
         hotkey: '⌘S',
         async click(element, vditor) {
-            if (options.saving) return
-            if (isAdmin(options)) {
-                options.saving = true;
-                try {
-                    await savePost(options)
-                } catch (e) {
-                    showGitHubErrorInfo(e)
-                }
-            } else {
-                options.saving = true;
-                error("你不是管理员！")
-            }
+            saveDocument(false)
         },
     }
     const bookmark = {
@@ -233,10 +222,10 @@ function vditorEditor ({
         icon:'<svg t="1648995784294" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3645" width="32" height="32"><path d="M888 462.4L544 142.4c-19.2-17.6-48-17.6-65.6 0l-344 320c-9.6 9.6-16 22.4-16 35.2v355.2c0 27.2 22.4 49.6 49.6 49.6h683.2c27.2 0 49.6-22.4 49.6-49.6V497.6c3.2-12.8-3.2-25.6-12.8-35.2z m-32 392c0 1.6-1.6 1.6-1.6 1.6h-240V657.6c0-56-46.4-102.4-102.4-102.4-56 0-102.4 46.4-102.4 102.4v198.4h-240c-1.6 0-1.6-1.6-1.6-1.6V497.6l344-320 344 320v356.8z" p-id="3646" fill="#586069"></path></svg>',
         hotkey: '⌘b',
         async click(element, vditor) {
-            if(document.referrer){
-                window.location=document.referrer;
+            if(document.referrer && document.referrer != window.location.href){
+                window.location.href = document.referrer;
             }else {
-                window.location=window.baseUrl
+                window.location = window.location.origin
             }
         },
     }
@@ -1870,7 +1859,13 @@ function vditorEditor ({
     }
 
 
+    vditor.getPreviewedHTML = ()=>{
+        return vditor.getHTML()
+    }
 
+    vditor.getMarkdown = ()=>{
+        return vditor.getValue();
+    }
 
 
 
