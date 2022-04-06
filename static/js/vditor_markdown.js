@@ -236,7 +236,7 @@ function vditorEditor ({
                 // openLastSelectedNode&&openLastSelectedNode()
             },1000)
         },
-        toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
+        // toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
     }
     const vditor = new Vditor('vditor', config)
 
