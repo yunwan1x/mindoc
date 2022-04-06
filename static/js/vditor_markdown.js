@@ -144,10 +144,96 @@ function vditorEditor ({
         cache: {
             enable: false
         },
+        value:"# 常用FAQ\n" +
+            "\n" +
+            "1. [解决chome访问非受信任证书页面，提示您的连接不是私密连接](https://blog.csdn.net/easylife206/article/details/107171565)\n" +
+            "2. chrome 常用内部urls [chrome://about](chrome://about)\n" +
+            "\n" +
+            "# 好软推荐\n" +
+            "\n" +
+            "1. [landrop](https://landrop.app/#downloads)，局域网同步神器，支持全客户端。\n" +
+            "2. [gpg使用](https://chengpengzhao.com/2020-03-04-ssh-yu-gpg-de-xue-xi-yu-shi-yong/)\n" +
+            "3. [ linux apt yum使用](https://www.runoob.com/linux/linux-comm-apt.html)\n" +
+            "\n" +
+            "# IDEA用到的中间件\n" +
+            "\n" +
+            "[中间件](https://www.jetbrains.com/legal/third-party-software/?product=IIU&version=2021.2.3)\n" +
+            "\n" +
+            "# 每天认识一个新命令\n" +
+            "\n" +
+            "```bash\n" +
+            "ssh -t command\n" +
+            "ssh-copy-id\n" +
+            "sshpass\n" +
+            "ssh-agent\n" +
+            "mosh，替代ssh的\n" +
+            "pv  pipeline view可以查看管道进度\n" +
+            "忽略knownhosts\n" +
+            "ssh证书登录 [ruanyifeng](https://www.ruanyifeng.com/blog/2020/07/ssh-certificate.html)\n" +
+            "```\n" +
+            "\n" +
+            "每天认识一个新命令： https://einverne.github.io/post/2019/08/fzf-usage.html\n" +
+            "\n" +
+            "# 杂项\n" +
+            "\n" +
+            "* [mac使用gnu命令](https://blog.cotes.info/posts/use-gnu-utilities-in-mac/)\n" +
+            "* 清除dns缓存 chrome , [runoob](https://www.runoob.com/w3cnote/chrome-clear-dns-cache.html)\n" +
+            "\n" +
+            "  * 强制清空， 鼠标左键按住刷新按钮不放弹出子菜单，强制刷新\n" +
+            "  * 浏览器缓存参考[认识浏览器缓存](https://segmentfault.com/a/1190000009970329)，查看浏览器缓存[查看缓存](https://blog.csdn.net/yerenyuan_pku/article/details/88881967)\n" +
+            "  * chrome://about/\n" +
+            "  * [nginx缓存](https://www.hi-linux.com/posts/64107.html)\n" +
+            "* 证书\n" +
+            "\n" +
+            "  * mkcert创建本地可信证书\n" +
+            "  * https://letsencrypt.org/zh-cn/docs/certificates-for-localhost/\n" +
+            "* k8s调试\n" +
+            "\n" +
+            "  * [Telepresence](https://www.hi-linux.com/posts/21833.html)\n" +
+            "  * sshuttle虚拟隧道，利用ssh构建虚拟隧道。\n" +
+            "* [mvn 包冲突解决](https://segmentfault.com/a/1190000023446358)\n" +
+            "* `crontab 支持重启运行脚本，语法如下@reboot /root/script/restart.sh `\n" +
+            "* raesene/alpine-nettools:latest ，[仓库](https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/ssh)\n" +
+            "* [coreos](https://book.douban.com/subject/26670565/)\n" +
+            "\n" +
+            "  * [docker coreos](https://github.com/wenshunbiao/docker)\n" +
+            "* mac上替换docker工具 ，[lima](https://segmentfault.com/a/1190000040633750)\n" +
+            "* [shell进程替换](http://c.biancheng.net/view/3025.html)\n" +
+            "* 时区处理[cnblogs](https://www.cnblogs.com/yourbatman/p/14307194.html)\n" +
+            "* [osquery工具](https://os.51cto.com/art/202001/609160.htm)\n" +
+            "* git worktree\n" +
+            "* utools 工具箱查看自己ip以及公网ip\n" +
+            "\n" +
+            "# 常用命令\n" +
+            "\n" +
+            "```bash\n" +
+            "# xargs参考 [ruanyifeng](https://www.ruanyifeng.com/blog/2019/08/xargs-tutorial.html)\n" +
+            "1. echo {1..10}|xargs -n 1 -t  echo \n" +
+            "2. paralell 并发执行\n" +
+            "3. bash模式扩展，https://wangdoc.com/bash/expansion.html\n" +
+            "4. navi命令行工具 https://github.com/denisidoro/navi\n" +
+            "```\n" +
+            "\n" +
+            "# 好博客\n" +
+            "\n" +
+            "1. [hi-linux](https://www.hi-linux.com/categories/Linux/)\n" +
+            "2. [yiyi bash手册](https://yiyibooks.cn/Phiix/bash_reference_manual/bash%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3.html)\n" +
+            "3. [文档整篇翻译](https://zhuanlan.zhihu.com/p/37359779)\n" +
+            "4. [linux shell编程指南](http://c.biancheng.net/shell/)\n" +
+            "5. [linux系统管理](http://c.biancheng.net/linux_tutorial/)\n" +
+            "6. [并发网](https://www.zhihu.com/answer/2157140104)\n" +
+            "\n" +
+            "# 杂项\n" +
+            "\n" +
+            "1. rtty\n" +
+            "2. pingtunnel\n" +
+            "3. tmate终端共享\n" +
+            "\n" +
+            "# [git使用token登录](https://stackoverflow.com/questions/68775869/support-for-password-authentication-was-removed-please-use-a-personal-access-to)\n",
         async after() {
             setTimeout(()=>{
                 $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-                openLastSelectedNode&&openLastSelectedNode()
+                // openLastSelectedNode&&openLastSelectedNode()
             },1000)
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
