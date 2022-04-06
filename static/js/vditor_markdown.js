@@ -112,8 +112,19 @@ function vditorEditor ({
             pin: true,
         },
 
-
-        height: window.innerHeight,
+        preview:{
+            hljs:{
+                enable:false
+            },
+            markdown:{
+                codeBlockPreview:false,
+                sanitize:false
+            }
+        },
+        hint:{
+            parse:false
+        },
+        minHeight: window.innerHeight+100,
         outline: {
             enable: true
         },
@@ -125,15 +136,12 @@ function vditorEditor ({
             save =true
             setTimeout(()=>{
                 $('#wy_save').attr('fill',cacheState.cached)
-                save =false
             },1000)
-
         },
 
         mode: "ir",
 
         cache: {
-
             enable: false
         },
         async after() {
@@ -146,9 +154,7 @@ function vditorEditor ({
     }
     const vditor = new Vditor('vditor', config)
 
-    $(window).resize(function () {
-        vditor.vditor.element.style.height = window.innerHeight + "px";
-    });
+
 
 
 
