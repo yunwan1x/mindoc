@@ -139,7 +139,7 @@ function vditorEditor ({
             },1000)
         },
 
-        mode: "ir",
+        mode: "wysiwyg",
 
         cache: {
             enable: false
