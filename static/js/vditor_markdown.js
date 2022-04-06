@@ -106,6 +106,7 @@ function vditorEditor ({
     }
 
 
+    var save =false
     const config = {
         toolbarConfig: {
             pin: true,
@@ -118,8 +119,15 @@ function vditorEditor ({
         },
 
         input: (value)=>{
+            if(save){
+                return
+            }
+            save =true
+            setTimeout(()=>{
+                $('#wy_save').attr('fill',cacheState.cached)
+                save =false
+            },1000)
 
-            $('#wy_save').attr('fill',cacheState.cached)
         },
 
         mode: "ir",
@@ -129,9 +137,10 @@ function vditorEditor ({
             enable: false
         },
         async after() {
-            $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
-            openLastSelectedNode&&openLastSelectedNode()
-
+            setTimeout(()=>{
+                $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
+                openLastSelectedNode&&openLastSelectedNode()
+            },1000)
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
     }

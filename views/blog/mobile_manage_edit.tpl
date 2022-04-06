@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{i18n .Lang "blog.edit_title"}} - Powered by MinDoc</title>
-    <script  src="https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vditor/dist/index.min.js"></script>
     <script src="{{cdnjs "/static/js/vditor_markdown.js?time=2022040401"}}" type="text/javascript"></script>
     <script type="text/javascript">
         window.baseUrl = "{{.BaseUrl}}";
