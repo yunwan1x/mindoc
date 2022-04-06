@@ -112,9 +112,9 @@ function vditorEditor ({
         },
 
 
-        height: window.innerHeight,
+        minHeight: window.innerHeight+100,
         outline: {
-            enable: true
+            enable: false
         },
 
         input: (value)=>{
@@ -137,9 +137,7 @@ function vditorEditor ({
     }
     const vditor = new Vditor('vditor', config)
 
-    $(window).resize(function () {
-        vditor.vditor.element.style.height = window.innerHeight + "px";
-    });
+
 
 
 
