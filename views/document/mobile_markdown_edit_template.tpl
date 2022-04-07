@@ -77,6 +77,13 @@
             padding: 0 !important;
             max-height: 36em;
         }
+        .vditor-wysiwyg pre.vditor-reset{
+            border: none !important;
+        }
+        .vditor-wysiwyg__marker--pre{
+            padding: 0 !important;
+            max-height: 36em;
+        }
         ::-webkit-scrollbar{
             width: 0 !important;
         }

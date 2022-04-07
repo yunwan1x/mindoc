@@ -42,11 +42,17 @@
         .vditor {
             --toolbar-background-color: white !important;
         }
-        .vditor-ir pre{
-            border: none;
-
+        .vditor-ir pre.vditor-reset{
+            border: none !important;
         }
-        .vditor-ir__marker--pre{
+        .vditor-ir--pre{
+            padding: 0 !important;
+            max-height: 36em;
+        }
+        .vditor-wysiwyg pre.vditor-reset{
+            border: none !important;
+        }
+        .vditor-wysiwyg__marker--pre{
             padding: 0 !important;
             max-height: 36em;
         }
