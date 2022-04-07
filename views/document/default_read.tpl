@@ -120,7 +120,7 @@
                 </div>
                 <div class="tab-wrap">
                     <div class="tab-item manual-catalog">
-                        <div class="catalog-list read-book-preview" id="sidebar">
+                        <div class="catalog-list read-book-preview" style="display: none" id="sidebar">
                         {{.Result}}
                         </div>
 

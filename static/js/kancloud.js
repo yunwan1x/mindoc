@@ -210,6 +210,8 @@ $(function () {
         }
         $(".m-manual").removeClass('manual-mobile-show-left');
         loadDocument(selected.node.a_attr.href, selected.node.id,selected.node.a_attr['data-version']);
+    }).on("ready.jstree",function () {
+        $("#sidebar").show()
     });
 
     $("#slidebar,#book-title").on("click", function () {
