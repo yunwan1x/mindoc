@@ -3685,6 +3685,7 @@
         };
 
         markedRenderer.paragraph = function(text) {
+            debugger
             var isTeXInline     = /\$\$(.*)\$\$/g.test(text);
             var isTeXLine       = /^\$\$(.*)\$\$$/.test(text);
             var isTeXAddClass   = (isTeXLine)     ? " class=\"" + editormd.classNames.tex + "\"" : "";
