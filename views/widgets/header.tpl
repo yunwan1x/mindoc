@@ -38,7 +38,7 @@
             </div>
 
             <div class="btn-group dropdown-menu-right pull-right slidebar visible-xs-inline-block visible-sm-inline-block">
-                <button class="btn btn-default dropdown-toggle hidden-lg" type="button" data-toggle="dropdown"><i class="fa fa-align-justify"></i></button>
+                <button class="btn btn-default dropdown-toggle hidden-lg" style="border: none;top:5px" type="button" data-toggle="dropdown"><i class="fa fa-align-justify"></i></button>
                 <ul class="dropdown-menu" role="menu">
                     {{if gt .Member.MemberId 0}}
                             <li>
