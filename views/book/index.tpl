@@ -128,7 +128,7 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="addBookDialogModal" tabindex="-1" role="dialog" aria-labelledby="addBookDialogModalLabel">
-    <div class="modal-dialog modal-lg" role="document" style="min-width: 900px;">
+    <div class="modal-dialog modal-lg" role="document" style="">
         <form method="post" autocomplete="off" action="{{urlfor "BookController.Create"}}" id="addBookDialogForm" enctype="multipart/form-data">
         <div class="modal-content">
             <div class="modal-header">
