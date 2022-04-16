@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excalidraw in browser</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://unpkg.com/react@16.14.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
+
+    <script crossorigin="anonymous"
+            type="text/javascript"
+            src="https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.production.min.js"
+    ></script>
+    <style>
+        body, html{
+        }
+        .App {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .button-wrapper button {
+            z-index: 1;
+            height: 40px;
+            max-width: 200px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .excalidraw .App-menu_top .buttonList {
+            display: flex;
+        }
+
+        .excalidraw-wrapper {
+            height: calc(100vh - 2em - 8px);
+            margin: 0  0em 0em 0em  ;
+        }
+
+        :root[dir="ltr"] .excalidraw .layer-ui__wrapper .zen-mode-transition.App-menu_bottom--transition-left {
+            transform: none
+        }
+
+        .excalidraw .panelColumn {
+            text-align: left;
+        }
+
+        .export-wrapper {
+            display: flex;
+            flex-direction: column;
+            margin: 50px;
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container">
+    <div id="app"></div>
+</div>
+<script>
+    const  { useEffect, useState, useRef, useCallback } = React;
+
+
+    const App = () => {
+        const excalidrawRef = React.useRef(null);
+        const excalidrawWrapperRef = React.useRef(null);
+
+        const [viewModeEnabled, setViewModeEnabled] = React.useState(false);
+        const [zenModeEnabled, setZenModeEnabled] = React.useState(false);
+        const [gridModeEnabled, setGridModeEnabled] = React.useState(false);
+        useEffect(() => {
+            const onHashChange = () => {
+                const hash = new URLSearchParams(window.location.hash.slice(1));
+                const libraryUrl = hash.get("addLibrary");
+                if (libraryUrl) {
+                    excalidrawRef.current.importLibrary(libraryUrl, hash.get("token"));
+                }
+            };
+            window.addEventListener("hashchange", onHashChange, false);
+            return () => {
+                window.removeEventListener("hashchange", onHashChange);
+            };
+        }, []);
+
+        return React.createElement(
+            React.Fragment,
+            null,
+            React.createElement(
+                "div",
+                { className: "button-wrapper" },
+
+                React.createElement(
+                    "label",
+                    null,
+                    React.createElement("input", {
+                        type: "checkbox",
+                        checked: viewModeEnabled,
+                        onChange: () => setViewModeEnabled(!viewModeEnabled),
+                    }),
+                    "View mode",
+                ),
+                React.createElement(
+                    "label",
+                    null,
+                    React.createElement("input", {
+                        type: "checkbox",
+                        checked: zenModeEnabled,
+                        onChange: () => setZenModeEnabled(!zenModeEnabled),
+                    }),
+                    "Zen mode",
+                ),
+                React.createElement(
+                    "label",
+                    null,
+                    React.createElement("input", {
+                        type: "checkbox",
+                        checked: gridModeEnabled,
+                        onChange: () => setGridModeEnabled(!gridModeEnabled),
+                    }),
+                    "Grid mode",
+                ),
+            ),
+            React.createElement(
+                "div",
+                {
+                    className: "excalidraw-wrapper",
+                    ref: excalidrawWrapperRef,
+                },
+                React.createElement(Excalidraw.default, {
+                    onChange: (elements, state) =>
+                        console.log("Elements :", elements, "State : ", state),
+                    // onPointerUpdate: (payload) => console.log(payload),
+                    onCollabButtonClick: () => window.alert("You clicked on collab button"),
+                    viewModeEnabled: viewModeEnabled,
+                    zenModeEnabled: zenModeEnabled,
+                    gridModeEnabled: gridModeEnabled,
+                }),
+            ),
+        );
+    };
+    const excalidrawWrapper = document.getElementById("app");
+    ReactDOM.render(React.createElement(App), excalidrawWrapper);
+</script>
+</body>
+</html>

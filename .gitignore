@@ -30,3 +30,4 @@ database
 /runtime
 app.conf
 /uploads
+node_modules
