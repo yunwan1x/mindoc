@@ -8,9 +8,9 @@
             <span>&nbsp;·&nbsp;</span>
             <span><a href="https://www.vs2010wy.top/" target="_blank">开源</a></span>
             <span>&nbsp;·&nbsp;</span>
-            <span><a href="https://github.com/yunwan1x/mindoc" target="_blank">{{i18n .Lang "common.source_code"}}</a></span>
+            <span><a href="/sheet" target="_blank">sheet</a></span>
             <span>&nbsp;·&nbsp;</span>
-            <span><a href="https://doc.gsw945.com/docs/mindoc-docs/mindoc-summary.md" target="_blank">{{i18n .Lang "common.manual"}}</a></span>
+            <span><a href="/excalidraw" target="_blank">draw</a></span>
         </div>
         {{if .site_beian}}
         <div class="row text-center">

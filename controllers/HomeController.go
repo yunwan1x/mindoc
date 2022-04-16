@@ -46,3 +46,13 @@ func (c *HomeController) Index() {
 	c.Data["TotalPages"] = int(math.Ceil(float64(totalCount) / float64(pageSize)))
 	c.Data["Lists"] = books
 }
+
+func (c *HomeController) Excalidraw() {
+	c.Prepare()
+	c.TplName = "home/excalidraw.tpl"
+}
+
+func (c *HomeController) Sheet() {
+	c.Prepare()
+	c.TplName = "home/luckysheet.tpl"
+}
