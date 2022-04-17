@@ -107,43 +107,45 @@
                     // onPointerUpdate: (payload) => console.log(payload),
                     onCollabButtonClick: () => window.alert("You clicked on collab button"),
                     renderTopRightUI: (isMobile,appState)=>{
-                        return  React.createElement(
-                            "div",
-                            { className: "button-wrapper" },
 
-                            React.createElement(
-                                "label",
-                                { className: "marktext"},
-                                React.createElement("input", {
-                                    type: "checkbox",
-                                    checked: viewModeEnabled,
-                                    onChange: () => setViewModeEnabled(!viewModeEnabled),
-                                }),
-                                "View mode",
-                            ),
+                      return   isMobile ? null: React.createElement(
+                          "div",
+                          { className: "button-wrapper" },
+
+                          React.createElement(
+                              "label",
+                              { className: "marktext"},
+                              React.createElement("input", {
+                                  type: "checkbox",
+                                  checked: viewModeEnabled,
+                                  onChange: () => setViewModeEnabled(!viewModeEnabled),
+                              }),
+                              "View mode",
+                          ),
 
 
-                            // React.createElement(
-                            //     "label",
-                            //     null,
-                            //     React.createElement("input", {
-                            //         type: "checkbox",
-                            //         checked: zenModeEnabled,
-                            //         onChange: () => setZenModeEnabled(!zenModeEnabled),
-                            //     }),
-                            //     "Zen mode",
-                            // ),
-                            React.createElement(
-                                "label",
-                                { className: "marktext"},
-                                React.createElement("input", {
-                                    type: "checkbox",
-                                    checked: gridModeEnabled,
-                                    onChange: () => setGridModeEnabled(!gridModeEnabled),
-                                }),
-                                "Grid mode",
-                            ),
-                        )
+                          // React.createElement(
+                          //     "label",
+                          //     null,
+                          //     React.createElement("input", {
+                          //         type: "checkbox",
+                          //         checked: zenModeEnabled,
+                          //         onChange: () => setZenModeEnabled(!zenModeEnabled),
+                          //     }),
+                          //     "Zen mode",
+                          // ),
+                          React.createElement(
+                              "label",
+                              { className: "marktext"},
+                              React.createElement("input", {
+                                  type: "checkbox",
+                                  checked: gridModeEnabled,
+                                  onChange: () => setGridModeEnabled(!gridModeEnabled),
+                              }),
+                              "Grid mode",
+                          ),
+                      )
+
 
                     },
                     renderFooter:(isMobile,appState)=>{
