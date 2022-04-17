@@ -7,10 +7,13 @@
     <script src="https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
 
-    <script  src="https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.11.0/dist/excalidraw.production.min.js"
-    ></script>
+    <script  src="https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw-next@0.11.0-3840e2f/dist/excalidraw.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw-next@0.11.0-3840e2f/dist/excalidraw-assets/i18n-zh-CN-json-9290d72a8c442bde9b39.js"></script>
     <style>
         body, html{
+        }
+        .excalidraw {
+            --color-primary: green ;
         }
         .App {
             font-family: sans-serif;
@@ -61,6 +64,7 @@
     const  { useEffect, useState, useRef, useCallback } = React;
 
 
+    debugger
     const App = () => {
         const excalidrawRef = React.useRef(null);
         const excalidrawWrapperRef = React.useRef(null);
@@ -126,11 +130,22 @@
                     className: "excalidraw-wrapper",
                     ref: excalidrawWrapperRef,
                 },
-                React.createElement(Excalidraw.default, {
+                React.createElement(ExcalidrawLib.Excalidraw, {
                     onChange: (elements, state) =>
                         console.log("Elements :", elements, "State : ", state),
                     // onPointerUpdate: (payload) => console.log(payload),
                     onCollabButtonClick: () => window.alert("You clicked on collab button"),
+                    renderTopRightUI: (isMobile,appState)=>{
+                        console.log(appState)
+                        return React.createElement("a",null,"首页")
+
+                    },
+                    renderFooter:(isMobile,appState)=>{
+                        console.log(appState)
+                        return React.createElement("a",null,"首页")
+
+                    },
+                    langCode: "zh-CN",
                     viewModeEnabled: viewModeEnabled,
                     zenModeEnabled: zenModeEnabled,
                     gridModeEnabled: gridModeEnabled,
@@ -139,6 +154,7 @@
         );
     };
     const excalidrawWrapper = document.getElementById("app");
+    const {serializeAsJSON,restoreAppState,restoreElements,restore,FONT_FAMILY} = ExcalidrawLib
     ReactDOM.render(React.createElement(App), excalidrawWrapper);
 </script>
 </body>
