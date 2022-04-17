@@ -123,16 +123,16 @@
                             ),
 
 
-                            React.createElement(
-                                "label",
-                                null,
-                                React.createElement("input", {
-                                    type: "checkbox",
-                                    checked: zenModeEnabled,
-                                    onChange: () => setZenModeEnabled(!zenModeEnabled),
-                                }),
-                                "Zen mode",
-                            ),
+                            // React.createElement(
+                            //     "label",
+                            //     null,
+                            //     React.createElement("input", {
+                            //         type: "checkbox",
+                            //         checked: zenModeEnabled,
+                            //         onChange: () => setZenModeEnabled(!zenModeEnabled),
+                            //     }),
+                            //     "Zen mode",
+                            // ),
                             React.createElement(
                                 "label",
                                 { className: "marktext"},
