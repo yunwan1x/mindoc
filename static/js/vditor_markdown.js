@@ -2,10 +2,12 @@
 function vditorEditor ({
                            openLastSelectedNode,saveDocument,isBook
                        }) {
+  
     if(window.editor){
         return window.editor
     }
 
+   
 
 
 
@@ -105,6 +107,7 @@ function vditorEditor ({
         }
     }
 
+    const tools={name:'more',toolbar:['list','link','table','ordered-list','quote','code']}
 
     const config = {
         toolbarConfig: {
@@ -133,7 +136,7 @@ function vditorEditor ({
             openLastSelectedNode&&openLastSelectedNode()
 
         },
-        toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache]:[back, saveButton,pasterButton,clearCache]
+        toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache,tools]:[back, saveButton,pasterButton,clearCache,tools]
     }
     const vditor = new Vditor('vditor', config)
 
