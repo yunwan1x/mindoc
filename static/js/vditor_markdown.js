@@ -140,7 +140,7 @@ function vditorEditor ({
                         $('#wy_save').attr('fill',cacheState.none)
                     })
                 }
-            },30*1000)
+            },15*1000)
 
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache,tools]:[back, saveButton,pasterButton,clearCache,tools]
