@@ -491,7 +491,7 @@ $(function () {
     /**
      * 启动自动保存，默认30s自动保存一次
      */
-    window.book.auto_save = true
+    
     if (window.book && window.book.auto_save) {
         setTimeout(function () {
             setInterval(function () {
