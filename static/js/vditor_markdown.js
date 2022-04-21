@@ -134,7 +134,7 @@ function vditorEditor ({
         async after() {
             $('#manual-mask').click(()=>$('#manualCategory,#manual-mask').toggle())
             openLastSelectedNode&&openLastSelectedNode()
-            setTimeout(()=>{
+            setInterval(()=>{
                 if($('#wy_save').attr("fill")==cacheState.cached){
                     saveDocument(false,()=>{
                         $('#wy_save').attr('fill',cacheState.none)
