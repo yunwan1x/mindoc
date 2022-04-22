@@ -55,10 +55,14 @@
         }
         .marktext{
             font-size: .5em;
+            cursor: pointer;
             color: var(--keybinding-color);
             font-family: var(--ui-font);
             -webkit-user-select: none;
             user-select: none;
+        }
+        .marktext input[type=checkbox]{
+            display:none;
         }
 
         :root[dir="ltr"] .excalidraw .layer-ui__wrapper .zen-mode-transition.App-menu_bottom--transition-left {
