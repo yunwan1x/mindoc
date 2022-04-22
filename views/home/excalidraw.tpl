@@ -60,6 +60,7 @@
             font-family: var(--ui-font);
             -webkit-user-select: none;
             user-select: none;
+            margin-left: 1em;
         }
         .marktext input[type=checkbox]{
             display:none;
