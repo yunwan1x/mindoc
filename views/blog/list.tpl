@@ -26,6 +26,13 @@
 <div class="manual-reader manual-container manual-search-reader">
 {{template "widgets/header.tpl" .}}
     <div class="container manual-body">
+        <div class="m-box" style="margin-top: 1em">
+            <div class="box-head">
+                <strong class="box-title">{{i18n .Lang "blog.blog_list"}}</strong>
+                &nbsp;
+                <a href="{{urlfor "BlogController.ManageSetting"}}" class="btn btn-success btn-sm pull-right">{{i18n .Lang "blog.add_blog"}}</a>
+            </div>
+        </div>
         <div class="row">
             <div class="manual-list">
             {{range $index,$item := .Lists}}
