@@ -26,7 +26,7 @@
 <div class="manual-reader manual-container manual-search-reader">
 {{template "widgets/header.tpl" .}}
     <div class="container manual-body">
-        <div class="m-box" style="margin-top: 1em">
+        <div class="m-box" style="margin-top: 10px;padding-left: 10px;padding-right: 10px">
             <div class="box-head">
                 <strong class="box-title">{{i18n .Lang "blog.blog_list"}}</strong>
                 &nbsp;
