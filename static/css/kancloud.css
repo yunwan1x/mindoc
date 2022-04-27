@@ -144,7 +144,7 @@ table>tbody>tr:hover{
     width: 279px;
     border-right: 1px solid #ddd;
     background-color: #fafafa;
-    transition: left 2s;
+    transition: left 1s;
 }
 
 .m-manual .manual-tab .tab-navg {
