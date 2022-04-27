@@ -581,6 +581,8 @@ textarea{
 .manager .dashboard-item{
     float: left;
     width: 100px;
+    margin-bottom: 1em;
+    margin-right: 1em;
     height: 115px;
     padding: 10px;
     font-size: 10px;
