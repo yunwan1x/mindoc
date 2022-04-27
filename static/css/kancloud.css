@@ -137,13 +137,14 @@ table>tbody>tr:hover{
 }
 .m-manual .manual-left {
     position: absolute;
-    left: 0;
+    left: -360px;
     top: 55px;
     z-index: 301;
     bottom: 0;
     width: 279px;
     border-right: 1px solid #ddd;
     background-color: #fafafa;
+    transition: left 2s;
 }
 
 .m-manual .manual-tab .tab-navg {
