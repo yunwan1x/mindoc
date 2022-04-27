@@ -215,7 +215,8 @@ $(function () {
     });
 
     $("#slidebar,#book-title").on("click", function () {
-        $(".m-manual").addClass('manual-mobile-show-left');
+        $(".m-manual").addClass('manual-mobile-show-left')
+        $('.manual-left').css("max-width","100px").animate({"max-width": "360px"},'fast','swing')
     });
     $(".manual-mask").on("click", function () {
         $(".m-manual").removeClass('manual-mobile-show-left');
