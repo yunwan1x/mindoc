@@ -57,7 +57,7 @@ table>tbody>tr:hover{
 
 
 .m-manual:not(.manual-mobile) ::-webkit-scrollbar {
-    height: 10px;
+    height: 7px;
     width: 7px;
     background: rgba(0,0,0,.1);
 }
@@ -1179,9 +1179,14 @@ table>tbody>tr:hover{
         z-index: 3000
     }
 
+
+
     @media screen and (min-width: 200px) and (max-width: 768px) {
         .m-manual:not(.manual-mobile) ::-webkit-scrollbar {
             width: 0;
+        }
+        ::-webkit-scrollbar {
+            height: 0px !important;
         }
 
         .m-manual .manual-head {
