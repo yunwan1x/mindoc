@@ -47,6 +47,28 @@
                             <span class="fa-class">{{i18n .Lang "mgr.member_amount"}}</span>
                             <span class="fa-class">{{.Model.MemberNumber}}</span>
                     </a>
+                    <a href="{{urlfor "ManagerController.AttachList" }}" class="dashboard-item">
+                        <span class="fa fa-cloud-download" aria-hidden="true"></span>
+                        <span class="fa-class">{{i18n .Lang "mgr.attachment_amount"}}</span>
+                        <span class="fa-class">{{.Model.AttachmentNumber}}</span>
+                    </a>
+                    <a href="{{urlfor "ManagerController.Setting"}}" class="dashboard-item">
+                        <span class="fa fa-cogs" aria-hidden="true"></span>
+                        <span class="fa-class">配置管理</span>
+                        <span class="fa-class">{{.Model.AttachmentNumber}}</span>
+                    </a>
+                    <a href="{{urlfor "ManagerController.LabelList"}}" class="dashboard-item">
+                        <span class="fa fa-bookmark" aria-hidden="true"></span>
+                        <span class="fa-class">标签管理</span>
+                        <span class="fa-class">{{.Model.AttachmentNumber}}</span>
+                    </a>
+                    <a href="{{urlfor "ManagerController.Itemsets"}}" class="dashboard-item">
+                        <span class="fa fa-archive" aria-hidden="true"></span>
+                        <span class="fa-class">项目空间管理</span>
+                        <span class="fa-class">{{.Model.AttachmentNumber}}</span>
+                    </a>
+
+
                     <!--
                     {{/*
                     <div class="dashboard-item">
@@ -55,11 +77,7 @@
                         <span class="fa-class">{{.Model.CommentNumber}}</span>
                     </div>
                 */}}-->
-                    <a href="{{urlfor "ManagerController.AttachList" }}" class="dashboard-item">
-                        <span class="fa fa-cloud-download" aria-hidden="true"></span>
-                        <span class="fa-class">{{i18n .Lang "mgr.attachment_amount"}}</span>
-                        <span class="fa-class">{{.Model.AttachmentNumber}}</span>
-                    </a>
+
                 </div>
             </div>
         </div>

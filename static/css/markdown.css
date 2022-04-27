@@ -8,9 +8,16 @@ body{
     font-family: "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif !important;
 }
 ::-webkit-scrollbar , body  .scrollbar-track-color{
-    height: 9px;
+    height: 7px !important;
     width: 7px;
     background: #E6E6E6;
+}
+@media screen and (min-width: 200px) and (max-width: 768px){
+    ::-webkit-scrollbar , body  .scrollbar-track-color{
+        height: 0px !important;
+        width: 7px;
+        background: #E6E6E6;
+    }
 }
 ::-webkit-scrollbar:hover {
     background: #CCCCCC;
@@ -363,6 +370,14 @@ body{
     padding: 0 10px;
     line-height: 1.2;
     color: #8e8d8d
+}
+
+@screen(min){
+    ::-webkit-scrollbar , body  .scrollbar-track-color{
+        height: 0px !important;
+        width: 7px;
+        background: #E6E6E6;
+    }
 }
 
 
