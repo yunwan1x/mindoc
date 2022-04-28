@@ -34,7 +34,7 @@ textarea{
     box-shadow: none;
 }
 ::-webkit-scrollbar , body  .scrollbar-track-color{
-    height: 7px !important;
+    height: 10px !important;
     width: 7px;
     background: #E6E6E6;
 }
