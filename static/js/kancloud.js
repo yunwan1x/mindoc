@@ -209,7 +209,9 @@ $(function () {
             return false
         }
         $(".m-manual").removeClass('manual-mobile-show-left');
-        $('.manual-left').css("left","-360px")
+        if(screen.availWidth<520){
+            $('.manual-left').css("left","-360px")
+        }
         loadDocument(selected.node.a_attr.href, selected.node.id,selected.node.a_attr['data-version']);
     }).on("ready.jstree",function () {
         $("#sidebar").show()
