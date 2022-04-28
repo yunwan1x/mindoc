@@ -12,19 +12,7 @@ body{
     width: 7px;
     background: #E6E6E6;
 }
-@media screen and (min-width: 200px) and (max-width: 768px){
-    ::-webkit-scrollbar , body  .scrollbar-track-color{
-        height: 0px !important;
-        width: 7px;
-        background: #E6E6E6;
-    }
-    #manualCategory{
-        transition: left 0.8s;
-        left: -80%;
-        position:absolute;top: 36px;
-        max-width: 360px;
-    }
-}
+
 ::-webkit-scrollbar:hover {
     background: #CCCCCC;
 }
@@ -384,8 +372,17 @@ body{
     color: #8e8d8d
 }
 
-
-
-
-
+@media screen  and (max-width: 768px){
+    ::-webkit-scrollbar , body  .scrollbar-track-color{
+        height: 0px !important;
+        width: 7px;
+        background: #E6E6E6;
+    }
+    #manualCategory{
+        transition: left 0.8s;
+        left: -80%;
+        position:absolute;top: 36px;
+        max-width: 360px;
+    }
+}
 
