@@ -209,6 +209,7 @@ $(function () {
             return false
         }
         $(".m-manual").removeClass('manual-mobile-show-left');
+        $('.manual-left').css("left","-360px")
         loadDocument(selected.node.a_attr.href, selected.node.id,selected.node.a_attr['data-version']);
     }).on("ready.jstree",function () {
         $("#sidebar").show()
@@ -216,10 +217,10 @@ $(function () {
 
     $("#slidebar,#book-title").on("click", function () {
         $(".m-manual").addClass('manual-mobile-show-left')
-        $('.manual-left').css("left","-360px").animate({"left": "0"},'slow','swing')
+        $('.manual-left').css("left","0px");
     });
     $(".manual-mask").on("click", function () {
-        $('.manual-left').css("left","0").animate({"left": "-360px"},'slow','swing')
+        $('.manual-left').css("left","-360px")
         $(".m-manual").removeClass('manual-mobile-show-left');
     });
 
