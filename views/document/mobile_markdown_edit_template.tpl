@@ -155,7 +155,7 @@
 <div class="m-manual manual-editor">
 
     <div class="manual-body">
-        <div class="manual-category" id="manualCategory" style="position:absolute;top: 36px;width: 80%;display: none">
+        <div class="manual-category" id="manualCategory" >
             <div class="manual-nav">
                 <div class="nav-item active"><i class="fa fa-bars" aria-hidden="true"></i> {{i18n .Lang "doc.document"}}</div>
                 <div class="nav-plus pull-right" id="btnAddDocument" data-toggle="tooltip" data-title="{{i18n .Lang "doc.create_doc"}}" data-direction="right"><i class="fa fa-plus" aria-hidden="true"></i></div>

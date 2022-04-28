@@ -51,6 +51,12 @@ body{
     overflow-y:auto;
     z-index: 999;
 }
+#manualCategory{
+    transition: left 0.8s;
+    left: -80%;
+    position:absolute;top: 36px;
+    max-width: 360px;
+}
 .manual-category .manual-nav {
     font-size: 14px;
     color: #333333;
