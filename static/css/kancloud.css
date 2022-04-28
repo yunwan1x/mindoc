@@ -137,7 +137,7 @@ table>tbody>tr:hover{
 }
 .m-manual .manual-left {
     position: absolute;
-    left: -360px;
+    left: 0px;
     top: 55px;
     z-index: 301;
     bottom: 0;
@@ -1048,6 +1048,7 @@ table>tbody>tr:hover{
         min-width: initial
     }
 
+
     .m-manual.manual-reader .manual-head {
         min-width: initial
     }
@@ -1229,6 +1230,17 @@ table>tbody>tr:hover{
             margin-right: initial !important;
         }
 
+        .m-manual .manual-left {
+            position: absolute;
+            left: -360px;
+            top: 55px;
+            z-index: 301;
+            bottom: 0;
+            width: 279px;
+            border-right: 1px solid #ddd;
+            background-color: #fafafa;
+            transition: left 0.8s;
+        }
 
 
 
