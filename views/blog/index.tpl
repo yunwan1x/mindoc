@@ -79,15 +79,13 @@
                {{.Model.BlogTitle}}
             </h1>
             <div class="blog-meta">
-                <div class="item user_img"><img src="{{cdnimg .Model.MemberAvatar}}" align="{{.Model.CreateName}}"> </div>
-                <div class="item">&nbsp;{{.Model.CreateName}}</div>
-                <div class="item">{{i18n .Lang "blog.posted_on"}}</div>
-                <div class="item">{{date .Model.Created "Y-m-d H:i:s"}}</div>
-                <div class="item">{{.Model.ModifyRealName}}</div>
-                <div class="item">{{i18n .Lang "blog.modified_on"}}</div>
-                <div class="item">{{date .Model.Modified "Y-m-d H:i:s"}}</div>
+                <i class="fa fa-user text-muted"></i>
+                <div class="item text-muted" style="margin-right: 1em">{{.Model.ModifyRealName}}</div>
+
+                <i class="fa fa-clock-o text-muted"></i>
+                <div class="item text-muted" style="margin-right: 1em;">{{date .Model.Modified "Y-m-d H:i:s"}}</div>
                 {{if eq .Member.MemberId .Model.MemberId}}
-                    <div class="item"><a href='{{urlfor "BlogController.ManageEdit" ":id" .Model.BlogId}}' title="{{i18n .Lang "blog.edit_blog"}}"><i class="fa fa-edit"></i> {{i18n .Lang "common.edit"}}</a></div>
+                    <div class="item text-muted"><a href='{{urlfor "BlogController.ManageEdit" ":id" .Model.BlogId}}' title="{{i18n .Lang "blog.edit_blog"}}"><i class="fa fa-edit"></i> {{i18n .Lang "common.edit"}}</a></div>
                 {{end}}
             </div>
         </div>
