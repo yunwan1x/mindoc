@@ -11,6 +11,8 @@
             <span><a href="/sheet" target="_blank">sheet</a></span>
             <span>&nbsp;·&nbsp;</span>
             <span><a href="/excalidraw" target="_blank">draw</a></span>
+            <span>&nbsp;·&nbsp;</span>
+            <span><a href="https://c.runoob.com/" target="_blank">菜鸟工具箱</a></span>
         </div>
         {{if .site_beian}}
         <div class="row text-center">

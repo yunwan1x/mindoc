@@ -398,8 +398,6 @@ textarea{
     margin-top: 60px;
 }
 .manual-search-reader .search-head{
-    margin: 10px auto;
-    padding-bottom: 15px;
     line-height: 1.5em;
     border-bottom: 3px solid #EEEEEE;
 }
