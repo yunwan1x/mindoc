@@ -99,10 +99,6 @@ function jstree_save(node, parent) {
                 layer.msg(locales[lang].saveSortSucc);
             } else {
                 layer.msg(res.message);
-                setInterval(()=>{
-                    window.reload()
-                },1000)
-
             }
         }
     })
