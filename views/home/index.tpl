@@ -26,8 +26,9 @@
                     <div class="list-item">
                         <dl class="manual-item-standard">
                             <dt>
-                                <a href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">
-                                    <img src="{{cdnimg $item.Cover}}" class="cover" alt="{{$item.BookName}}-{{$item.CreateName}}" onerror="this.src='{{cdnimg "static/images/book.jpg"}}';">
+                                <a style="background: #ddd;padding: 1em;font-size: 1.5em;color: #0a001f;height: 100%"  href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">
+                                    {{$item.BookName}}
+{{/*                                    <img src="{{cdnimg $item.Cover}}" class="cover" alt="{{$item.BookName}}-{{$item.CreateName}}" onerror="this.src='{{cdnimg "static/images/book.jpg"}}';">*/}}
                                 </a>
                             </dt>
                             <dd>
