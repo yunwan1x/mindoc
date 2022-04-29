@@ -1192,6 +1192,9 @@ table>tbody>tr:hover{
             height: 0px !important;
         }
 
+        .wy-mobile{
+            display: block !important;
+        }
         .m-manual .manual-head {
             padding-right: 10px !important;
             padding-left: 10px;

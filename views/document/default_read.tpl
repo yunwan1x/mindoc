@@ -56,7 +56,7 @@
                 <a  title="{{.Model.BookName}}" id="book-title" class="book-title">{{.Model.BookName}}</a>
                 <span style="font-size: 12px;font-weight: 100;"></span>
             </div>
-            <div style="float: right;margin-right: -15px;font-size: 2em">
+            <div style="float: right;margin-right: -15px;font-size: 2em;display: none" class="wy-mobile">
                 <a style="color: black" href="{{urlfor "DocumentController.Edit" ":key" .Model.Identify ":id" ""}}"  ><i class="fa fa-edit" aria-hidden="true"></i> </a>
                 <a style="color: black" href="{{urlfor "HomeController.Index"}}" > <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> </a>
                 <a style="color: black" href="{{urlfor "ManagerController.EditBook" ":key" .Model.Identify ":id" ""}}"  > <i class="fa fa-gear" aria-hidden="true"></i> </a>
