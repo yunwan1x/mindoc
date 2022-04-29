@@ -37,7 +37,7 @@
             <div class="manual-list">
             {{range $index,$item := .Lists}}
                 <div class="search-item">
-                    <div class="title">{{if eq $item.BlogStatus "password"}}<span class="label">{{i18n $.Lang "blog.encrypt"}}</span>{{end}} <a href="{{urlfor "BlogController.Index" ":id" $item.BlogId}}" title="{{$item.BlogTitle}}">{{$item.BlogTitle}}</a> </div>
+                    <div class="title">{{if eq $item.BlogStatus "password"}}<span class="label">{{i18n $.Lang "blog.encrypt"}}</span>{{end}} <a style="display: block;" href="{{urlfor "BlogController.Index" ":id" $item.BlogId}}" title="{{$item.BlogTitle}}">{{$item.BlogTitle}}</a> </div>
                     <div class="description">
                     {{$item.BlogExcerpt}}
                     </div>

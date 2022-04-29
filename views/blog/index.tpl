@@ -85,7 +85,8 @@
                 <i class="fa fa-clock-o text-muted"></i>
                 <div class="item text-muted" style="margin-right: 1em;">{{date .Model.Modified "Y-m-d H:i:s"}}</div>
                 {{if eq .Member.MemberId .Model.MemberId}}
-                    <div class="item text-muted"><a href='{{urlfor "BlogController.ManageEdit" ":id" .Model.BlogId}}' title="{{i18n .Lang "blog.edit_blog"}}"><i class="fa fa-edit"></i> {{i18n .Lang "common.edit"}}</a></div>
+                    <div class="item text-muted"><a href="{{urlfor "BlogController.ManageSetting" ":id" .Model.BlogId}}" title="{{i18n $.Lang "blog.setting_blog"}}" class="setting-btn"><i class="fa fa-gear"></i> {{i18n $.Lang "common.setting"}}</a></div>
+                    <div class="item text-muted" style="margin-left: 1em"><a href='{{urlfor "BlogController.ManageEdit" ":id" .Model.BlogId}}' title="{{i18n .Lang "blog.edit_blog"}}"><i class="fa fa-edit"></i> {{i18n .Lang "common.edit"}}</a></div>
                 {{end}}
             </div>
         </div>
