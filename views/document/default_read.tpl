@@ -56,8 +56,12 @@
                 <a  title="{{.Model.BookName}}" id="book-title" class="book-title">{{.Model.BookName}}</a>
                 <span style="font-size: 12px;font-weight: 100;"></span>
             </div>
-            <a href="{{urlfor "HomeController.Index"}}" class="btn btn-default btn-mobile"> <i class="fa fa-home" aria-hidden="true"></i> {{i18n .Lang "common.home"}}</a>
-            <a href="{{urlfor "DocumentController.Edit" ":key" .Model.Identify ":id" ""}}" class="btn btn-primary btn-mobile" style="right: 90px;position: absolute;top: 10px;"><i class="fa fa-edit" aria-hidden="true"></i> {{i18n .Lang "blog.edit"}}</a>
+            <div style="float: right;margin-right: -15px;font-size: 2em">
+                <a style="color: black" href="{{urlfor "DocumentController.Edit" ":key" .Model.Identify ":id" ""}}"  ><i class="fa fa-edit" aria-hidden="true"></i> </a>
+                <a style="color: black" href="{{urlfor "HomeController.Index"}}" > <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> </a>
+                <a style="color: black" href="{{urlfor "ManagerController.EditBook" ":key" .Model.Identify ":id" ""}}"  > <i class="fa fa-gear" aria-hidden="true"></i> </a>
+            </div>
+
 
             <div class="navbar-header pull-right manual-menu">
                 <div class="dropdown pull-left" style="margin-right: 10px;">
