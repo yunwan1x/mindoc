@@ -26,19 +26,19 @@
                     <div class="list-item">
                         <dl class="manual-item-standard">
                             <dt>
-                                <a style="background: #ddd;padding: 1em;font-size: 1.5em;color: #0a001f;height: 100%"  href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">
+                                <a style="background: #ddd;padding: 1em;font-size: 20px;color: #0a001f;height: 100%"  href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">
                                     {{$item.BookName}}
 {{/*                                    <img src="{{cdnimg $item.Cover}}" class="cover" alt="{{$item.BookName}}-{{$item.CreateName}}" onerror="this.src='{{cdnimg "static/images/book.jpg"}}';">*/}}
                                 </a>
                             </dt>
-                            <dd>
-                                <a href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" class="name" title="{{$item.BookName}}-{{$item.CreateName}}">{{$item.BookName}}</a>
-                            </dd>
+{{/*                            <dd>*/}}
+{{/*                                <a href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" class="name" title="{{$item.BookName}}-{{$item.CreateName}}">{{$item.BookName}}</a>*/}}
+{{/*                            </dd>*/}}
                             <dd>
                             <span class="author">
-                                <b class="text">{{i18n $.Lang "blog.author"}}</b>
-                                <b class="text">-</b>
-                                <b class="text">{{if eq $item.RealName "" }}{{$item.CreateName}}{{else}}{{$item.RealName}}{{end}}</b>
+                                <span class="text-muted">{{i18n $.Lang "blog.author"}}</span>
+                                <span class="text-muted">-</span>
+                                <span class="text-muted">{{if eq $item.RealName "" }}{{$item.CreateName}}{{else}}{{$item.RealName}}{{end}}</span>
                             </span>
                             </dd>
                         </dl>
