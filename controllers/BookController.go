@@ -479,32 +479,33 @@ func (c *BookController) Create() {
 		book.Cover = conf.GetDefaultCover()
 
 		//如果客户端上传了项目封面则直接保存
-		if file, moreFile, err := c.GetFile("image-file"); err == nil {
-			defer file.Close()
 
-			ext := filepath.Ext(moreFile.Filename)
-
-			//如果上传的是图片
-			if strings.EqualFold(ext, ".png") || strings.EqualFold(ext, ".jpg") || strings.EqualFold(ext, ".gif") || strings.EqualFold(ext, ".jpeg") {
-
-				fileName := "cover_" + strconv.FormatInt(time.Now().UnixNano(), 16)
-
-				filePath := filepath.Join("uploads", time.Now().Format("200601"), fileName+ext)
-
-				path := filepath.Dir(filePath)
-
-				os.MkdirAll(path, os.ModePerm)
-
-				if err := c.SaveToFile("image-file", filePath); err == nil {
-					url := "/" + strings.Replace(strings.TrimPrefix(filePath, conf.WorkingDirectory), "\\", "/", -1)
-
-					if strings.HasPrefix(url, "//") {
-						url = string(url[1:])
-					}
-					book.Cover = url
-				}
-			}
-		}
+		//if file, moreFile, err := c.GetFile("image-file"); err == nil {
+		//	defer file.Close()
+		//
+		//	ext := filepath.Ext(moreFile.Filename)
+		//
+		//	//如果上传的是图片
+		//	if strings.EqualFold(ext, ".png") || strings.EqualFold(ext, ".jpg") || strings.EqualFold(ext, ".gif") || strings.EqualFold(ext, ".jpeg") {
+		//
+		//		fileName := "cover_" + strconv.FormatInt(time.Now().UnixNano(), 16)
+		//
+		//		filePath := filepath.Join("uploads", time.Now().Format("200601"), fileName+ext)
+		//
+		//		path := filepath.Dir(filePath)
+		//
+		//		os.MkdirAll(path, os.ModePerm)
+		//
+		//		if err := c.SaveToFile("image-file", filePath); err == nil {
+		//			url := "/" + strings.Replace(strings.TrimPrefix(filePath, conf.WorkingDirectory), "\\", "/", -1)
+		//
+		//			if strings.HasPrefix(url, "//") {
+		//				url = string(url[1:])
+		//			}
+		//			book.Cover = url
+		//		}
+		//	}
+		//}
 
 		if books, _ := book.FindByField("identify", identify, "book_id"); len(books) > 0 {
 			c.JsonResult(6006, i18n.Tr(c.Lang, "message.project_id_existed"))

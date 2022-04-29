@@ -307,30 +307,19 @@ func (item *Document) Processor() *Document {
 			//处理了文档底部信息
 			if selector := docQuery.Find("div.wiki-bottom").First(); selector.Size() <= 0 && item.MemberId > 0 {
 				//处理文档结尾信息
-				docCreator, err := NewMember().Find(item.MemberId, "real_name", "account")
 				release := "<div class=\"wiki-bottom\">"
-
-				release += i18n.Tr(item.Lang, "doc.ft_author")
-				if err == nil && docCreator != nil {
-					if docCreator.RealName != "" {
-						release += docCreator.RealName
-					} else {
-						release += docCreator.Account
-					}
-				}
-				release += " &nbsp;" + i18n.Tr(item.Lang, "doc.ft_create_time") + item.CreateTime.Local().Format("2006-01-02 15:04") + "<br>"
 
 				if item.ModifyAt > 0 {
 					docModify, err := NewMember().Find(item.ModifyAt, "real_name", "account")
 					if err == nil {
 						if docModify.RealName != "" {
-							release += i18n.Tr(item.Lang, "doc.ft_last_editor") + docModify.RealName
+							release += "<i class=\"fa fa-user\"></i> " + docModify.RealName
 						} else {
-							release += i18n.Tr(item.Lang, "doc.ft_last_editor") + docModify.Account
+							release += "<i class=\"fa fa-user\"></i> " + docModify.Account
 						}
 					}
 				}
-				release += " &nbsp;" + i18n.Tr(item.Lang, "doc.ft_update_time") + item.ModifyTime.Local().Format("2006-01-02 15:04") + "<br>"
+				release += " &nbsp;&nbsp;" + "<i class=\"fa fa-clock-o\"></i> " + item.ModifyTime.Local().Format("2006-01-02 15:04:01")
 				release += "</div>"
 
 				if selector := docQuery.Find("div.markdown-article").First(); selector.Size() > 0 {
