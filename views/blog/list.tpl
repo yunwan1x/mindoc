@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <link rel="manifest" href="/static/manifest.json" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{i18n .Lang "blog.blog_list"}} - Powered by MinDoc</title>
     <meta name="keywords" content="MinDoc,文档在线管理系统,WIKI,wiki,wiki在线,文档在线管理,接口文档在线管理,接口文档管理">
     <meta name="description" content="MinDoc文档在线管理系统 {{.site_description}}">

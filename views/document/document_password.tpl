@@ -5,7 +5,6 @@
     <link rel="shortcut icon" href="{{cdnimg "favicon.ico"}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
-    <link rel="manifest" href="/static/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{i18n .Lang "doc.input_pwd"}} - Powered by MinDoc</title>
     <script src="{{cdnjs "static/jquery/1.12.4/jquery.min.js"}}"></script>
