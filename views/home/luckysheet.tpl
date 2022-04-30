@@ -19,7 +19,6 @@
         var options = {
             lang: 'zh',
             sheetFormulaBar:true,
-            plugins: ['chart'],
             container: 'luckysheet' //luckysheet is the container id
         }
         luckysheet.create(options)

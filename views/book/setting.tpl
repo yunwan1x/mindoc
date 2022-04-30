@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="manifest" href="/static/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+   <link rel="manifest" href="/static/manifest.json" />
     <title>{{i18n $.Lang "common.setting"}} - {{.Model.BookName}} - Powered by MinDoc</title>
 
     <!-- Bootstrap -->
