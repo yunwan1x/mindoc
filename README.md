@@ -73,9 +73,8 @@ MinDoc 如果使用MySQL储存数据，则编码必须是`utf8mb4_general_ci`。
 wget -c http://www.musl-libc.org/releases/musl-1.2.2.tar.gz
 tar -xvf musl-1.2.2.tar.gz
 cd musl-1.2.2
-./configure
-make
-sudo make install
+./configure && make&&make install
+
 ```
 ### 使用 musl-gcc 编译 mindoc
 ```bash
