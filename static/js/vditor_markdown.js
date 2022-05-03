@@ -117,7 +117,7 @@ function vditorEditor ({
         }
     }
 
-    const tools={name:'more',toolbar:['list','link','table','ordered-list','quote','code']}
+    const tools={name:'more',toolbar:['table','code','quote']}
 
     const config = {
         toolbarConfig: {
@@ -164,7 +164,7 @@ function vditorEditor ({
             },15*1000)
 
         },
-        toolbar: isBook?[bookmark, back, saveButton,pasterButton,clearCache,tools]:[back, saveButton,pasterButton,clearCache,tools]
+        toolbar: isBook?[bookmark, back, saveButton,pasterButton,'link','list','ordered-list',tools]:[back, saveButton,pasterButton,'link','list','ordered-list',tools]
     }
     const vditor = new Vditor('vditor', config)
 
