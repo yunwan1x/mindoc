@@ -35,7 +35,10 @@
             <div style="display: inline-block;" class="navbar-mobile">
                 <a href="{{urlfor "HomeController.Index" }}" title={{i18n .Lang "common.home"}}>{{i18n .Lang "common.home"}}</a>
                 <a href="{{urlfor "BlogController.List" }}" title={{i18n .Lang "common.blog"}}>{{i18n .Lang "common.blog"}}</a>
+
+
             </div>
+
 
             <div class="btn-group dropdown-menu-right pull-right slidebar visible-xs-inline-block visible-sm-inline-block">
                 <button class="btn btn-default dropdown-toggle hidden-lg" style="border: none;top:5px" type="button" data-toggle="dropdown"><i class="fa fa-align-justify"></i></button>
@@ -63,6 +66,18 @@
                     <li><a href="{{urlfor "AccountController.Login"}}" title={{i18n .Lang "common.login"}}>{{i18n .Lang "common.login"}}</a></li>
                     {{end}}
                 </ul>
+            </div>
+            <div class="navbar-mobile" >
+                <form class="" style="" action="{{urlfor "SearchController.Index"}}" method="get">
+                    <div style="width: 100%">
+                        <input class="form-control"  name="keyword" type="search" style="margin-left:10px;width:  calc(100vw - 2em );display: inline-block" placeholder="{{i18n .Lang "message.keyword_placeholder"}}" value="{{.Keyword}}">
+                        <span class="search-btn" style="margin-left: -1.5em">
+                        <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+
+                </form>
+
             </div>
 
         </div>
