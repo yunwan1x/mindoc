@@ -614,7 +614,7 @@ textarea{
     box-shadow: 0 1px 2px 0 #e3e3e0;
 }
 .pagination-container .pagination>li>a,.pagination-container .pagination>li>span{
-    padding: 8px 16px !important;
+    padding: 5px 12px ;
 }
 .pagination-container .pagination>li>a,.pagination-container  .pagination>li>span{
     color: #272727;

@@ -524,7 +524,7 @@ func (c *BookController) Create() {
 		book.IsEnableShare = 0
 		book.IsUseFirstDocument = 1
 		book.IsDownload = 1
-		book.AutoRelease = 0
+		book.AutoRelease = 1
 		book.ItemId = itemId
 
 		book.Editor = "markdown"

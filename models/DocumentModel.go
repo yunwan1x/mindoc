@@ -248,7 +248,8 @@ func (item *Document) IsExist(documentId int) bool {
 //发布单篇文档
 func (item *Document) ReleaseContent() error {
 
-	item.Release = strings.TrimSpace(item.Content)
+	//item.Release = strings.TrimSpace(item.Content)
+	item.Release = ""
 
 	err := item.Processor().InsertOrUpdate("release")
 
@@ -269,6 +270,9 @@ func (item *Document) ReleaseContent() error {
 
 //处理文档的外链，附件，底部编辑信息等.
 func (item *Document) Processor() *Document {
+	if item.Release == "" {
+		item.Release = item.Content
+	}
 	if item.Release != "" {
 		item.Release = utils.SafetyProcessor(item.Release)
 
