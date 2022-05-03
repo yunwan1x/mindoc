@@ -1106,6 +1106,10 @@ textarea{
     }
     .manual-body{
         padding: 0;
+        margin-top: 95px;
+    }
+    .manual-search-reader .manual-body{
+        margin-top: 105px;
     }
     .navbar-brand{
         padding-left: 10px !important;
