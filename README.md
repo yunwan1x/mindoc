@@ -78,13 +78,11 @@ cd musl-1.2.2
 ```
 ### 使用 musl-gcc 编译 mindoc
 ```bash
-go mod tidy -v
-export GOARCH=amd64
-export GOOS=linux
+go env -w GOPROXY=https://goproxy.cn,direct && go mod tidy -v
+
 # 设置使用musl-gcc
-export CC=/usr/local/musl/bin/musl-gcc
-# 设置版本
-export TRAVIS_TAG=temp-musl-v`date +%y%m%d`
+export GOOS=linux;export GOARCH=amd64;export CC=/usr/local/musl/bin/musl-gcc;export TRAVIS_TAG=temp-musl-v`date +%y%m%d`
+
 go build -o mindoc --ldflags="-linkmode external -extldflags '-static' -w -X 'github.com/mindoc-org/mindoc/conf.VERSION=$TRAVIS_TAG' -X 'github.com/mindoc-org/mindoc/conf.BUILD_TIME=`date`' -X 'github.com/mindoc-org/mindoc/conf.GO_VERSION=`go version`'"
 # 验证
 ./mindoc version
