@@ -44,6 +44,8 @@ $(function () {
         if(e.keyCode == 13){
             $('#input').data("add",true)
         }
+    }).blur(function () {
+        hideTip()
     });
     $('#input').on('beforeItemAdd', function(event) {
         event.cancel = $('#input').data("add")?false:true
