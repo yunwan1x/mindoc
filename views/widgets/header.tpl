@@ -65,18 +65,7 @@
                     {{end}}
                 </ul>
             </div>
-            <div class="navbar-mobile" >
-                <form class="" style="" action="{{urlfor "SearchController.Index"}}" method="get">
-                    <div style="width: 100%">
-                        <input class="form-control"  name="keyword" type="search" style="margin-left:10px;width:  calc(100vw - 2em );display: inline-block" placeholder="{{i18n .Lang "message.keyword_placeholder"}}" value="{{.Keyword}}">
-                        <span class="search-btn" style="margin-left: -1.5em">
-                        <i class="fa fa-search"></i>
-                        </span>
-                    </div>
 
-                </form>
-
-            </div>
 
         </div>
         <nav class="navbar-collapse hidden-xs hidden-sm" role="navigation">
