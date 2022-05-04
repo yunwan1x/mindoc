@@ -11,6 +11,11 @@
 #container .bootstrap-tagsinput input {
     flex-grow: 1;
 }
+#container .label {
+    background-color: transparent;
+    color: #666666 !important;
+    border: 1px solid #666666;
+}
 
 #container .bootstrap-tagsinput span {
     flex-grow: 0;
