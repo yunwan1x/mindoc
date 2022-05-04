@@ -23,6 +23,9 @@
     <link href="{{cdncss "/static/katex/katex.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/print.css"}}" media="print" rel="stylesheet">
     <link href="{{cdncss "/static/css/main.css" "version"}}" rel="stylesheet">
+    <link href="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="static/css/tag.css" rel="stylesheet">
+
     <style type="text/css">
         .header{
             min-height: 1rem;
@@ -89,6 +92,11 @@
                     <div class="item text-muted" style="margin-left: 1em"><a href='{{urlfor "BlogController.ManageEdit" ":id" .Model.BlogId}}' title="{{i18n .Lang "blog.edit_blog"}}"><i class="fa fa-edit"></i> {{i18n .Lang "common.edit"}}</a></div>
                 {{end}}
             </div>
+            <div id="container">
+                <input id="input" type="text"
+                       value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
+                       data-role="tagsinput"/>
+            </div>
         </div>
         <div class="row">
             <div class="article-body  markdown-body editormd-preview-container content">
@@ -127,6 +135,9 @@
 </div>
 <script src="{{cdnjs "/static/jquery/1.12.4/jquery.min.js"}}"></script>
 <script src="{{cdnjs "/static/bootstrap/js/bootstrap.min.js"}}"></script>
+<script src="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
+<script src="{{cdnjs "/static/js/tag.js"}}"></script>
+
 {{.Scripts}}
 </body>
 </html>

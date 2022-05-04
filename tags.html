@@ -10,7 +10,6 @@
     <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <script src="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
-    <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 
     <link href="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
     <style>
@@ -39,13 +38,16 @@
     </style>
 </head>
 <body>
-<input id="input" type="text"
-       value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
-       data-role="tagsinput"/>
+<div id="container">
+    <input id="input" type="text"
+           value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
+           data-role="tagsinput"/>
+</div>
+
 abc
 <script>
 
-    var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+    var states = ['网络','Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
         'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
         'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
         'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
@@ -57,14 +59,27 @@ abc
     ];
     var tags = $('#input').tagsinput({
         trimValue: true,
-        freeInput: true
+        freeInput: true,
+        tagClass: function(item,a) {
+            return 'label label-primary';
+            // console.log(item)
+            // switch (item.continent) {
+            //     case 'Europe'   : return 'label label-primary';
+            //     case 'America'  : return 'label label-danger label-important';
+            //     case 'Australia':
+            //     case 'Africa'   : return 'label label-default';
+            //     case 'Asia'     : return 'label label-warning';
+            // }
+        },
     });
+    var inputElm = $('#input').tagsinput('input');
+
     $('#input').on('itemAdded', function (event) {
         hideTip()
         $('#input').data("add",false)
     });
-    $("<div id='tip'></div>").insertAfter($('input').parent())
-    $('#input').tagsinput('input').on('input', function (val) {
+    $('#container').append("<div id='tip'></div>")
+    inputElm.on('input', function (val) {
         var q = val.currentTarget.value;
         var matches, substringRegex;
         matches = [];
@@ -99,6 +114,14 @@ abc
 
 </script>
 <style>
+    #container{
+        position: relative;
+        width: 50%;
+        box-shadow: 2px 2px 2px #888888;
+    }
+    #container ::-webkit-scrollbar{
+        width: 0;
+    }
 
     #tip {
         max-height: 200px;
@@ -108,7 +131,8 @@ abc
         z-index: 1000;
         width: 100%;
         padding: 0 6px 0 6px;
-        background: white
+        background: white;
+        box-shadow: 2px 2px 2px #888888;
     }
 
     .dataitem {
