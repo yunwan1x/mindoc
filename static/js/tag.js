@@ -26,6 +26,8 @@ $(function () {
     });
     var inputElm = $('#input').tagsinput('input');
 
+    inputElm.attr("type",'search')
+    console.log(inputElm)
     $('#input').on('itemAdded', function (event) {
         hideTip()
         $('#input').data("add",false)
