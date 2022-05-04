@@ -1,0 +1,57 @@
+#container .bootstrap-tagsinput {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #E9E9E9;
+    border-radius: 0;
+    padding-bottom: 2px;
+}
+
+#container .bootstrap-tagsinput input {
+    flex-grow: 1;
+}
+
+#container .bootstrap-tagsinput span {
+    flex-grow: 0;
+    margin-bottom: 2px;
+    border-radius: 0;
+    line-height: normal;
+    font-size: 50%;
+}
+#container{
+    position: relative;
+    width: 100%;
+    box-shadow: 2px 2px 2px #888888;
+}
+#container ::-webkit-scrollbar{
+    width: 0;
+}
+
+#tip {
+    max-height: 200px;
+    overflow-y: scroll;
+    position: absolute;
+    color: white;
+    z-index: 1000;
+    width: 100%;
+    padding: 0 6px 0 6px;
+    background: white;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+.dataitem {
+    padding: 2px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E9E9E9;
+    color: #0a001f;
+
+}
+
+.dataitem:hover {
+    color: white;
+    background: #0d6efd;
+    cursor: pointer;
+
+}
