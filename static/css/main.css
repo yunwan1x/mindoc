@@ -57,9 +57,7 @@ textarea{
     -o-border-radius: 6px;
     border-radius: 6px;
 }
-.bootstrap-tagsinput{
-    display: block !important;
-}
+
 .manual-header{
     margin-bottom: 0;
     background-color: #fff;
