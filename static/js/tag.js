@@ -50,15 +50,16 @@
                 showTip(tipData)
             }).keydown(function(e) {
                 if(e.keyCode==40){
-                    tip.find('.dataitem').first().focus()
+                    // tip.find('.dataitem').first().focus(function (){
+                    // })
+                    //
+                    // tip.find('.dataitem').first().focus();
                 }
                 if(e.keyCode == 13){
                     $this.data("add",true)
                 }
-            }).blur(function () {
-                if(container.find('.dataitem:focus').size()==0){
-                    hideTip()
-                }
+            }).focusout(function () {
+                hideTip()
             });
             $(this).on('beforeItemAdd', function(event) {
                 event.cancel = $this.data("add")?false:true
