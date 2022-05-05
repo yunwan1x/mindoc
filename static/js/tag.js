@@ -23,7 +23,7 @@
             });
             var $this = $(this)
             var inputElm = $(this).tagsinput('input');
-            inputElm.attr("type",'search')
+            inputElm.attr("type",'search').attr("autocomplete","off")
             $(this).on('itemAdded', function (event) {
                 hideTip()
                 $this.data("add",false)
@@ -56,6 +56,7 @@
                     // tip.find('.dataitem').first().focus();
                 }
                 if(e.keyCode == 13){
+                    e.stopPropagation()
                     $this.data("add",true)
                 }
             }).focusout(function () {

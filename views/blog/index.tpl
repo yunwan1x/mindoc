@@ -23,8 +23,8 @@
     <link href="{{cdncss "/static/katex/katex.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/print.css"}}" media="print" rel="stylesheet">
     <link href="{{cdncss "/static/css/main.css" "version"}}" rel="stylesheet">
-    <link href="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
-    <link href="static/css/tag.css" rel="stylesheet">
+    <link href="/static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/static/css/tag.css" rel="stylesheet">
 
     <style type="text/css">
         .header{
@@ -133,7 +133,7 @@
 </div>
 <script src="{{cdnjs "/static/jquery/1.12.4/jquery.min.js"}}"></script>
 <script src="{{cdnjs "/static/bootstrap/js/bootstrap.min.js"}}"></script>
-<script src="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
+<script src="/static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
 <script src="{{cdnjs "/static/js/tag.js"}}"></script>
 
 {{.Scripts}}

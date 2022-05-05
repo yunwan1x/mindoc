@@ -11,6 +11,8 @@
     <link href="{{cdncss "/static/bootstrap/css/bootstrap.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/font-awesome/css/font-awesome.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/main.css" "version"}}" rel="stylesheet">
+    <link href="/static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/static/css/tag.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,6 +59,10 @@
                                     <input type="radio" {{if eq .Model.BlogType 1}}checked{{end}} name="blog_type" value="1">{{i18n .Lang "blog.link_blog"}}<span class="text"></span>
                                 </label>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>标签</label>
+                            <input type="text" class="form-control" name="title" id="tags" value="{{.Model.BlogTitle}}">
                         </div>
                         <div class="form-group" id="blogLinkDocument"{{if ne .Model.BlogType 1}} style="display: none;" {{end}}>
                             <label>{{i18n .Lang "blog.ref_doc"}}</label>
@@ -112,8 +118,11 @@
 <script src="{{cdnjs "/static/bootstrap/js/bootstrap.min.js"}}" type="text/javascript"></script>
 <script src="{{cdnjs "/static/js/jquery.form.js"}}" type="text/javascript"></script>
 <script src="{{cdnjs "/static/js/main.js"}}" type="text/javascript"></script>
+<script src="/static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
+<script src="{{cdnjs "/static/js/tag.js"}}"></script>
 <script type="text/javascript">
     $(function () {
+        $('#tags').tags({readonly:false})
         $("#gloablEditForm").ajaxForm({
             beforeSubmit : function () {
                 var title = $.trim($("#title").val());
