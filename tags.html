@@ -12,145 +12,27 @@
     <script src="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
 
     <link href="static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
-    <style>
-        .bootstrap-tagsinput {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            border: none;
-            border-bottom: 1px solid #E9E9E9;
-            border-radius: 0;
-            padding-bottom: 2px;
-        }
+    <link href="static/css/tag.css" rel="stylesheet">
 
-        .bootstrap-tagsinput input {
-            flex-grow: 1;
-        }
 
-        .bootstrap-tagsinput span {
-            flex-grow: 0;
-            margin-bottom: 2px;
-            border-radius: 0;
-            line-height: normal;
-            font-size: 100%;
-        }
-
-    </style>
 </head>
 <body>
 <div id="container">
-    <input id="input" type="text"
+    <input  type="text"
            value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
-           data-role="tagsinput"/>
+           />
+    <input  type="text"
+            value="Amsterdam"
+    />
 </div>
 
-abc
+
+<script src="static/js/tag.js"></script>
 <script>
-
-    var states = ['网络','Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-        'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-        'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-        'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-        'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-        'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-        'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-        'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-    ];
-    var tags = $('#input').tagsinput({
-        trimValue: true,
-        freeInput: true,
-        tagClass: function(item,a) {
-            return 'label label-primary';
-            // console.log(item)
-            // switch (item.continent) {
-            //     case 'Europe'   : return 'label label-primary';
-            //     case 'America'  : return 'label label-danger label-important';
-            //     case 'Australia':
-            //     case 'Africa'   : return 'label label-default';
-            //     case 'Asia'     : return 'label label-warning';
-            // }
-        },
-    });
-    var inputElm = $('#input').tagsinput('input');
-
-    $('#input').on('itemAdded', function (event) {
-        hideTip()
-        $('#input').data("add",false)
-    });
-    $('#container').append("<div id='tip'></div>")
-    inputElm.on('input', function (val) {
-        var q = val.currentTarget.value;
-        var matches, substringRegex;
-        matches = [];
-        substrRegex = new RegExp(q, 'i');
-        var tipData = q ? states.filter(value => substrRegex.test(value)) : [];
-        showTip(tipData)
-    }).keydown(function(e) {
-        if(e.keyCode == 13){
-            $('#input').data("add",true)
-        }
-    });
-    $('#input').on('beforeItemAdd', function(event) {
-        event.cancel = $('#input').data("add")?false:true
-    });
-    $("#tip").on('click', '.dataitem', function () {
-        var data = $(this).text();
-        $('#input').data("add",true)
-        $('#input').tagsinput('add', data);
-        $('#input').data("add",false)
-        hideTip()
+    $(function (){
+        $("input").tags({readonly:false})
     })
-
-    function showTip(data) {
-        var str = data.reduce((p, c) => p + `<div class="dataitem" >${c}</div>`, "")
-        $('#tip').html(str).slideDown();
-    }
-
-    function hideTip() {
-        $('#tip').slideUp()
-    }
-
-
 </script>
-<style>
-    #container{
-        position: relative;
-        width: 50%;
-        box-shadow: 2px 2px 2px #888888;
-    }
-    #container ::-webkit-scrollbar{
-        width: 0;
-    }
-
-    #tip {
-        max-height: 200px;
-        overflow-y: scroll;
-        position: absolute;
-        color: white;
-        z-index: 1000;
-        width: 100%;
-        padding: 0 6px 0 6px;
-        background: white;
-        box-shadow: 2px 2px 2px #888888;
-    }
-
-    .dataitem {
-        padding: 2px;
-        padding-left: 5px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #E9E9E9;
-        color: #0a001f;
-
-    }
-
-    .dataitem:hover {
-        color: white;
-        background: #0d6efd;
-        cursor: pointer;
-
-    }
-</style>
 </body>
 </html>
 
