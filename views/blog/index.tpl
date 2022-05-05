@@ -92,11 +92,9 @@
                     <div class="item text-muted" style="margin-left: 1em"><a href='{{urlfor "BlogController.ManageEdit" ":id" .Model.BlogId}}' title="{{i18n .Lang "blog.edit_blog"}}"><i class="fa fa-edit"></i> {{i18n .Lang "common.edit"}}</a></div>
                 {{end}}
             </div>
-            <div id="container">
-                <input id="input" type="text"
-                       value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
-                       data-role="tagsinput"/>
-            </div>
+            <input id="input" type="text"
+                   value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
+            />
         </div>
         <div class="row">
             <div class="article-body  markdown-body editormd-preview-container content">
@@ -139,5 +137,10 @@
 <script src="{{cdnjs "/static/js/tag.js"}}"></script>
 
 {{.Scripts}}
+<script>
+    $(function () {
+        $('#input').tags({readonly:true})
+    })
+</script>
 </body>
 </html>

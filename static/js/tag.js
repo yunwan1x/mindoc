@@ -31,7 +31,7 @@
 
             var bootstarpTag = inputElm.parent();
 
-            bootstarpTag.wrap('<div class="container">')
+            bootstarpTag.wrap('<div class="tag_container">')
             var container = bootstarpTag.parent();
             container.append("<div class='tip'></div>")
 
