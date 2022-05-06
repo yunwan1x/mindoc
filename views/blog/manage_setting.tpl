@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <label>标签</label>
-                            <input type="text" autocomplete="false" class="form-control" name="title1" id="tags" value="{{.Model.BlogTitle}}">
+                            <input type="text" autocomplete="false" class="form-control" name="tags" id="tags" >
                         </div>
                         <div class="form-group" id="blogLinkDocument"{{if ne .Model.BlogType 1}} style="display: none;" {{end}}>
                             <label>{{i18n .Lang "blog.ref_doc"}}</label>
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" id="btnSaveBlogInfo" class="btn btn-success" data-loading-text="{{i18n .Lang "message.processing"}}">{{i18n .Lang "common.save"}}</button>
+                            <div   id="btnSaveBlogInfo" class="btn btn-success" data-loading-text="{{i18n .Lang "message.processing"}}">{{i18n .Lang "common.save"}}</div>
                             <a href="{{.Referer}}" title="{{i18n .Lang "doc.backward"}}" class="btn btn-info">{{i18n .Lang "doc.backward"}}</a>
                             <span id="form-error-message" class="error-message"></span>
                         </div>
@@ -125,8 +125,9 @@
     $(function () {
         $('#tags').tags({readonly:false})
 
+
         $("#gloablEditForm").ajaxForm({
-            beforeSubmit : function () {
+            beforeSubmit : function (e,f,d) {
                 var title = $.trim($("#title").val());
 
                 if (title === ""){

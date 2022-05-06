@@ -23,9 +23,18 @@
             });
             var $this = $(this)
             var inputElm = $(this).tagsinput('input');
-            inputElm.attr("type",'search').attr("autocomplete","off").attr("role","presentation")
+            // $(document).keydown(function (e) {
+            //
+            //     if(e.keyCode==13 && e.originalEvent.target == inputElm.get(0)){
+            //         console.log(e)
+            //         e.stopPropagation()
+            //     }
+            // })
+            inputElm.attr("type",'search').attr("name","hidden-tags").attr("autocomplete","off").attr("role","presentation")
 
-            inputElm.after("<input type='text' style='width: 0;flex-grow: 0' />")
+            inputElm.after("<input type='text' name='hidden-o'  style='width: 0;flex-grow: 0' />")
+
+
 
             $(this).on('itemAdded', function (event) {
                 hideTip()
@@ -59,12 +68,12 @@
                     // tip.find('.dataitem').first().focus();
                 }
                 if(e.keyCode == 13){
-                    e.stopPropagation()
                     $this.data("add",true)
                 }
             }).focusout(function () {
                 hideTip()
             });
+
             $(this).on('beforeItemAdd', function(event) {
                 event.cancel = $this.data("add")?false:true
             });
