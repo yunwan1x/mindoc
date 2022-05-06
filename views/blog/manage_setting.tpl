@@ -38,7 +38,8 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form method="post" id="gloablEditForm" action="{{urlfor "BlogController.ManageSetting"}}">
+                    <form method="post" id="gloablEditForm" autocomplete="off" action="{{urlfor "BlogController.ManageSetting"}}">
+                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
                         <input type="hidden" name="id" id="blogId" value="{{.Model.BlogId}}">
                         <input type="hidden" name="identify" value="{{.Model.BlogIdentify}}">
                         <input type="hidden" name="document_id" value="{{.Model.DocumentId}}">
@@ -62,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <label>标签</label>
-                            <input type="text" class="form-control" name="title" id="tags" value="{{.Model.BlogTitle}}">
+                            <input type="text" autocomplete="false" class="form-control" name="title1" id="tags" value="{{.Model.BlogTitle}}">
                         </div>
                         <div class="form-group" id="blogLinkDocument"{{if ne .Model.BlogType 1}} style="display: none;" {{end}}>
                             <label>{{i18n .Lang "blog.ref_doc"}}</label>
@@ -123,6 +124,7 @@
 <script type="text/javascript">
     $(function () {
         $('#tags').tags({readonly:false})
+
         $("#gloablEditForm").ajaxForm({
             beforeSubmit : function () {
                 var title = $.trim($("#title").val());

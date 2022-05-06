@@ -23,7 +23,10 @@
             });
             var $this = $(this)
             var inputElm = $(this).tagsinput('input');
-            inputElm.attr("type",'search').attr("autocomplete","off")
+            inputElm.attr("type",'search').attr("autocomplete","off").attr("role","presentation")
+
+            inputElm.after("<input type='text' style='width: 0;flex-grow: 0' />")
+
             $(this).on('itemAdded', function (event) {
                 hideTip()
                 $this.data("add",false)
