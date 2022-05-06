@@ -50,7 +50,7 @@
                 matches = [];
                 substrRegex = new RegExp(q, 'i');
                 var tipData = q ? states.filter(value => substrRegex.test(value)) : [];
-                showTip(tipData)
+                tipData && showTip(tipData)
             }).keydown(function(e) {
                 if(e.keyCode==40){
                     // tip.find('.dataitem').first().focus(function (){
