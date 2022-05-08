@@ -57,7 +57,7 @@
 
                                             <ul class="dropdown-menu">
                                                 <li><a href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" target="_blank">{{i18n $.Lang "common.read"}}</a></li>
-                                                <li><a href="{{urlfor "ManagerController.EditBook" ":key" $item.Identify}}">{{i18n $.Lang "common.setting"}}</a></li>
+                                                <li><a href="{{urlfor "BookController.Setting" ":key"  $item.Identify}}">{{i18n $.Lang "common.setting"}}</a></li>
                                                 <li><a href="javascript:deleteBook('{{$item.BookId}}');">{{i18n $.Lang "common.delete"}}</a> </li>
                                             </ul>
                                         </div>

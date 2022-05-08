@@ -48,7 +48,7 @@
                                 <label>{{i18n .Lang "blog.project_id"}}</label>
                                 <input type="text" class="form-control" value="{{urlfor "DocumentController.Index" ":key" .Model.Identify}}" disabled placeholder="{{i18n .Lang "blog.project_id"}}">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display: none">
                                 <label>{{i18n .Lang "common.project_space"}}</label>
                                 <select class="js-data-example-ajax form-control" multiple="multiple" name="itemId">
                                     <option value="{{.Model.ItemId}}" selected="selected">{{.Model.ItemName}}</option>

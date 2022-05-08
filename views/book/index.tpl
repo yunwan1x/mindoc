@@ -138,7 +138,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <div class="pull-left" style="width: 620px">
-                        <div class="form-group required">
+                        <div class="form-group required" style="display: none">
                             <label class="text-label col-sm-2">{{i18n $.Lang "common.project_space"}}</label>
                             <div class="col-sm-10">
                                 <select class="js-data-example-ajax-add form-control" multiple="multiple" name="itemId" id="itemId">
@@ -211,7 +211,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <div class="form-group required">
+                        <div class="form-group required" style="display: none">
                             <label class="text-label">{{i18n $.Lang "common.project_space"}}</label>
                             <select class="js-data-example-ajax-import form-control" multiple="multiple" name="itemId">
                                 {{if .Item}}<option value="{{.Item.ItemId}}" selected>{{.Item.ItemName}}</option> {{end}}
