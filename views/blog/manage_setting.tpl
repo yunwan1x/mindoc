@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit"   id="btnSaveBlogInfo" class="btn btn-success" data-loading-text="{{i18n .Lang "message.processing"}}">{{i18n .Lang "common.save"}}</button>
+                            <div    id="btnSaveBlogInfo" class="btn btn-success" data-loading-text="{{i18n .Lang "message.processing"}}">{{i18n .Lang "common.save"}}</div>
                             <a href="{{.Referer}}" title="{{i18n .Lang "doc.backward"}}" class="btn btn-info">{{i18n .Lang "doc.backward"}}</a>
                             <span id="form-error-message" class="error-message"></span>
                         </div>
@@ -126,6 +126,9 @@
         $('#tags').tags({readonly:false})
 
 
+        $('#btnSaveBlogInfo').click(function () {
+            $("#gloablEditForm").submit()
+        })
         $("#gloablEditForm").ajaxForm({
             beforeSubmit : function (e,f,d) {
                 var title = $.trim($("#title").val());
