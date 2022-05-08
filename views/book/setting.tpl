@@ -16,7 +16,8 @@
     <link href="{{cdncss "/static/bootstrap/plugins/bootstrap-switch/css/bootstrap3//bootstrap-switch.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/select2/4.0.5/css/select2.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/main.css" "version"}}" rel="stylesheet">
-
+    <link href="/static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/static/css/tag.css" rel="stylesheet">
 </head>
 <body>
 <div class="manual-reader">
@@ -62,6 +63,10 @@
                                 <p class="text">{{i18n $.Lang "message.project_id_desc"}}</p>
                             </div>
                             <div class="form-group">
+                                <label>标签</label>
+                                <input type="text" class="form-control" id="tags" placeholder="请输入标签">
+                            </div>
+                            <div class="form-group" style="display: none">
                                 <label>{{i18n $.Lang "common.project_space"}}</label>
                                 <select class="js-data-example-ajax form-control" multiple="multiple" name="itemId">
                                     <option value="{{.Model.ItemId}}" selected="selected">{{.Model.ItemName}}</option>
@@ -308,8 +313,11 @@
 <script src="{{cdnjs "/static/select2/4.0.5/js/select2.full.min.js"}}"></script>
 <script src="{{cdnjs "/static/select2/4.0.5/js/i18n/zh-CN.js"}}"></script>
 <script src="{{cdnjs "/static/js/main.js"}}" type="text/javascript"></script>
+<script src="/static/bootstrap/plugins/tagsinput/bootstrap-tagsinput.js"></script>
+<script src="{{cdnjs "/static/js/tag.js"}}"></script>
 <script type="text/javascript">
     $(function () {
+        $('#tags').tags({readonly:false})
         $("#upload-logo-panel").on("hidden.bs.modal",function () {
             $("#upload-logo-panel").find(".modal-body").html(window.modalHtml);
         }).on("show.bs.modal",function () {
