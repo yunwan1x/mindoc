@@ -218,7 +218,6 @@
                         type :"post",
                         dataType : "json",
                         success : function (res) {
-                            console.log(res);
                             if (res.errcode === 0){
                                 for(var index in $this.lists){
                                     var item = $this.lists[index];

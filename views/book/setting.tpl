@@ -496,7 +496,6 @@
             }).on("uploadSuccess",function (file, res) {
 
                 if(res.errcode === 0){
-                    console.log(res);
                     $("#upload-logo-panel").modal('hide');
                     $("#headimgurl").attr('src',res.data);
                 }else{

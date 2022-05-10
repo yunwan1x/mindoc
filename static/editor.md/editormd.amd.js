@@ -3768,7 +3768,7 @@
      */
     
     editormd.markdownToCRenderer = function(toc, container, tocDropdown, startLevel) {
-        
+        debugger
         var html        = "";    
         var lastLevel   = 0;
         var classPrefix = this.classPrefix;

@@ -4030,7 +4030,6 @@
             html += "<li class=\"directory-item\"><a class=\"directory-item-link directory-item-link-" + level + "\" href=\"#" + id + "\" level=\"" + level + "\">" + text + "</a></li>";
             lastLevel = level;
         }
-        console.log(html);
 
         var tocContainer = container.find(".markdown-toc");
 

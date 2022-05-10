@@ -155,8 +155,6 @@ $(function () {
 
         $.get(window.editURL + $node.node.id ).done(function (res) {
             layer.close(index);
-
-            console.log(res)
             if (res.errcode === 0) {
                 window.isLoad = true;
                 if(window.mobile){
@@ -193,6 +191,11 @@ $(function () {
         var node = window.selectNode;
         var content = window.editor.getMarkdown();
         var html = window.editor.getPreviewedHTML();
+        var toc = window.editormd.markdownToCRenderer(window.editor.markdownToC)
+
+        if(!html.contains("markdown-toc editormd-markdown-toc")){
+            html = `<div class="markdown-toc editormd-markdown-toc"><ul class="markdown-toc-list">${toc}</ul></div>` + html
+        }
         var version = "";
 
         if (!node) {
@@ -449,7 +452,7 @@ $(function () {
 
                     window.isLoad = true;
                 },
-                onchange: function () {
+                onchange: function (e1,e2) {
                     resetEditorChanged(true);
                 }
             });
