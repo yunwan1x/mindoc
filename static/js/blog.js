@@ -113,7 +113,10 @@ $(function () {
     function saveBlog($is_cover,fn) {
         var content = window.editor.getMarkdown();
         var html = window.editor.getPreviewedHTML();
-
+        var toc = window.editormd.markdownToCRenderer(window.editor.markdownToC)
+        if(!html.trim().startsWith('<div class="markdown-toc editormd-markdown-toc">')){
+            html = `<div class="markdown-toc editormd-markdown-toc"><ul class="markdown-toc-list">${toc}</ul></div>` + html
+        }
         $.ajax({
             beforeSend: function () {
                 index = layer.load(1, { shade: [0.1, '#fff'] });
