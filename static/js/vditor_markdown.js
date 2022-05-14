@@ -161,7 +161,7 @@ function vditorEditor ({
                         $('#wy_save').attr('fill',cacheState.none)
                     })
                 }
-            },15*1000)
+            },30*1000)
 
         },
         toolbar: isBook?[bookmark, back, saveButton,pasterButton,'link','list','ordered-list',tools]:[back, saveButton,pasterButton,'link','list','ordered-list',tools]
