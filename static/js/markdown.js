@@ -191,7 +191,7 @@ $(function () {
         var node = window.selectNode;
         var content = window.editor.getMarkdown();
         var html = window.editor.getPreviewedHTML();
-        var toc = window.editormd.markdownToCRenderer&&window.editormd.markdownToCRenderer(window.editor.markdownToC)
+        var toc = window.editor.markdownToC&&window.editormd.markdownToCRenderer(window.editor.markdownToC)
         if(toc&&!html.trim().startsWith('<div class="markdown-toc editormd-markdown-toc">')){
             html = `<div class="markdown-toc editormd-markdown-toc"><ul class="markdown-toc-list">${toc}</ul></div>` + html
         }
