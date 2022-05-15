@@ -1054,7 +1054,8 @@ textarea{
 }
 
 .navbar-mobile a {
-    padding: 15px 12px;
+    padding: 15px 15px;
+    margin-left: -5px;
 }
 
 .navbar-mobile a.active {
