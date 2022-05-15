@@ -396,12 +396,19 @@ textarea{
     margin-top: 60px;
 }
 .manual-search-reader .search-head{
-    line-height: 1.5em;
-    border-bottom: 3px solid #EEEEEE;
+    line-height: 2em;
+    border-bottom: 0px solid #EEEEEE;
+    margin-bottom: 5px;
+}
+.search-title{
+    border-bottom: 2px solid #44B035;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 .manual-search-reader .search-head .search-title{
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 300;
+
 }
 .manual-search-reader .search-body {
     margin-top: 80px;
