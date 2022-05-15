@@ -1054,7 +1054,12 @@ textarea{
 }
 
 .navbar-mobile a {
-    padding-right: 5px;
+    padding: 15px 12px;
+}
+
+.navbar-mobile a.active {
+    background-color: #009a61;
+    color: #ffffff;
 }
 
 @media screen and (min-width: 768px) {
@@ -1062,6 +1067,7 @@ textarea{
         display: none !important;
     }
 }
+
 
 
 @media screen and (min-width: 200px) and (max-width: 768px)  {

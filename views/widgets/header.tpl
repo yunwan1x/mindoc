@@ -31,10 +31,9 @@
                 </div>
             </nav>
             <div style="display: inline-block;" class="navbar-mobile">
-                <a href="{{urlfor "HomeController.Index" }}" title={{i18n .Lang "common.home"}}>{{i18n .Lang "common.home"}}</a>
-                <a href="{{urlfor "BlogController.List" }}" title={{i18n .Lang "common.blog"}}>{{i18n .Lang "common.blog"}}</a>
-
-
+                <a href="{{urlfor "HomeController.Index" }}" {{if eq .ControllerName "HomeController"}}class="active"{{end}} title={{i18n .Lang "common.home"}}>{{i18n .Lang "common.home"}}</a>
+                <a href="{{urlfor "BlogController.List" }}" {{if eq .ControllerName "BlogController"}}class="active"{{end}} title={{i18n .Lang "common.blog"}}>{{i18n .Lang "common.blog"}}</a>
+                <a href="/tags" title="标签" {{if eq .ControllerName "LabelController"}}class="active"{{end}} title={{i18n .Lang "common.blog"}}>标签</a>
             </div>
 
 
