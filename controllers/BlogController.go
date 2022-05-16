@@ -152,6 +152,7 @@ func (c *BlogController) ManageSetting() {
 		blogTitle := c.GetString("title")
 		blogIdentify := c.GetString("identify")
 		orderIndex, _ := c.GetInt("order_index", 0)
+		tags := c.GetString("tags", "")
 		blogType, _ := c.GetInt("blog_type", 0)
 		blogExcerpt := c.GetString("excerpt", "")
 		blogStatus := c.GetString("status", "publish")
@@ -159,7 +160,16 @@ func (c *BlogController) ManageSetting() {
 		documentIdentify := strings.TrimSpace(c.GetString("documentIdentify"))
 		bookIdentify := strings.TrimSpace(c.GetString("bookIdentify"))
 		documentId := 0
-
+		resourceType := "blog"
+		if tags != "" {
+			models.NewLabelRelation().DeleteByResourceId(blogId, resourceType)
+			for _, tag := range strings.Split(tags, ",") {
+				label := models.NewLabel()
+				label.InsertOrUpdate(tag)
+				lr := models.LabelRelation{LabelId: label.LabelId, ResourceId: blogId, RelationType: resourceType}
+				lr.SaveLabelRelation()
+			}
+		}
 		if blogTitle == "" {
 			c.JsonResult(6001, i18n.Tr(c.Lang, "message.blog_title_empty"))
 		}

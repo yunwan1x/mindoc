@@ -16,6 +16,7 @@
         return this.each(function (index,e) {
             $(this).tagsinput({
                 trimValue: true,
+                maxChars: 50,
                 freeInput: true,
                 tagClass: function(item,a) {
                     return 'label label-primary';
@@ -75,6 +76,10 @@
             });
 
             $(this).on('beforeItemAdd', function(event) {
+                if(event.item&& event.item.length<2){
+                    event.cancel =true
+                    return
+                }
                 event.cancel = $this.data("add")?false:true
             });
             tip.on('click', '.dataitem', function () {

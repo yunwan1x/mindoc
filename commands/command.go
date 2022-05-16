@@ -104,6 +104,7 @@ func RegisterModel() {
 		new(models.DocumentHistory),
 		new(models.Migration),
 		new(models.Label),
+		new(models.LabelRelation),
 		new(models.Blog),
 		new(models.Template),
 		new(models.Team),
