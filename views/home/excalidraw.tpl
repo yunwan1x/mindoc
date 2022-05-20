@@ -4,12 +4,12 @@
     <title>Excalidraw in browser</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react@16.14.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script>
     <link rel="preload" href="https://anhoder.github.io/media/excalidraw/FG_Virgil.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="https://anhoder.github.io/media/excalidraw/Cascadia.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <script  src="https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw-next@0.11.0-3840e2f/dist/excalidraw.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw-next@0.11.0-3840e2f/dist/excalidraw-assets/i18n-zh-CN-json-9290d72a8c442bde9b39.js"></script>
+    <script  src="https://unpkg.com/@excalidraw/excalidraw-next@0.11.0-3840e2f/dist/excalidraw.production.min.js"></script>
+    <script src="https://unpkg.com/@excalidraw/excalidraw-next@0.11.0-3840e2f/dist/excalidraw-assets/i18n-zh-CN-json-9290d72a8c442bde9b39.js"></script>
     <style>
         body, html{
             margin-top: 0;

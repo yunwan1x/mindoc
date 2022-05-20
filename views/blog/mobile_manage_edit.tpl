@@ -33,7 +33,7 @@
     <link href="{{cdncss "/static/webuploader/webuploader.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/markdown.css" "version"}}" rel="stylesheet">
     <link href="{{cdncss "/static/css/markdown.preview.css" "version"}}" rel="stylesheet">
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.css"/>
+    <link  rel="stylesheet" href="/static/js/vditor/index.css"/>
     <style>
         body {
             margin: 0

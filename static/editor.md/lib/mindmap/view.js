@@ -736,7 +736,7 @@ const scripts = [{
 }, {
   type: 'script',
   data: {
-    src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'
+    src: 'https://unpkg.com/mathjax@3/es5/tex-svg.js'
   }
 }];
 
@@ -757,7 +757,7 @@ const plugin = {
 const styles$1 = [{
   type: 'stylesheet',
   data: {
-    href: 'https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css'
+    href: 'https://unpkg.com/prismjs@1/themes/prism.css'
   }
 }];
 const scripts$1 = [{
@@ -772,13 +772,13 @@ const scripts$1 = [{
 }, {
   type: 'script',
   data: {
-    src: 'https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js'
+    src: 'https://unpkg.com/prismjs@1/components/prism-core.min.js'
   }
 }, // components will be added by paths relative to path of autoloader
 {
   type: 'script',
   data: {
-    src: 'https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js'
+    src: 'https://unpkg.com/prismjs@1/plugins/autoloader/prism-autoloader.min.js'
   }
 }];
 
