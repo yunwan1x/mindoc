@@ -123,7 +123,8 @@ func (c *BookController) Setting() {
 		book.PrivateToken = conf.URLFor("DocumentController.Index", ":key", book.Identify, "token", book.PrivateToken)
 	}
 	c.Data["Model"] = book
-
+	states, _ := models.NewLabel().GetAllLabelName()
+	c.Data["States"] = states
 }
 
 //保存项目信息

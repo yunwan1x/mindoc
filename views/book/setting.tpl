@@ -317,7 +317,8 @@
 <script src="{{cdnjs "/static/js/tag.js"}}"></script>
 <script type="text/javascript">
     $(function () {
-        $('#tags').tags({readonly:false,border:true})
+        var states = "{{.States}}".split(",")
+        $('#tags').tags({readonly:false,border:true,states:states})
         $("#upload-logo-panel").on("hidden.bs.modal",function () {
             $("#upload-logo-panel").find(".modal-body").html(window.modalHtml);
         }).on("show.bs.modal",function () {

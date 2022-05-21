@@ -75,6 +75,16 @@ func (m *Label) InsertOrUpdateMulti(labels string) {
 	}
 }
 
+func (m *Label) GetAllLabelName() (string, error) {
+	o := orm.NewOrm()
+	var labels []string
+	_, err := o.Raw("select  label_name from md_label").QueryRows(&labels)
+	if err != nil {
+		return "", err
+	}
+	return strings.Join(labels, ","), err
+}
+
 //删除标签
 func (m *Label) Delete() error {
 	o := orm.NewOrm()

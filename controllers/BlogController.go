@@ -280,6 +280,8 @@ func (c *BlogController) ManageSetting() {
 	} else {
 		c.Data["Model"] = models.NewBlog()
 	}
+	states, _ := models.NewLabel().GetAllLabelName()
+	c.Data["States"] = states
 }
 
 //文章创建或编辑

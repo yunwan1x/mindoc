@@ -123,7 +123,8 @@
 <script src="{{cdnjs "/static/js/tag.js"}}"></script>
 <script type="text/javascript">
     $(function () {
-        $('#tags').tags({readonly:false,border:true})
+        var states = "{{.States}}".split(",")
+        $('#tags').tags({readonly:false,border:true,states:states})
         $('#btnSaveBlogInfo').click(function () {
             $("#gloablEditForm").submit()
         })
