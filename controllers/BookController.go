@@ -726,6 +726,7 @@ func (c *BookController) Delete() {
 		c.JsonResult(6003, "删除失败")
 	}
 	logs.Info("用户[", c.Member.Account, "]删除了项目 ->", bookResult)
+	(&models.LabelRelation{RelationType: "book", ResourceId: bookResult.BookId}).DeleteByResourceId()
 	c.JsonResult(0, "ok")
 }
 

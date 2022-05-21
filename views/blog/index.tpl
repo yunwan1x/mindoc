@@ -93,7 +93,7 @@
                 {{end}}
             </div>
             <input id="input" type="text"
-                   value="Amsterdam,Washington,Sydney,Beijing,Cairo,Amsterdam1,Washington1,Sydney1,Beijing1,Cairo1"
+                   value="{{.Model.Tags}}"
             />
         </div>
         <div class="row">
@@ -139,6 +139,7 @@
 {{.Scripts}}
 <script>
     $(function () {
+
         $('#input').tags({readonly:true})
     })
 </script>

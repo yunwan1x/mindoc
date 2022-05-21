@@ -422,6 +422,7 @@ func (c *BlogController) ManageDelete() {
 	if err := blog.Delete(blogId); err != nil {
 		c.JsonResult(6003, i18n.Tr(c.Lang, "message.failed"))
 	} else {
+		(&models.LabelRelation{RelationType: "blog", ResourceId: blogId}).DeleteByResourceId()
 		c.JsonResult(0, i18n.Tr(c.Lang, "message.success"))
 	}
 
