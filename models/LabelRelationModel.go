@@ -7,6 +7,7 @@ import (
 )
 
 type LabelRelation struct {
+	Id         int `orm:"column(id);pk;auto;unique;" json:"id" `
 	LabelId    int `orm:"column(label_id);" json:"label_id"`
 	ResourceId int `orm:"column(resource_id);" json:"resource_id"`
 	//book,blog
@@ -33,7 +34,7 @@ func NewLabelRelation() *LabelRelation {
 
 func (m *LabelRelation) SaveLabelRelation() error {
 	o := orm.NewOrm()
-	err := o.Read(m, "resource_id", "label_id")
+	err := o.Read(m)
 	if err != nil {
 		_, err1 := o.Insert(m)
 		if err1 != nil {
@@ -47,7 +48,10 @@ func (m *LabelRelation) SaveLabelRelation() error {
 func (m *LabelRelation) DeleteByResourceId(resourceId int, resourceType string) error {
 	o := orm.NewOrm()
 	_, err := o.Delete(&LabelRelation{ResourceId: resourceId, RelationType: resourceType}, "resource_id", "relation_type")
-	return err
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 //分页查找标签.

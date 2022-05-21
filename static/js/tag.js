@@ -10,9 +10,9 @@
                 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
                 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
                 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-            ],readonly:true }
+            ],readonly:true ,border:false}
         var setting = $.extend(defaultSetting,option)
-        var {states,readonly} = setting
+        var {states,readonly,border} = setting
         return this.each(function (index,e) {
             $(this).tagsinput({
                 trimValue: true,
@@ -23,7 +23,11 @@
                 },
             });
             var $this = $(this)
+
             var inputElm = $(this).tagsinput('input');
+            if(!border){
+                inputElm.parent().css(  {paddingLeft: 0,border: "none",borderRadius: 0,paddingBottom: "2px"})
+            }
             // $(document).keydown(function (e) {
             //
             //     if(e.keyCode==13 && e.originalEvent.target == inputElm.get(0)){

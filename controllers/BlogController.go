@@ -162,7 +162,10 @@ func (c *BlogController) ManageSetting() {
 		documentId := 0
 		resourceType := "blog"
 		if tags != "" {
-			models.NewLabelRelation().DeleteByResourceId(blogId, resourceType)
+			err := models.NewLabelRelation().DeleteByResourceId(blogId, resourceType)
+			if err != nil {
+				logs.Error("delete relation error ", err)
+			}
 			for _, tag := range strings.Split(tags, ",") {
 				label := models.NewLabel()
 				label.InsertOrUpdate(tag)

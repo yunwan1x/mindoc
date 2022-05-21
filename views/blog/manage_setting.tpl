@@ -123,9 +123,7 @@
 <script src="{{cdnjs "/static/js/tag.js"}}"></script>
 <script type="text/javascript">
     $(function () {
-        $('#tags').tags({readonly:false})
-
-
+        $('#tags').tags({readonly:false,border:true})
         $('#btnSaveBlogInfo').click(function () {
             $("#gloablEditForm").submit()
         })

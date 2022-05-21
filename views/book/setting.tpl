@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label>标签</label>
-                                <input type="text" class="form-control" id="tags" placeholder="请输入标签">
+                                <input type="text" class="form-control" id="tags" name="tags" >
                             </div>
                             <div class="form-group" style="display: none">
                                 <label>{{i18n $.Lang "common.project_space"}}</label>
@@ -317,7 +317,7 @@
 <script src="{{cdnjs "/static/js/tag.js"}}"></script>
 <script type="text/javascript">
     $(function () {
-        $('#tags').tags({readonly:false})
+        $('#tags').tags({readonly:false,border:true})
         $("#upload-logo-panel").on("hidden.bs.modal",function () {
             $("#upload-logo-panel").find(".modal-body").html(window.modalHtml);
         }).on("show.bs.modal",function () {
