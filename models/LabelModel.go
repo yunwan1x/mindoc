@@ -89,6 +89,10 @@ func (m *Label) GetAllLabelName() (string, error) {
 func (m *Label) Delete() error {
 	o := orm.NewOrm()
 	_, err := o.Raw("DELETE FROM "+m.TableNameWithPrefix()+" WHERE label_id= ?", m.LabelId).Exec()
+	_, err1 := o.Raw("DELETE FROM md_label_relation where label_id = ?", m.LabelId).Exec()
+	if err1 != nil {
+		return err1
+	}
 
 	if err != nil {
 		return err

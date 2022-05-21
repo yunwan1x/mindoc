@@ -139,7 +139,6 @@ textarea{
     display: inline-block;
     vertical-align: baseline;
     line-height: 1;
-    border-radius: 0.3rem;
     transition: background .1s ease;
     cursor: pointer;
     background-color: transparent;
