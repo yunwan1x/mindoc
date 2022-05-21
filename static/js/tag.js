@@ -14,6 +14,12 @@
         var setting = $.extend(defaultSetting,option)
         var {states,readonly,border} = setting
         return this.each(function (index,e) {
+
+            var $this = $(this)
+            if(readonly&&!$this.val()){
+                $this.hide()
+                return
+            }
             $(this).tagsinput({
                 trimValue: true,
                 maxChars: 50,
@@ -22,8 +28,6 @@
                     return 'label label-primary';
                 },
             });
-            var $this = $(this)
-
             var inputElm = $(this).tagsinput('input');
             if(!border){
                 inputElm.parent().css(  {paddingLeft: 0,border: "none",borderRadius: 0,paddingBottom: "2px"})
