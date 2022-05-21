@@ -142,10 +142,11 @@ textarea{
     border-radius: 0.3rem;
     transition: background .1s ease;
     cursor: pointer;
-    background-color: #e0e0e0;
+    background-color: transparent;
     margin: 0 .5em .5em 0!important;
     padding: 0.5rem 0.8rem;
-    color: #999999;
+    color: black;
+    border: 1px solid #000;
     opacity: 0.8;
 }
 .tag-container-outer .tags a:hover{

@@ -109,7 +109,7 @@ func (m *Label) FindToPager(pageIndex, pageSize int) (labels []*Label, totalCoun
 
 	offset := (pageIndex - 1) * pageSize
 
-	_, err = o.QueryTable(m.TableNameWithPrefix()).OrderBy("-book_number").Offset(offset).Limit(pageSize).All(&labels)
+	_, err = o.Raw("select  count(b.resource_id) as book_number,a.label_id,a.label_name from md_label a left join  md_label_relation b on a.label_id = b.label_id group by  a.label_id order by  book_number desc limit ?,?", offset, pageSize).QueryRows(&labels)
 
 	if err == orm.ErrNoRows {
 		logs.Info("没有查询到标签 ->", err)
