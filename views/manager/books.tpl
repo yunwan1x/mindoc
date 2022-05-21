@@ -38,14 +38,14 @@
                         <div class="list-item">
                                 <div class="book-title">
                                     <div class="pull-left">
-                                        <a href="{{urlfor "ManagerController.EditBook" ":key" $item.Identify}}" title="{{i18n .Lang "mgr.edit_proj"}}" data-toggle="tooltip">
+                                        <span   data-toggle="tooltip">
                                             {{if eq $item.PrivatelyOwned 0}}
                                             <i class="fa fa-unlock" aria-hidden="true"></i>
                                             {{else}}
                                             <i class="fa fa-lock" aria-hidden="true"></i>
                                             {{end}}
                                             {{$item.BookName}}
-                                        </a>
+                                        </span>
                                     </div>
                                     <div class="pull-right">
                                         <div class="btn-group">
