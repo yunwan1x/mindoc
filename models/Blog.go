@@ -36,6 +36,8 @@ type Blog struct {
 	DocumentIdentify string `orm:"-" json:"document_identify"`
 	//关联文档的项目标识
 	BookIdentify string `orm:"-" json:"book_identify"`
+
+	Tags string `orm:"-" json:"tags"`
 	//关联文档的项目ID
 	BookId int `orm:"-" json:"book_id"`
 	//文章摘要
@@ -131,6 +133,7 @@ func (b *Blog) FindByIdAndMemberId(blogId, memberId int) (*Blog, error) {
 	o := orm.NewOrm()
 
 	err := o.QueryTable(b.TableNameWithPrefix()).Filter("blog_id", blogId).Filter("member_id", memberId).One(b)
+
 	if err != nil {
 		logs.Error("查询文章时失败 -> ", err)
 		return nil, err
@@ -207,7 +210,11 @@ func (b *Blog) Link() (*Blog, error) {
 			b.MemberAvatar = member.Avatar
 		}
 	}
-
+	tags, err := (&LabelRelation{ResourceId: b.BlogId, RelationType: "blog"}).FindTagsByResourceIdAndType()
+	if err != nil {
+		return b, err
+	}
+	b.Tags = tags
 	return b, nil
 }
 

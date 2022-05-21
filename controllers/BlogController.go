@@ -161,18 +161,7 @@ func (c *BlogController) ManageSetting() {
 		bookIdentify := strings.TrimSpace(c.GetString("bookIdentify"))
 		documentId := 0
 		resourceType := "blog"
-		if tags != "" {
-			err := models.NewLabelRelation().DeleteByResourceId(blogId, resourceType)
-			if err != nil {
-				logs.Error("delete relation error ", err)
-			}
-			for _, tag := range strings.Split(tags, ",") {
-				label := models.NewLabel()
-				label.InsertOrUpdate(tag)
-				lr := models.LabelRelation{LabelId: label.LabelId, ResourceId: blogId, RelationType: resourceType}
-				lr.SaveLabelRelation()
-			}
-		}
+		(&models.LabelRelation{RelationType: resourceType, ResourceId: blogId}).SaveTags(tags)
 		if blogTitle == "" {
 			c.JsonResult(6001, i18n.Tr(c.Lang, "message.blog_title_empty"))
 		}
@@ -280,6 +269,7 @@ func (c *BlogController) ManageSetting() {
 	blogId, err := strconv.Atoi(c.Ctx.Input.Param(":id"))
 
 	c.Data["DocumentIdentify"] = ""
+
 	if err == nil {
 		blog, err := models.NewBlog().FindByIdAndMemberId(blogId, c.Member.MemberId)
 		if err != nil {

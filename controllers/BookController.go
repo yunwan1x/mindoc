@@ -155,18 +155,7 @@ func (c *BookController) SaveBook() {
 	itemId, _ := c.GetInt("itemId")
 	tags := c.GetString("tags", "")
 	resourceType := "book"
-	if tags != "" {
-		err := models.NewLabelRelation().DeleteByResourceId(itemId, resourceType)
-		if err != nil {
-			logs.Error("delete relation error ", err)
-		}
-		for _, tag := range strings.Split(tags, ",") {
-			label := models.NewLabel()
-			label.InsertOrUpdate(tag)
-			lr := models.LabelRelation{LabelId: label.LabelId, ResourceId: itemId, RelationType: resourceType}
-			lr.SaveLabelRelation()
-		}
-	}
+	(&models.LabelRelation{RelationType: resourceType, ResourceId: bookResult.BookId}).SaveTags(tags)
 	if strings.Count(description, "") > 500 {
 		c.JsonResult(6004, i18n.Tr(c.Lang, "message.project_desc_tips"))
 	}

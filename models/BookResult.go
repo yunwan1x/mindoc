@@ -58,6 +58,7 @@ type BookResult struct {
 	Editor         string    `json:"editor"`
 	AutoRelease    bool      `json:"auto_release"`
 	HistoryCount   int       `json:"history_count"`
+	Tags           string    `json:"tags"`
 
 	//RelationshipId     int           `json:"relationship_id"`
 	//TeamRelationshipId int           `json:"team_relationship_id"`
@@ -158,6 +159,8 @@ func (m *BookResult) FindByIdentify(identify string, memberId int) (*BookResult,
 		m.LastModifyText = member2.Account + " 于 " + doc.ModifyTime.Local().Format("2006-01-02 15:04:05")
 	}
 
+	tags, _ := (&LabelRelation{ResourceId: m.BookId, RelationType: "book"}).FindTagsByResourceIdAndType()
+	m.Tags = tags
 	return m, nil
 }
 

@@ -4,6 +4,7 @@ import (
 	"github.com/beego/beego/v2/client/orm"
 	"github.com/beego/beego/v2/core/logs"
 	"github.com/mindoc-org/mindoc/conf"
+	"strings"
 )
 
 type LabelRelation struct {
@@ -45,9 +46,38 @@ func (m *LabelRelation) SaveLabelRelation() error {
 	return nil
 }
 
-func (m *LabelRelation) DeleteByResourceId(resourceId int, resourceType string) error {
+func (m *LabelRelation) SaveTags(tags string) {
+	if tags != "" {
+		err := m.DeleteByResourceId()
+		if err != nil {
+			logs.Error("delete relation error ", err)
+		}
+		for _, tag := range strings.Split(tags, ",") {
+			label := NewLabel()
+			label.InsertOrUpdate(tag)
+			(&LabelRelation{RelationType: m.RelationType, ResourceId: m.ResourceId, LabelId: label.LabelId}).SaveLabelRelation()
+		}
+	}
+}
+
+func (m *LabelRelation) FindTagsByResourceIdAndType() (string, error) {
 	o := orm.NewOrm()
-	_, err := o.Delete(&LabelRelation{ResourceId: resourceId, RelationType: resourceType}, "resource_id", "relation_type")
+	tagsRowSet := o.Raw("select  b.label_name from md_label_relation a,md_label b where a.resource_id = ? and relation_type=? and a.label_id=b.label_id", m.ResourceId, m.RelationType)
+	var results []orm.Params
+	_, err := tagsRowSet.Values(&results)
+	if err != nil {
+		return "", err
+	}
+	var tags []string
+	for _, value := range results {
+		tags = append(tags, value["label_name"].(string))
+	}
+	return strings.Join(tags, ","), nil
+}
+
+func (m *LabelRelation) DeleteByResourceId() error {
+	o := orm.NewOrm()
+	_, err := o.Delete(&LabelRelation{ResourceId: m.ResourceId, RelationType: m.RelationType}, "resource_id", "relation_type")
 	if err != nil {
 		return err
 	}

@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <label>标签</label>
-                            <input type="text" autocomplete="false" class="form-control" name="tags" id="tags" >
+                            <input type="text" autocomplete="false" class="form-control" name="tags" id="tags" value="{{.Model.Tags}}" >
                         </div>
                         <div class="form-group" id="blogLinkDocument"{{if ne .Model.BlogType 1}} style="display: none;" {{end}}>
                             <label>{{i18n .Lang "blog.ref_doc"}}</label>

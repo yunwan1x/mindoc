@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label>标签</label>
-                                <input type="text" class="form-control" id="tags" name="tags" >
+                                <input type="text" class="form-control" id="tags" name="tags" value="{{.Model.Tags}}" >
                             </div>
                             <div class="form-group" style="display: none">
                                 <label>{{i18n $.Lang "common.project_space"}}</label>
