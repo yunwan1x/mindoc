@@ -77,27 +77,43 @@
 <script type="text/javascript">
     $(function () {
         $("#labelList").on("click","button[data-method='delete']",function () {
-            var id = $(this).attr("data-id");
             var $this = $(this);
-            $(this).button("loading");
-            $.ajax({
-                url : "{{urlfor "ManagerController.LabelDelete" ":id" ""}}" + id,
-                type : "post",
-                dataType : "json",
-                success : function (res) {
-                    if(res.errcode === 0){
-                        $this.closest("tr").remove().empty();
-                    }else {
-                        layer.msg(res.message);
-                    }
-                },
-                error : function () {
-                    layer.msg("服务器异常");
-                },
-                complete : function () {
-                    $this.button("reset");
+            layer.open({
+                type: 1
+                ,offset: 'c' //具体配置参考：offset参数项
+                ,content: '<div style="padding: 20px 80px;">确定删除标签吗？</div>'
+                ,btn: ['删除', '关闭']
+                ,btnAlign: 'c' //按钮居中
+                ,shade: 0 ,//不显示遮罩
+                btn2: function(){
+                    layer.closeAll();
+                }
+                ,yes: function(){
+                    var id = $this.attr("data-id");
+                    $this.button("loading");
+                    $.ajax({
+                        url : "{{urlfor "ManagerController.LabelDelete" ":id" ""}}" + id,
+                        type : "post",
+                        dataType : "json",
+                        success : function (res) {
+                            if(res.errcode === 0){
+                                $this.closest("tr").remove().empty();
+                            }else {
+                                layer.msg(res.message);
+                            }
+                        },
+                        error : function () {
+                            layer.msg("服务器异常");
+                        },
+                        complete : function () {
+                            $this.button("reset");
+                            layer.closeAll();
+                        }
+                    });
                 }
             });
+
+
         });
     });
 </script>
