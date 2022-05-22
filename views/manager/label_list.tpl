@@ -84,7 +84,7 @@
                 ,content: '<div style="padding: 20px 80px;">确定删除标签吗？</div>'
                 ,btn: ['删除', '关闭']
                 ,btnAlign: 'c' //按钮居中
-                ,shade: 0 ,//不显示遮罩
+                ,shade: 0.5 ,//不显示遮罩
                 btn2: function(){
                     layer.closeAll();
                 }
