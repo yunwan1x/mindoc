@@ -200,6 +200,8 @@ func init() {
 
 	web.Router("/docs/:key", &controllers.DocumentController{}, "*:Index")
 	web.Router("/docs/:key/:id", &controllers.DocumentController{}, "*:Read")
+	web.Router("/docs/:key/:id/setting", &controllers.DocumentController{}, "*:Setting")
+
 	web.Router("/docs/:key/search", &controllers.DocumentController{}, "post:Search")
 	web.Router("/export/:key", &controllers.DocumentController{}, "*:Export")
 	web.Router("/qrcode/:key.png", &controllers.DocumentController{}, "get:QrCode")

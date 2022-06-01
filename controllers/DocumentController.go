@@ -36,6 +36,19 @@ type DocumentController struct {
 	BaseController
 }
 
+func (c *DocumentController) Setting() {
+	c.Prepare()
+	c.TplName = "document/setting.tpl"
+
+	key := c.Ctx.Input.Param(":key")
+	bookId := c.Ctx.Input.Param(":id")
+
+	c.Data["bookId"] = bookId
+	c.Data["key"] = key
+	states, _ := models.NewLabel().GetAllLabelName()
+	c.Data["States"] = states
+}
+
 // 文档首页
 func (c *DocumentController) Index() {
 	c.Prepare()
@@ -155,12 +168,14 @@ func (c *DocumentController) Read() {
 			Title     string `json:"title"`
 			Version   int64  `json:"version"`
 			ViewCount int    `json:"view_count"`
+			Id        string `json:"id"`
 		}
 		data.DocTitle = doc.DocumentName
 		data.Body = doc.Release
 		data.Title = doc.DocumentName + " - Powered by MinDoc"
 		data.Version = doc.Version
 		data.ViewCount = doc.ViewCount
+		data.Id = id
 
 		c.JsonResult(0, "ok", data)
 	}
@@ -180,6 +195,7 @@ func (c *DocumentController) Read() {
 	c.Data["Title"] = doc.DocumentName
 	c.Data["Content"] = template.HTML(doc.Release)
 	c.Data["ViewCount"] = doc.ViewCount
+	c.Data["Id"] = id
 }
 
 // 编辑文档

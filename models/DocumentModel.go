@@ -98,6 +98,7 @@ func (item *Document) Find(id int) (*Document, error) {
 func (item *Document) InsertOrUpdate(cols ...string) error {
 	o := orm.NewOrm()
 	item.DocumentName = utils.StripTags(item.DocumentName)
+	item.Release = ""
 	var err error
 	if item.DocumentId > 0 {
 		_, err = o.Update(item, cols...)
@@ -323,8 +324,9 @@ func (item *Document) Processor() *Document {
 						}
 					}
 				}
-				release += " &nbsp;&nbsp;" + "<i class=\"fa fa-clock-o\"></i> " + item.ModifyTime.Local().Format("2006-01-02 15:04:01")
+				release += " &nbsp;&nbsp;" + "<i class=\"fa fa-clock-o\"></i> " + item.ModifyTime.Local().Format("2006-01-02 15:04")
 				release += "</div>"
+				//release += "<i class=\"fa fa-gear\"></i> "
 
 				if selector := docQuery.Find("div.markdown-article").First(); selector.Size() > 0 {
 					selector.AppendHtml(release)

@@ -87,8 +87,6 @@ function loadDocument($url, $id, $callback) {
                 if (typeof $callback === "function" ) {
                     $body = $callback(body);
                 }
-
-                debugger
                 $("#page-content").html($body);
                 $("title").text(title);
                 $("#article-title").text(doc_title);

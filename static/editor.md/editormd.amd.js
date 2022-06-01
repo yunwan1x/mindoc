@@ -3685,7 +3685,6 @@
         };
 
         markedRenderer.paragraph = function(text) {
-            debugger
             var isTeXInline     = /\$\$(.*)\$\$/g.test(text);
             var isTeXLine       = /^\$\$(.*)\$\$$/.test(text);
             var isTeXAddClass   = (isTeXLine)     ? " class=\"" + editormd.classNames.tex + "\"" : "";
@@ -3768,8 +3767,7 @@
      */
     
     editormd.markdownToCRenderer = function(toc, container, tocDropdown, startLevel) {
-        debugger
-        var html        = "";    
+        var html        = "";
         var lastLevel   = 0;
         var classPrefix = this.classPrefix;
         
