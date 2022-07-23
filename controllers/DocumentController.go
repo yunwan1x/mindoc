@@ -77,9 +77,9 @@ func (c *DocumentController) Index() {
 		if err == nil {
 			selected = doc.DocumentId
 			c.Data["Title"] = doc.DocumentName
-			c.Data["Content"] = template.HTML(doc.Release)
+			c.Data["Content"] = template.HTML(doc.Content)
 
-			c.Data["Description"] = utils.AutoSummary(doc.Release, 120)
+			c.Data["Description"] = utils.AutoSummary(doc.Content, 120)
 		}
 	} else {
 		c.Data["Title"] = i18n.Tr(c.Lang, "blog.summary")
