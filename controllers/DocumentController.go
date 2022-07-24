@@ -171,7 +171,7 @@ func (c *DocumentController) Read() {
 			Id        string `json:"id"`
 		}
 		data.DocTitle = doc.DocumentName
-		data.Body = doc.Release
+		data.Body = doc.Content
 		data.Title = doc.DocumentName + " - Powered by MinDoc"
 		data.Version = doc.Version
 		data.ViewCount = doc.ViewCount
@@ -188,12 +188,12 @@ func (c *DocumentController) Read() {
 		c.ShowErrorPage(500, i18n.Tr(c.Lang, "message.build_doc_tree_error"))
 	}
 
-	c.Data["Description"] = utils.AutoSummary(doc.Release, 120)
+	c.Data["Description"] = utils.AutoSummary(doc.Content, 120)
 
 	c.Data["Model"] = bookResult
 	c.Data["Result"] = template.HTML(tree)
 	c.Data["Title"] = doc.DocumentName
-	c.Data["Content"] = template.HTML(doc.Release)
+	c.Data["Content"] = template.HTML(doc.Content)
 	c.Data["ViewCount"] = doc.ViewCount
 	c.Data["Id"] = id
 }

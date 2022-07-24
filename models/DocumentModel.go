@@ -252,7 +252,7 @@ func (item *Document) ReleaseContent() error {
 	//item.Release = strings.TrimSpace(item.Content)
 	item.Release = ""
 
-	err := item.Processor().InsertOrUpdate("release")
+	err := item.Processor().InsertOrUpdate("content")
 
 	if err != nil {
 		logs.Error(fmt.Sprintf("发布失败 -> %+v", item), err)

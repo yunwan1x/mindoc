@@ -39,7 +39,7 @@ func (m *DocumentSearchResult) FindToPager(keyword string, pageIndex, pageSize, 
 	if memberId <= 0 {
 		sql1 := `SELECT count(doc.document_id) as total_count FROM md_documents AS doc
   LEFT JOIN md_books as book ON doc.book_id = book.book_id
-WHERE book.privately_owned = 0 AND (doc.document_name LIKE ? OR doc.release LIKE ?) `
+WHERE book.privately_owned = 0 AND (doc.document_name LIKE ? OR doc.content LIKE ?) `
 
 		sql2 := `SELECT *
 FROM (
@@ -49,7 +49,7 @@ FROM (
          doc.create_time,
          doc.document_name,
          doc.identify,
-         doc.release    AS description,
+         doc.content    AS description,
          book.identify  AS book_identify,
          book.book_name,
          rel.member_id,
@@ -59,7 +59,7 @@ FROM (
          LEFT JOIN md_books AS book ON doc.book_id = book.book_id
          LEFT JOIN md_relationship AS rel ON book.book_id = rel.book_id AND rel.role_id = 0
          LEFT JOIN md_members AS member ON rel.member_id = member.member_id
-       WHERE book.privately_owned = 0 AND (doc.document_name LIKE ? OR doc.release LIKE ?)
+       WHERE book.privately_owned = 0 AND (doc.document_name LIKE ? OR doc.content LIKE ?)
      UNION ALL
 SELECT
   book.book_id AS document_id,
@@ -142,7 +142,7 @@ WHERE book.privately_owned = 0 AND (book.book_name LIKE ? OR book.description LI
                    	from md_team_relationship as mtr
 					left join md_team_member as mtm on mtm.team_id=mtr.team_id and mtm.member_id=? order by role_id desc )as t group by t.role_id,t.team_member_id,t.book_id) as team 
 					on team.book_id = book.book_id
-WHERE (book.privately_owned = 0 OR rel1.relationship_id > 0 or team.team_member_id > 0)  AND (doc.document_name LIKE ? OR doc.release LIKE ?);`
+WHERE (book.privately_owned = 0 OR rel1.relationship_id > 0 or team.team_member_id > 0)  AND (doc.document_name LIKE ? OR doc.content LIKE ?);`
 
 		sql2 := `SELECT *
 FROM (
@@ -152,7 +152,7 @@ FROM (
          doc.create_time,
          doc.document_name,
          doc.identify,
-         doc.release    AS description,
+         doc.content    AS description,
          book.identify  AS book_identify,
          book.book_name,
          rel.member_id,
@@ -174,7 +174,7 @@ FROM (
                     GROUP BY t.role_id, t.team_member_id, t.book_id) AS team
            ON team.book_id = book.book_id
        WHERE (book.privately_owned = 0 OR rel1.relationship_id > 0 OR team.team_member_id > 0) AND
-             (doc.document_name LIKE ? OR doc.release LIKE ?)
+             (doc.document_name LIKE ? OR doc.content LIKE ?)
        UNION ALL
 
        SELECT
@@ -288,7 +288,7 @@ FROM (
          doc.create_time,
          doc.document_name,
          doc.identify,
-         doc.release    AS description,
+         doc.content    AS description,
          book.identify  AS book_identify,
          book.book_name,
          rel.member_id,
@@ -405,7 +405,7 @@ FROM (
          doc.create_time,
          doc.document_name,
          doc.identify,
-         doc.release    AS description,
+         doc.content    AS description,
          book.identify  AS book_identify,
          book.book_name,
          rel.member_id,
