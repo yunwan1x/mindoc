@@ -23,6 +23,8 @@ go build -ldflags "-w"
 ./mindoc install
 # 执行
 ./mindoc
+
+# 如果编译错误，清空go.mod的所有require，go 1.18的版本要匹配。然后重新编译。
 ```
 
 MinDoc 如果使用MySQL储存数据，则编码必须是`utf8mb4_general_ci`。请在安装前，把数据库配置填充到项目目录下的 `conf/app.conf` 中。
@@ -54,6 +56,10 @@ go build -o mindoc --ldflags="-linkmode external -extldflags '-static' -w -X 'gi
 # 验证
 ./mindoc version
 ```
+# 初次运行
+1. ./mindoc install 初始化数据库，初始账密admin 123456
+2. 修改conf中的app.conf.example为app.conf
+3. ./mindoc运行
 
 
 ```bash
