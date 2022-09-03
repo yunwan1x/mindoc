@@ -16,6 +16,8 @@
 # 克隆源码
 git clone https://github.com/mindoc-org/mindoc.git
 # go包安装
+go mod init github.com/mindoc-org/mindoc
+go env -w GOPROXY=https://goproxy.cn,direct 
 go mod tidy
 # 编译(sqlite需要CGO支持)
 go build -ldflags "-w"
@@ -47,6 +49,7 @@ cd musl-1.2.2
 ```
 ### 使用 musl-gcc 编译 mindoc
 ```bash
+go mod init github.com/mindoc-org/mindoc
 go env -w GOPROXY=https://goproxy.cn,direct && go mod tidy -v
 
 # 设置使用musl-gcc
