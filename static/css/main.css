@@ -387,7 +387,10 @@ textarea{
     margin-top: -10px;
     margin-left: -45px;
     border: 0;
-    background-color: transparent
+    background-color: transparent;
+    position: absolute;
+    top: 16px;
+    right: 3px;	
 }
 .searchbar .search-btn>i.fa{
     padding: 10px;
