@@ -179,8 +179,9 @@ $(function () {
             }
         }).fail(function () {
             layer.close(index);
+            window.location = `${location.host}/login?url=${location.href}`
             // layer.msg(editormdLocales[lang].loadDocFailed);
-            layer.msg(JSON.stringify(res));
+            // layer.msg(JSON.stringify(res));
         });
     };
 
