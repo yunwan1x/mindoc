@@ -7,7 +7,7 @@
 
     <title>{{i18n .Lang "blog.edit_title"}} - Powered by MinDoc</title>
     <script  src="{{cdnjs "/static/js/vditor/index.min.js"}}"></script>
-    <script src="{{cdnjs "/static/js/vditor_markdown.js?time=2022040401"}}" type="text/javascript"></script>
+    <script src="{{cdnjs "/static/js/vditor_markdown.js" "version"}}" type="text/javascript"></script>
     <script type="text/javascript">
         window.baseUrl = "{{.BaseUrl}}";
         window.mobile = true
