@@ -170,15 +170,10 @@ $(function () {
                 window.selectNode = node;
                 pushVueLists(res.data.attach);
                 setLastSelectNode($node);
-            } else if(res.errcode === 403){
-                window.location = `${location.host}/login?url=${location.href}`
-            } else {
+            }  else {
                 // layer.msg(editormdLocales[lang].loadDocFailed);
+                //添加403跳转
                 layer.msg(JSON.stringify(res));
-                setTimeout(()=>{
-                    window.location = `${location.host}/login?url=${location.href}`
-                },5000)
-
             }
         }).fail(function () {
             layer.close(index);
