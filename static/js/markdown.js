@@ -170,6 +170,8 @@ $(function () {
                 window.selectNode = node;
                 pushVueLists(res.data.attach);
                 setLastSelectNode($node);
+            } else if(res.errcode === 403){
+                window.location = `${location.host}/login?url=${location.href}`
             } else {
                 // layer.msg(editormdLocales[lang].loadDocFailed);
                 layer.msg(JSON.stringify(res));
