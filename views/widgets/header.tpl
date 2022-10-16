@@ -10,6 +10,9 @@
             </a>
             <nav class="collapse navbar-collapse col-sm-10">
                 <ul class="nav navbar-nav">
+                    <li {{if eq .ControllerName "HistoryController"}}class="active"{{end}}>
+                        <a href="{{urlfor "HistoryController.Index" }}" title={{i18n .Lang "common.home"}}>活动</a>
+                    </li>
                     <li {{if eq .ControllerName "HomeController"}}class="active"{{end}}>
                         <a href="{{urlfor "HomeController.Index" }}" title={{i18n .Lang "common.home"}}>{{i18n .Lang "common.home"}}</a>
                     </li>

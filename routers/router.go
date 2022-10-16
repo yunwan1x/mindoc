@@ -89,7 +89,7 @@ func init() {
 	web.Router("/find_password", &controllers.AccountController{}, "*:FindPassword")
 	web.Router("/valid_email", &controllers.AccountController{}, "post:ValidEmail")
 	web.Router("/captcha", &controllers.AccountController{}, "*:Captcha")
-
+	web.Router("/history", &controllers.HistoryController{}, "*:Index")
 	web.Router("/manager", &controllers.ManagerController{}, "*:Index")
 	web.Router("/manager/users", &controllers.ManagerController{}, "*:Users")
 	web.Router("/manager/users/edit/:id", &controllers.ManagerController{}, "*:EditMember")
