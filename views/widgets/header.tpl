@@ -1,7 +1,7 @@
 <header class="navbar navbar-static-top navbar-fixed-top manual-header" role="banner">
     <div class="container">
         <div class="navbar-header col-sm-12 col-md-9 col-lg-8">
-            <a href="{{.BaseUrl}}/" class="navbar-brand" title="{{.SITE_NAME}}">
+            <a href="{{urlfor "HistoryController.Index" }}" class="navbar-brand" title="{{.SITE_NAME}}">
                 {{if .SITE_TITLE}}
                 {{.SITE_TITLE}}
                 {{else}}
@@ -10,16 +10,12 @@
             </a>
             <nav class="collapse navbar-collapse col-sm-10">
                 <ul class="nav navbar-nav">
-                    <li {{if eq .ControllerName "HistoryController"}}class="active"{{end}}>
-                        <a href="{{urlfor "HistoryController.Index" }}" title={{i18n .Lang "common.home"}}>活动</a>
-                    </li>
                     <li {{if eq .ControllerName "HomeController"}}class="active"{{end}}>
                         <a href="{{urlfor "HomeController.Index" }}" title={{i18n .Lang "common.home"}}>{{i18n .Lang "common.home"}}</a>
                     </li>
                     <li {{if eq .ControllerName "BlogController"}}{{if eq  .ActionName "List" "Index"}}class="active"{{end}}{{end}}>
                         <a href="{{urlfor "BlogController.List" }}" title={{i18n .Lang "common.blog"}}>{{i18n .Lang "common.blog"}}</a>
                     </li>
-
                     <li {{if eq .ControllerName "LabelController"}}class="active"{{end}}>
                         <a href="/tags" title="标签">标签</a>
                     </li>
