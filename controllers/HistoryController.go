@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"github.com/mindoc-org/mindoc/utils"
+	"strconv"
 	"strings"
 
 	"github.com/beego/beego/v2/core/logs"
@@ -36,6 +38,28 @@ func (c *HistoryController) Index() {
 	}
 	searchResult, totalCount, err := models.NewHistoryResult().FindToPager(pageIndex, 20, memberId)
 
+	if len(searchResult) > 0 {
+		for _, item := range searchResult {
+			if item.Description != "" {
+				src := item.Description
+
+				r := []rune(utils.StripTags(item.Description))
+
+				if len(r) > 100 {
+					src = string(r[:100])
+				} else {
+					src = string(r)
+				}
+				item.Description = src
+			}
+			if item.Identify == "" {
+				item.Identify = strconv.Itoa(item.DocumentId)
+			}
+			if item.ModifyTime.IsZero() {
+				item.ModifyTime = item.CreateTime
+			}
+		}
+	}
 	if err != nil {
 		logs.Error("搜索失败 ->", err)
 		return
