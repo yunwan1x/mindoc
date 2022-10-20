@@ -36,7 +36,7 @@ func (c *HistoryController) Index() {
 	if c.Member != nil {
 		memberId = c.Member.MemberId
 	}
-	searchResult, totalCount, err := models.NewHistoryResult().FindToPager(pageIndex, 20, memberId)
+	searchResult, totalCount, err := models.NewHistoryResult().FindToPager(pageIndex, conf.PageSize, memberId)
 
 	if len(searchResult) > 0 {
 		for _, item := range searchResult {
