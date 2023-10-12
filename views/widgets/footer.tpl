@@ -4,7 +4,7 @@
             
             <span><a href="https://www.bookstack.cn/" target="_blank">书栈网</a></span>
             <span>&nbsp;·&nbsp;</span>
-            <span><a href="https://www.vs2010wy.top/" target="_blank">开源</a></span>
+            <span><a href="https://cheat.vs2010wy.top/" target="_blank">cheat_sheat</a></span>
             <span>&nbsp;·&nbsp;</span>
             <span><a href="/sheet" target="_blank">sheet</a></span>
             <span>&nbsp;·&nbsp;</span>
