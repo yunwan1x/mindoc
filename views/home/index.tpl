@@ -47,7 +47,7 @@
 {{/*                                    <a style="background: #ddd;overflow: hidden;font-size: 20px;color: #0a001f;height: 100%"  href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">*/}}
 {{/*                                        <img src="{{cdnimg $item.Cover}}" class="cover" alt="{{$item.BookName}}-{{$item.CreateName}}" onerror="this.src='{{cdnimg "static/images/book.jpg"}}';">*/}}
 {{/*                                    </a>*/}}
-                                    <a style="background: #ddd;overflow: hidden;padding: 1em;font-size: 20px;color: #0a001f;height: 100%"  href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">
+                                    <a style="background: #ddd;box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 -5px 6px rgba(0,0,0,0.2); overflow: hidden;padding: 1em;font-size: 20px;color: #0a001f;height: 100%"  href="{{urlfor "DocumentController.Index" ":key" $item.Identify}}" title="{{$item.BookName}}-{{$item.CreateName}}">
                                         {{$item.BookName}}
                                     </a>
                                 {{end}}
