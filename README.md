@@ -61,8 +61,9 @@ go build -o mindoc --ldflags="-linkmode external -extldflags '-static' -w -X 'gi
 ```
 # 初次运行
 1. ./mindoc install 初始化数据库，初始账密admin 123456
-2. 修改conf中的app.conf.example为app.conf
-3. ./mindoc运行
+2. ./mindoc service install 安装成服务
+3. 修改conf中的app.conf.example为app.conf
+4. ./mindoc运行
 
 # FAQ
 1. 用idea 或者goland导入项目飘红，[参考这个解决](https://blog.csdn.net/qq_40677181/article/details/114283374)
