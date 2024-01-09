@@ -161,7 +161,7 @@
     word-break: break-all;
     overflow-y: auto; overflow-x: hidden;
     overflow-wrap: normal;
-    white-space: inherit
+    white-space: break-spaces;
 }
 .editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint {
     padding: 0;
