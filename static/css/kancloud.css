@@ -148,7 +148,8 @@ table>tbody>tr:hover{
 }
 
 .m-manual .manual-tab .tab-navg {
-    zoom:1;border-bottom: 1px solid #ddd
+    zoom:1;border-bottom: 1px solid #ddd;
+    overflow:hidden
 }
 
 .m-manual .manual-tab .tab-util {
@@ -231,7 +232,6 @@ table>tbody>tr:hover{
     font-size: 14px;
     padding: 10px;
     cursor: pointer;
-    float: left;
     height: 30px;
     line-height: 30px;
     color: #999
@@ -260,18 +260,17 @@ table>tbody>tr:hover{
     border-right: 1px solid #ddd;
     padding-left: 8px;
     padding-right: 8px;
-    height: 54px;
 }
 .m-manual .manual-tab .tab-item {
     display: none;
     position: absolute;
-    top: 55px;
+    top: 35px;
     bottom: 0;
     left: 0;
     right: 0;
     overflow-y: auto;
     background-color: #fafafa;
-    margin-bottom: 60px;
+    margin-bottom: 10px;  
 }
 
 .m-manual .manual-tab .tab-item.active {
