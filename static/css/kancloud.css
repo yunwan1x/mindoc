@@ -229,12 +229,11 @@ table>tbody>tr:hover{
 
 .m-manual .manual-tab .tab-navg .navg-item {
     font-size: 14px;
-    padding: 0 9px;
+    padding: 10px;
     cursor: pointer;
     float: left;
     height: 30px;
     line-height: 30px;
-    padding-top: 13px;
     color: #999
 }
 
