@@ -58,9 +58,12 @@
 {{/*                            </dd>*/}}
                             <dd>
                             <span class="author">
-                                <span class="text-muted">{{i18n $.Lang "blog.author"}}</span>
-                                <span class="text-muted">-</span>
+                                <span class="text-muted"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <span class="text-muted">{{if eq $item.RealName "" }}{{$item.CreateName}}{{else}}{{$item.RealName}}{{end}}</span>
+                            </span>
+                            <span class="author pad-left ">
+                                <span class="text-muted"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                <span class="text-muted">{{$item.DocCount}}</span>
                             </span>
                             </dd>
                         </dl>

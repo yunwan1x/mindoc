@@ -310,6 +310,9 @@ textarea{
     color: #484848;
     font-size: 13px;
 }
+.pad-left{
+    margin-left: 1em;
+}
 .manual-list .list-item .manual-item-standard .author>.text{
     font-weight: 200;
     color: #484848;
