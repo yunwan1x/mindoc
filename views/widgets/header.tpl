@@ -2,6 +2,8 @@
     <div class="container">
         <div class="navbar-header col-sm-12 col-md-9 col-lg-8">
             <a href="{{urlfor "HistoryController.Index" }}" class="navbar-brand" title="{{.SITE_NAME}}">
+            <i class="fa fa-weibo	
+" aria-hidden="true"></i>&nbsp;
                 {{if .SITE_TITLE}}
                 {{.SITE_TITLE}}
                 {{else}}
@@ -11,13 +13,13 @@
             <nav class="collapse navbar-collapse col-sm-10">
                 <ul class="nav navbar-nav">
                     <li {{if eq .ControllerName "HomeController"}}class="active"{{end}}>
-                        <a href="{{urlfor "HomeController.Index" }}" title={{i18n .Lang "common.home"}}>{{i18n .Lang "common.home"}}</a>
+                        <a href="{{urlfor "HomeController.Index" }}" title={{i18n .Lang "common.home"}}><i class="fa fa-book" aria-hidden="true"></i>&nbsp;{{i18n .Lang "common.home"}}</a>
                     </li>
                     <li {{if eq .ControllerName "BlogController"}}{{if eq  .ActionName "List" "Index"}}class="active"{{end}}{{end}}>
-                        <a href="{{urlfor "BlogController.List" }}" title={{i18n .Lang "common.blog"}}>{{i18n .Lang "common.blog"}}</a>
+                        <a href="{{urlfor "BlogController.List" }}" title={{i18n .Lang "common.blog"}}><i class="fa fa-edit" aria-hidden="true"></i>&nbsp;{{i18n .Lang "common.blog"}}</a>
                     </li>
                     <li {{if eq .ControllerName "LabelController"}}class="active"{{end}}>
-                        <a href="/tags" title="标签">标签</a>
+                        <a href="/tags" title="标签"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;标签</a>
                     </li>
                 </ul>
                 <div class="searchbar pull-left visible-lg-inline-block visible-md-inline-block">
