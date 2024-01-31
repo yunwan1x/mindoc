@@ -2,7 +2,7 @@ appname = mindoc
 
 #默认监听的网卡,为空则监听所有
 httpaddr="${MINDOC_ADDR}"
-httpport = "${MINDOC_PORT||8181}"
+httpport = "${MINDOC_PORT||8183}"
 runmode = "${MINDOC_RUN_MODE||dev}"
 sessionon = true
 sessionname = mindoc_id
