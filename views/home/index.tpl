@@ -65,6 +65,10 @@
                                 <span class="text-muted"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                 <span class="text-muted">{{$item.DocCount}}</span>
                             </span>
+                            <span class="author pad-left ">
+                                <span class="text-muted"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                                <span class="text-muted">{{$item.ViewCount}}</span>
+                            </span>
                             </dd>
                         </dl>
                     </div>
