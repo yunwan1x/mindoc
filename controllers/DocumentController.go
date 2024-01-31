@@ -101,6 +101,35 @@ func (c *DocumentController) Index() {
 
 }
 
+// 获取doc id
+func (c *DocumentController) GetDocId() {
+	c.Prepare()
+
+	identify := c.Ctx.Input.Param(":key")
+	id := c.GetString(":id")
+
+	if identify == "" || id == "" {
+		c.ShowErrorPage(404, i18n.Tr(c.Lang, "message.item_not_exist"))
+	}
+
+	doc := models.NewDocument()
+	book := models.NewBook()
+	book.FindByFieldFirst("identify", identify)
+	if id == "0" {
+		doc.FindFirstDoc(book.BookId)
+		id = doc.Identify
+	}
+	doc, _ = doc.FromCacheByIdentify(id, book.BookId)
+
+	var data struct {
+		BookId     int `json:"book_id"`
+		DocumentId int `json:"document_id"`
+	}
+	data.DocumentId = doc.DocumentId
+	data.BookId = book.BookId
+	c.JsonResult(0, "ok", data)
+}
+
 // 阅读文档
 func (c *DocumentController) Read() {
 	c.Prepare()
@@ -163,12 +192,13 @@ func (c *DocumentController) Read() {
 
 	if c.IsAjax() {
 		var data struct {
-			DocTitle  string `json:"doc_title"`
-			Body      string `json:"body"`
-			Title     string `json:"title"`
-			Version   int64  `json:"version"`
-			ViewCount int    `json:"view_count"`
-			Id        string `json:"id"`
+			DocTitle   string `json:"doc_title"`
+			Body       string `json:"body"`
+			Title      string `json:"title"`
+			Version    int64  `json:"version"`
+			ViewCount  int    `json:"view_count"`
+			Id         string `json:"id"`
+			DocumentId int    `json:"document_id"`
 		}
 		data.DocTitle = doc.DocumentName
 		data.Body = doc.Content
@@ -176,7 +206,7 @@ func (c *DocumentController) Read() {
 		data.Version = doc.Version
 		data.ViewCount = doc.ViewCount
 		data.Id = id
-
+		data.DocumentId = doc.DocumentId
 		c.JsonResult(0, "ok", data)
 	}
 
@@ -1119,7 +1149,7 @@ func (c *DocumentController) DeleteHistory() {
 	c.JsonResult(0, "ok")
 }
 
-//通过文档历史恢复文档
+// 通过文档历史恢复文档
 func (c *DocumentController) RestoreHistory() {
 	c.Prepare()
 

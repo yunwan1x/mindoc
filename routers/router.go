@@ -200,6 +200,7 @@ func init() {
 
 	web.Router("/docs/:key", &controllers.DocumentController{}, "*:Index")
 	web.Router("/docs/:key/:id", &controllers.DocumentController{}, "*:Read")
+	web.Router("/docs/info/:key/:id", &controllers.DocumentController{}, "*:GetDocId")
 	web.Router("/docs/:key/:id/setting", &controllers.DocumentController{}, "*:Setting")
 
 	web.Router("/docs/:key/search", &controllers.DocumentController{}, "post:Search")

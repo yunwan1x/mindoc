@@ -42,6 +42,30 @@ var events = function () {
     }
 
 }();
+var  paths = location.pathname.split("/")
+var bookid = paths[2]
+var identify = paths[3] || 0
+var getbookinfo_url  = `/docs/info/${bookid}/${identify}`
+$.ajax({
+    url : getbookinfo_url,
+    type : "GET",
+    success : function (res) {
+        if (res.errcode === 0) {
+            
+            events.trigger('article.open', { $url : location.href, $id : res.data.document_id });
+        } else if (res.errcode === 6000) {
+            window.location.href = "/";
+        } else {
+            layer.msg("加载失败");
+        }
+    },
+    complete : function () {
+        NProgress.done();
+    },
+    error : function () {
+        layer.msg("加载失败");
+    }
+});
 
 /***
  * 加载文档到阅读区
