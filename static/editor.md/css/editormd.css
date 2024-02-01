@@ -3879,10 +3879,10 @@
   background: none;
 }
 .editormd-preview-container code, .editormd-html-preview code {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   background: #f6f6f6;
-  padding: 3px;
-  border-radius: 3px;
+  /* padding: 3px; */
+  border-radius: 0px;
   font-size: 14px;
 }
 .editormd-preview-container pre, .editormd-html-preview pre {
