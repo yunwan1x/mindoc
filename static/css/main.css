@@ -440,15 +440,17 @@ textarea{
 }
 .manual-search-reader .search-item{
     margin: 0 15px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     line-height: 25px;
     word-break: break-word;
+    border-bottom: 1px solid #ddd;
 }
 .manual-search-reader .search-item:hover{
     background-color: #F5F5F5;
 }
 .manual-search-reader .search-item a{
-    color: #0886E9;
+    color: #000;
+    margin-bottom: 1em;
 }
 .manual-search-reader .search-item em{
     color: #FF802C;

@@ -37,14 +37,14 @@
             <div class="manual-list">
             {{range $index,$item := .Lists}}
                 <div class="search-item">
-                    <div class="title">{{if eq $item.BlogStatus "password"}}<span class="label">{{i18n $.Lang "blog.encrypt"}}</span>{{end}} <a style="display: block;" href="{{urlfor "BlogController.Index" ":id" $item.BlogId}}" title="{{$item.BlogTitle}}">{{$item.BlogTitle}}</a> </div>
+                    <div class="title"> <a style="display: block;" href="{{urlfor "BlogController.Index" ":id" $item.BlogId}}" title="{{$item.BlogTitle}}">{{if eq $item.BlogStatus "password"}}<i class="fa fa-expeditedssl" aria-hidden="true"></i>{{else}}<i class="fa fa-newspaper-o" aria-hidden="true"></i>{{end}}&nbsp;{{$item.BlogTitle}}</a> </div>
                     <div class="description">
                     {{$item.BlogExcerpt}}
                     </div>
                     {{/*<div class="site">{{urlfor "BlogController.Index" ":id" $item.BlogId}}</div>*/}}
                     <div class="source">
-                        <span class="item">{{i18n $.Lang "blog.author"}}：{{$item.CreateName}}</span>
-                        <span class="item">{{i18n $.Lang "blog.update_time"}}：{{date_format  $item.Modified "2006-01-02 15:04:05"}}</span>
+                        <span class="item"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{$item.CreateName}}</span>
+                        <span class="item"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{date_format  $item.Modified "2006-01-02 15:04:05"}}</span>
                     </div>
                 </div>
             {{else}}

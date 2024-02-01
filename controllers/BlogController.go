@@ -34,7 +34,7 @@ func (c *BlogController) Prepare() {
 	}
 }
 
-//文章阅读
+// 文章阅读
 func (c *BlogController) Index() {
 	c.Prepare()
 	c.TplName = "blog/index.tpl"
@@ -87,7 +87,7 @@ func (c *BlogController) Index() {
 	}
 }
 
-//文章列表
+// 文章列表
 func (c *BlogController) List() {
 	c.Prepare()
 	c.TplName = "blog/list.tpl"
@@ -107,8 +107,11 @@ func (c *BlogController) List() {
 		c.Data["PageHtml"] = pager.HtmlPages()
 		for _, blog := range blogList {
 			//如果没有添加文章摘要，则自动提取
-			if blog.BlogExcerpt == "" {
-				blog.BlogExcerpt = utils.AutoSummary(blog.BlogRelease, 120)
+			r := []rune(utils.StripTags(blog.BlogRelease))
+			if len(r) > 250 {
+				blog.BlogExcerpt = string(r[:250])
+			} else {
+				blog.BlogExcerpt = string(r)
 			}
 			blog.Link()
 		}
@@ -119,7 +122,7 @@ func (c *BlogController) List() {
 	c.Data["Lists"] = blogList
 }
 
-//管理后台文章列表
+// 管理后台文章列表
 func (c *BlogController) ManageList() {
 	c.Prepare()
 	c.TplName = "blog/manage_list.tpl"
@@ -142,7 +145,7 @@ func (c *BlogController) ManageList() {
 
 }
 
-//文章设置
+// 文章设置
 func (c *BlogController) ManageSetting() {
 	c.Prepare()
 	c.TplName = "blog/manage_setting.tpl"
@@ -284,7 +287,7 @@ func (c *BlogController) ManageSetting() {
 	c.Data["States"] = states
 }
 
-//文章创建或编辑
+// 文章创建或编辑
 func (c *BlogController) ManageEdit() {
 	c.Prepare()
 	userAgent := c.Ctx.Request.Header.Get("User-Agent")
@@ -401,7 +404,7 @@ func (c *BlogController) ManageEdit() {
 	c.Data["Model"] = blog
 }
 
-//删除文章
+// 删除文章
 func (c *BlogController) ManageDelete() {
 	c.Prepare()
 	blogId, _ := c.GetInt("blog_id", 0)
@@ -623,7 +626,7 @@ func (c *BlogController) RemoveAttachment() {
 	c.JsonResult(0, "ok", attach)
 }
 
-//下载附件
+// 下载附件
 func (c *BlogController) Download() {
 	c.Prepare()
 
