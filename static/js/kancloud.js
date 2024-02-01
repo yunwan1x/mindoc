@@ -21,6 +21,8 @@ var events = function () {
         $(".manual-right").scrollTop(0);
         //使用layer相册功能查看图片
         layer.photos({photos: "#page-content"});
+        //添加复制按钮
+        addCopyFunc()
     };
 
     return {

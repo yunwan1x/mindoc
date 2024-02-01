@@ -192,5 +192,6 @@
         $("img").imgbox();
     });
 </script>
+
 </body>
 </html>

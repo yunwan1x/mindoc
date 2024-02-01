@@ -32,6 +32,53 @@
         window.IS_ENABLE_IFRAME = '{{conf "enable_iframe" }}' === 'true';
         window.BASE_URL = '{{urlfor "HomeController.Index" }}';
     </script>
+    <style>
+  .icona {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .icona:hover {
+    transform: scale(1.2);
+  }
+</style>
+<script>
+
+function addCopyFunc(){
+    var preElements = document.querySelectorAll('pre');
+  preElements.forEach(function(preElement) {
+    var iconElement = document.createElement('i');
+    iconElement.className = 'fa fa-clipboard icona';
+    iconElement.setAttribute('aria-hidden', 'true');
+    iconElement.style.position = 'absolute';
+    iconElement.style.top = '10px';
+    iconElement.style.right = '10px';
+    iconElement.style.zIndex = 2147483647
+    iconElement.addEventListener('click', copyToClipboard);
+    var container = document.createElement('div');
+    container.style.position = 'relative';
+    preElement.parentNode.insertBefore(container, preElement);
+    container.appendChild(preElement);
+    container.appendChild(iconElement);
+  });
+}
+
+window.addEventListener('load',addCopyFunc)
+
+  function copyToClipboard(event) {
+    var preElement = event.target.parentNode.querySelector('pre');
+    var textToCopy = preElement.textContent;
+
+    var textarea = document.createElement('textarea');
+    textarea.value = textToCopy;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  
+</script>
     <script type="text/javascript">window.book={"identify":"{{.Model.Identify}}"};</script>
     <style>
         .btn-mobile {
