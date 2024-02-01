@@ -140,7 +140,7 @@
 /***********代码样式*****************/
 .markdown-body .highlight pre, .markdown-body pre{
     padding: 1em;
-    padding-right: 30px;
+    padding-top: 2em;
     border: none;
     overflow: auto;
     line-height: 1.45;
