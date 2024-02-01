@@ -135,7 +135,7 @@ textarea{
     font-size: 14px;
 }
 
-.tag-container-outer .tags a{
+.tag-container-outer .tags a {
     display: inline-block;
     vertical-align: baseline;
     line-height: 1;
@@ -144,9 +144,10 @@ textarea{
     background-color: transparent;
     margin: 0 .5em .5em 0!important;
     padding: 0.5rem 0.8rem;
-    color: black;
-    border: 1px solid #000;
-    opacity: 0.8;
+    color: #009a61;
+    border: 1px solid #009a61;
+    /* opacity: 0.8; */
+    border-radius: 4px;
 }
 .tag-container-outer .tags a:hover{
     color: #666666;

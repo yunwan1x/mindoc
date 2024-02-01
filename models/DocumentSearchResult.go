@@ -28,7 +28,7 @@ func NewDocumentSearchResult() *DocumentSearchResult {
 	return &DocumentSearchResult{}
 }
 
-//分页全局搜索.
+// 分页全局搜索.
 func (m *DocumentSearchResult) FindToPager(keyword string, pageIndex, pageSize, memberId int) (searchResult []*DocumentSearchResult, totalCount int, err error) {
 	o := orm.NewOrm()
 
@@ -278,7 +278,7 @@ func (m *DocumentSearchResult) FindByLabelToPager(label string, pageIndex, pageS
 		sql1 := `SELECT count(doc.document_id) as total_count FROM md_documents AS doc
 LEFT JOIN md_label_relation AS relation ON relation.resource_id = doc.document_id
 		LEFT JOIN md_label AS label ON label.label_id = relation.label_id
-WHERE book.privately_owned = 0 AND (label.label_name =  ?)  AND relation.relation_type = 'doc' `
+WHERE label.label_name =  ? AND relation.relation_type = 'doc' `
 
 		sql2 := `SELECT *
 FROM (
@@ -300,7 +300,7 @@ FROM (
          LEFT JOIN md_members AS member ON rel.member_id = member.member_id
 		LEFT JOIN md_label_relation AS relation ON relation.resource_id = doc.document_id 
 		LEFT JOIN md_label AS label ON label.label_id = relation.label_id
-       WHERE book.privately_owned = 0 AND  (label.label_name =  ?) AND relation.relation_type = 'doc'
+       WHERE label.label_name =  ? AND relation.relation_type = 'doc'
      UNION ALL
 SELECT
   book.book_id AS document_id,
@@ -319,7 +319,7 @@ FROM  md_books AS book
        LEFT JOIN md_members AS member ON rel.member_id = member.member_id
 		LEFT JOIN md_label_relation AS relation ON relation.resource_id = book.book_id
 		LEFT JOIN md_label AS label ON label.label_id = relation.label_id
-WHERE book.privately_owned = 0 AND (label.label_name =  ?) AND relation.relation_type = 'book'
+WHERE label.label_name =  ? AND relation.relation_type = 'book'
 
        UNION ALL
        SELECT
@@ -369,7 +369,7 @@ LIMIT ?, ?;`
 		sql4 := `SELECT count(*) as total_count FROM md_books as book
 LEFT JOIN md_label_relation AS relation ON relation.resource_id = book.book_id
 		LEFT JOIN md_label AS label ON label.label_id = relation.label_id
-WHERE book.privately_owned = 0 AND  (label.label_name =  ?) AND relation.relation_type = 'book`
+WHERE label.label_name =  ? AND relation.relation_type = 'book'`
 
 		err = o.Raw(sql4, label).QueryRow(&c)
 		if err != nil {
@@ -536,7 +536,7 @@ AND (label.label_name =  ?) AND relation.relation_type = 'book'
 	return
 }
 
-//项目内搜索.
+// 项目内搜索.
 func (m *DocumentSearchResult) SearchDocument(keyword string, bookId int) (docs []*DocumentSearchResult, err error) {
 	o := orm.NewOrm()
 
