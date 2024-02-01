@@ -1,6 +1,6 @@
 download:
 	wget -c https://dl.google.com/go/go1.21.3.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local; \
-	export PATH=$PATH:/usr/local/go/bin
+	echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 
 # 登录admin 123456,需要go>=1.18。-w表示不需要调试信息
 
@@ -10,6 +10,7 @@ build:
 	 
 run:
 	test -f  conf/app.conf || cp conf/app.conf.example conf/app.conf; \
+	test -f  runtime || mkdir runtime; \
 	./mindoc install ; \
 	./mindoc
 
