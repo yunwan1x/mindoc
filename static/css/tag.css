@@ -13,10 +13,12 @@
     flex-grow: 1;
     padding: 0;
 }
+
 .tag_container .label {
     background-color: transparent;
-    color: #666666 !important;
-    border: 1px solid #666666;
+    color: #009a61 !important;
+    border: 1px solid #009a61;
+    border-radius: 4px !important;
 }
 
 .tag_container .bootstrap-tagsinput span {
