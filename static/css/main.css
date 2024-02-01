@@ -67,7 +67,7 @@ textarea{
 }
 .manual-header  .navbar-brand,.manual-header a {
     font-weight: 500;
-    color: #563d7c;
+    color: #000;
     max-width: 300px;
     white-space:nowrap;
     overflow: hidden;
