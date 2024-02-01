@@ -108,11 +108,16 @@ func (c *BlogController) List() {
 		for _, blog := range blogList {
 			//如果没有添加文章摘要，则自动提取
 			r := []rune(utils.StripTags(blog.BlogRelease))
-			if len(r) > 250 {
-				blog.BlogExcerpt = string(r[:250])
+			if blog.BlogStatus == "password" {
+				blog.BlogExcerpt = "***********************************************************************************************************"
 			} else {
-				blog.BlogExcerpt = string(r)
+				if len(r) > 250 {
+					blog.BlogExcerpt = string(r[:250])
+				} else {
+					blog.BlogExcerpt = string(r)
+				}
 			}
+
 			blog.Link()
 		}
 	} else {
