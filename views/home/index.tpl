@@ -58,7 +58,7 @@
 {{/*                            </dd>*/}}
                             <dd>
                             <span class="author">
-                                <span class="text-muted"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <span class="text-muted"><i class="fa fa-user-o" aria-hidden="true"></i></span>
                                 <span class="text-muted">{{if eq $item.RealName "" }}{{$item.CreateName}}{{else}}{{$item.RealName}}{{end}}</span>
                             </span>
                             <span class="author pad-left ">
