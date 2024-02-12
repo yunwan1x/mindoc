@@ -62,7 +62,7 @@
                                 <span class="text-muted">{{if eq $item.RealName "" }}{{$item.CreateName}}{{else}}{{$item.RealName}}{{end}}</span>
                             </span>
                             <span class="author pad-left ">
-                                <span class="text-muted"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                <span class="text-muted"><i class="fa fa-file-word-o" aria-hidden="true"></i></span>
                                 <span class="text-muted">{{$item.DocCount}}</span>
                             </span>
                             <span class="author pad-left ">
