@@ -97,7 +97,7 @@ func (c *BlogController) List() {
 	var totalCount int
 	var err error
 
-	blogList, totalCount, err = models.NewBlog().FindToPager(pageIndex, conf.PageSize, 0, "")
+	blogList, totalCount, err = models.NewBlog().FindToPager(pageIndex, conf.PageSize, 0, "", c.GetString("tag"))
 
 	if err != nil && err != orm.ErrNoRows {
 		c.ShowErrorPage(500, err.Error())
@@ -117,13 +117,13 @@ func (c *BlogController) List() {
 					blog.BlogExcerpt = string(r)
 				}
 			}
-
 			blog.Link()
 		}
 	} else {
 		c.Data["PageHtml"] = ""
 	}
-
+	tags, _ := models.NewBlog().GetTags()
+	c.Data["Tags"] = tags
 	c.Data["Lists"] = blogList
 }
 
@@ -134,7 +134,7 @@ func (c *BlogController) ManageList() {
 
 	pageIndex, _ := c.GetInt("page", 1)
 
-	blogList, totalCount, err := models.NewBlog().FindToPager(pageIndex, conf.PageSize, c.Member.MemberId, "")
+	blogList, totalCount, err := models.NewBlog().FindToPager(pageIndex, conf.PageSize, c.Member.MemberId, "", c.GetString("tag"))
 
 	if err != nil {
 		c.ShowErrorPage(500, err.Error())
