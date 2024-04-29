@@ -1,10 +1,11 @@
 package models
 
 import (
+	"strings"
+
 	"github.com/beego/beego/v2/client/orm"
 	"github.com/beego/beego/v2/core/logs"
 	"github.com/mindoc-org/mindoc/conf"
-	"strings"
 )
 
 type LabelRelation struct {
@@ -47,11 +48,11 @@ func (m *LabelRelation) SaveLabelRelation() error {
 }
 
 func (m *LabelRelation) SaveTags(tags string) {
+	err := m.DeleteByResourceId()
+	if err != nil {
+		logs.Error("delete relation error ", err)
+	}
 	if tags != "" {
-		err := m.DeleteByResourceId()
-		if err != nil {
-			logs.Error("delete relation error ", err)
-		}
 		for _, tag := range strings.Split(tags, ",") {
 			label := NewLabel()
 			label.InsertOrUpdate(tag)
@@ -84,7 +85,7 @@ func (m *LabelRelation) DeleteByResourceId() error {
 	return nil
 }
 
-//分页查找标签.
+// 分页查找标签.
 func (m *LabelRelation) FindToPager(pageIndex, pageSize int) (labels []*Label, totalCount int, err error) {
 	o := orm.NewOrm()
 
