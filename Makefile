@@ -14,3 +14,5 @@ run:
 	./mindoc install ; \
 	./mindoc
 
+copy:
+	scp -P 28246 mindoc  root@www.vs2010wy.top:/root/mindoc 
