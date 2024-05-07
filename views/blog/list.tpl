@@ -32,11 +32,15 @@
                 &nbsp;
                 <a href="{{urlfor "BlogController.ManageSetting"}}" class="btn btn-success btn-sm pull-right">{{i18n .Lang "blog.add_blog"}}</a>
             </div>
-            <div class="tag-container-outer"><span class="tags">
-            {{range $index,$item := .Tags}}
-            <a href="/blogs?tag={{$item}}">{{$item}}</a>
-            {{end}}
-            </span></div>
+            <div class="tag-container-outer">
+                <span class="tags">
+                    {{range  $index,$item := .Tags}}
+                    <a href="/blogs?tag={{$item.LabelName}}">{{$item.LabelName}}<span class="detail">{{$item.BookNumber}}</span></a>
+                    {{else}}
+                    <div class="text-center">暂无标签</div>
+                    {{end}}
+                </span>
+            </div>
             
         </div>
         <div class="row">

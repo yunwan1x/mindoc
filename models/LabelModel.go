@@ -40,7 +40,7 @@ func (m *Label) FindFirst(field string, value interface{}) (*Label, error) {
 	return m, err
 }
 
-//插入或更新标签.
+// 插入或更新标签.
 func (m *Label) InsertOrUpdate(labelName string) error {
 	o := orm.NewOrm()
 
@@ -62,7 +62,7 @@ func (m *Label) InsertOrUpdate(labelName string) error {
 	return err
 }
 
-//批量插入或更新标签.
+// 批量插入或更新标签.
 func (m *Label) InsertOrUpdateMulti(labels string) {
 	if labels != "" {
 		labelArray := strings.Split(labels, ",")
@@ -85,7 +85,7 @@ func (m *Label) GetAllLabelName() (string, error) {
 	return strings.Join(labels, ","), err
 }
 
-//删除标签
+// 删除标签
 func (m *Label) Delete() error {
 	o := orm.NewOrm()
 	_, err := o.Raw("DELETE FROM "+m.TableNameWithPrefix()+" WHERE label_id= ?", m.LabelId).Exec()
@@ -100,7 +100,7 @@ func (m *Label) Delete() error {
 	return nil
 }
 
-//分页查找标签.
+// 分页查找标签.
 func (m *Label) FindToPager(pageIndex, pageSize int) (labels []*Label, totalCount int, err error) {
 	o := orm.NewOrm()
 
@@ -110,10 +110,7 @@ func (m *Label) FindToPager(pageIndex, pageSize int) (labels []*Label, totalCoun
 		return
 	}
 	totalCount = int(count)
-
-	offset := (pageIndex - 1) * pageSize
-
-	_, err = o.Raw("select  count(b.resource_id) as book_number,a.label_id,a.label_name from md_label a left join  md_label_relation b on a.label_id = b.label_id group by  a.label_id order by  book_number desc limit ?,?", offset, pageSize).QueryRows(&labels)
+	_, err = o.Raw("select * from (select  count(b.resource_id) as book_number,a.label_id,a.label_name from md_label a left join  md_label_relation b on a.label_id = b.label_id group by  a.label_id order by  book_number desc) where book_number >0").QueryRows(&labels)
 
 	if err == orm.ErrNoRows {
 		logs.Info("没有查询到标签 ->", err)

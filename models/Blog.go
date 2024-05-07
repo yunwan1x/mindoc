@@ -104,13 +104,14 @@ func (b *Blog) Find(blogId int) (*Blog, error) {
 	return b.Link()
 }
 
-func (b *Blog) GetTags() ([]string, error) {
+func (b *Blog) GetTags() ([]Label, error) {
 	o := orm.NewOrm()
 
-	var labels []string
-	_, err := o.Raw("select  DISTINCT(label_name) from md_label a ,md_label_relation b where a.label_id=b.label_id and b.relation_type='blog'").QueryRows(&labels)
+	var labels []Label
+	sql := "select book_number,label_name, label_id from (select  count(b.resource_id) as book_number,a.label_id,a.label_name from md_label a left join  md_label_relation b on a.label_id = b.label_id and  b.relation_type='blog' group by  a.label_id order by  book_number desc) where book_number >0"
+	_, err := o.Raw(sql).QueryRows(&labels)
 	if err != nil {
-		return []string{}, err
+		return []Label{}, err
 	}
 
 	return labels, err
