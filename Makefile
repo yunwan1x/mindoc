@@ -14,5 +14,8 @@ run:
 	./mindoc install ; \
 	./mindoc
 
-copy:
-	scp -P 28246 mindoc  root@www.vs2010wy.top:/root/mindoc 
+deploy:
+	@ssh -p 28246 root@www.vs2010wy.top "cd /root/mindoc;git pull && echo pull success"
+	@ssh -p 28246 root@www.vs2010wy.top "systemctl stop mindocd && echo stop success"
+	@scp -P 28246 mindoc  root@www.vs2010wy.top:/root/mindoc
+	@ssh -p 28246 root@www.vs2010wy.top "systemctl start mindocd&& echo start success" 
