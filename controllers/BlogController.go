@@ -109,7 +109,7 @@ func (c *BlogController) List() {
 			//如果没有添加文章摘要，则自动提取
 			r := []rune(utils.StripTags(blog.BlogRelease))
 			if blog.BlogStatus == "password" {
-				blog.BlogExcerpt = "***********************************************************************************************************"
+				blog.BlogExcerpt = "加密文档，不显示内容摘要"
 			} else {
 				if len(r) > 250 {
 					blog.BlogExcerpt = string(r[:250])
