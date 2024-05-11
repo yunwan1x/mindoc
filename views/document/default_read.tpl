@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta name="author" content="Minho" />
     <meta name="site" content="" />
-    <meta name="keywords" content="MinDoc,文档在线管理系统,WIKI,wiki,wiki在线,文档在线管理,接口文档在线管理,接口文档管理,{{.Model.BookName}},{{.Title}}">
+    <meta name="keywords" content="汪云的个人文档管理系统,{{.Model.BookName}},{{.Title}}">
     <meta name="description" content="{{.Title}}-{{if .Description}}{{.Description}}{{else}}{{.Model.Description}}{{end}}">
 
     <!-- Bootstrap -->

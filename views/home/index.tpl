@@ -8,8 +8,8 @@
     <meta name="renderer" content="webkit">
     <meta name="author" content="Minho" />
     <meta name="site" content="" />
-    <meta name="keywords" content="MinDoc,文档在线管理系统,WIKI,wiki,wiki在线,文档在线管理,接口文档在线管理,接口文档管理">
-    <meta name="description" content="MinDoc文档在线管理系统 {{.site_description}}">
+    <meta name="keywords" content="汪云的个人知识管理系统">
+    <meta name="description" content="书籍，文章，图表，书签和超赞列表">
     <!-- Bootstrap -->
     <link href="{{cdncss "/static/bootstrap/css/bootstrap.min.css"}}" rel="stylesheet">
     <link href="{{cdncss "/static/font-awesome/css/font-awesome.min.css"}}" rel="stylesheet">
