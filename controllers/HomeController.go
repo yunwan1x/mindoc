@@ -49,7 +49,7 @@ func (c *HomeController) Index() {
 
 func (c *HomeController) Excalidraw() {
 	c.Prepare()
-	c.TplName = "home/excalidraw.tpl"
+	c.TplName = "home/hiddenword.tpl"
 }
 
 func (c *HomeController) Sheet() {

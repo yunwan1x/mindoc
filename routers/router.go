@@ -79,7 +79,7 @@ func init() {
 
 	web.Router("/", &controllers.HomeController{}, "*:Index")
 	web.Router("/sheet", &controllers.HomeController{}, "*:Sheet")
-	web.Router("/excalidraw", &controllers.HomeController{}, "*:Excalidraw")
+	web.Router("/hiddenword", &controllers.HomeController{}, "*:Excalidraw")
 
 	web.Router("/login", &controllers.AccountController{}, "*:Login")
 	web.Router("/dingtalk_login", &controllers.AccountController{}, "*:DingTalkLogin")
